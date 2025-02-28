@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Info</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img class="logo" src="/Media/EK logo.png" alt="logo">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Explore</a>
+            <a href="#">Contact Us</a>
+        </nav>
+        <button class="signup">Sign Up</button>
+    </header>
+
+    <section class="buttons">
+        <input type="button" value="Host Information" id="host">
+        <input type="button" value="Booking Information" id="booking">
+        <input type="button" value="Payment" id="payment">
+    </section>
+
+    <section class="fields">
+        <form method="get">
+            <section class="info">
+                <div class="container1">
+                    <div class="title">
+                        <select name="Title">
+                            <option>Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Miss">Miss</option>
+                        </select>
+                    </div>
+                    <input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                </div>
+
+                <div class="container2">
+                        <input placeholder="Date Of Birth" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+                        <select name="country" id="country">
+                            <option>Select Country</option>
+                            <option>Saudi Arabia</option>
+                            <option>UAE</option>
+                            <option>Qatar</option>
+                            <option>Bahrain</option>
+                            <option>Kuwait</option>
+                            <option>Oman</option>
+                        </select>
+                </div>
+
+                <label>Contact Details</label>
+                <div class="container3">
+                    <div class="code">
+                        <select name="code">
+                            <option>Country Code</option>
+                            <option>+996</option>
+                            <option>+971</option>
+                            <option>+974</option>
+                            <option>+973</option>
+                            <option>+965</option>
+                            <option>+968</option>
+                        </select>
+                    </div>
+                    <input type="text" placeholder="Contact Number">
+                </div>
+                <div class="container4">
+                    <input type="email" placeholder="Email Address">
+                </div>
+                <input id="next" type="submit" value="Next">
+            </section>
+        </form>
+
+        <section class="order">
+            <h3>You're paying</h3>
+            <h1>236,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h1>
+
+            <div class="details">
+                <p class="catagory">Venue<span class="price">70,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Laylaty</p>
+
+                <p class="catagory">Flowers<span class="price">15,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Elegant White Roses</p>
+
+                <p class="catagory">Photographer<span class="price">18,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Premium Package (8 hours)</p>
+
+                <p class="catagory">Decoration<span class="price">32,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Fairy Lights & Drapes</p>
+
+                <p class="catagory">Music<span class="price">23,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Live Jazz Band</p>
+
+                <p class="catagory">Catering<span class="price">48,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">3-course meal for 100 guests</p>
+                    <hr>
+                <p class="tax">Tax (15%)<span class="price">30,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+
+                <p class="total">Total<span class="price">236,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+            </div>
+        </section>
+
+    </body>
+</html>

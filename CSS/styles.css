@@ -1,0 +1,194 @@
+body{
+    font-family: 'poppins',sans-serif;
+    background-image: url(/Media/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 1px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+h1{
+    color: #561050;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+}
+h3{
+    color: #926289;
+    display: flex;
+    justify-content: center;
+    
+}
+nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:auto;
+}
+nav a{
+    color: #561050;
+    text-decoration: none;
+    font-size: 20px; 
+}
+::placeholder,select,input{
+    color: black;
+    font-family: 'poppins',sans-serif;
+}
+#next,.signup,#host{
+    background-color: #561050;
+    color: #ffffff;
+}
+.signup{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'poppins',sans-serif;
+}
+#booking,#payment{
+    background-color:#FFF5F1;
+    border: none;
+    border-bottom:3px solid #561050;
+    border-radius: 0px;
+}
+#next,#host{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    
+}
+#next{
+    width: 50%;
+    position: relative;
+    left: 50%;
+}
+input, select {
+    padding: 7px;
+    border: 1px solid #561050;
+    border-radius: 5px;
+    background-color: #FFF5F1;
+}
+.riyal{
+    width: 32px;
+}
+.logo{
+    width: 200px;
+}
+h1 .riyal{
+    width: 64px;
+}
+.container1,.container3{
+    margin-top: 20px;
+}
+.buttons{
+    margin-left: 5%;
+}
+.order{
+    border: 1px solid #FFF5F1;
+    border-radius: 20px;
+    background-image: url(/Media/Rectangle.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 90%;
+    max-width: 500px;
+    margin:auto;
+    margin-bottom: 20%;
+}
+hr{
+    width: 80%;
+    border-color: #926289;
+}
+.details span{
+    display: flex;
+    justify-content: flex-end;
+}
+.fields{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+.info{
+    margin-left: 10%;
+}
+.catagory{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    font-weight: bold;
+}
+.choice{
+    position: relative;
+    bottom: 30px;
+    margin-left: 10%;
+    color: #926289;
+    font-size: 16px;
+}
+.tax,.total{
+    margin-left: 20%;
+    font-weight: bold;
+}
+.price{
+    position: relative;
+    bottom: 25px;
+    margin-right: 10%;
+}
+.container1,.container2,.container3,.container4 {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex: 1;
+    width: 100%;
+}
+
+.container1 select,.container1 input,.container2 input,.container2 select,.container3 select,.container3 input,.container4 input {
+    flex: 1 1 100%;
+}
+a:hover{
+    color: #926289;
+    cursor: pointer;
+}
+#next:hover,.signup:hover{
+    background-color: #926289;
+    color: #561050;
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .fields {
+        grid-template-columns: 1fr;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 5%;
+    }
+    #next{
+        width: 50%; 
+    }
+    .buttons input {
+        width: 90%;
+    }
+    .order {
+        width: 100%;
+    }
+   
+    .logo{
+        width: 150px;
+    }
+    .info{
+        margin: 5%;
+    }
+    .container{
+        display: grid;
+    }
+}
+@media (max-width: 1100px){
+    .container1 input{
+        width: 90%;
+    }
+}
