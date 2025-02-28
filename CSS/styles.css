@@ -12,7 +12,7 @@ header {
     align-items: center;
     margin-bottom: 50px;
 }
-h1{
+h2{
     color: #561050;
     font-size: 32px;
     display: flex;
@@ -27,7 +27,6 @@ h3{
 nav{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap:auto;
 }
 nav a{
     color: #561050;
