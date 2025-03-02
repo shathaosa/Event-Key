@@ -1,0 +1,61 @@
+body{
+    font-family: 'poppins',sans-serif;
+    background-image: url(/Media/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 1px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+
+nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+nav a{
+    color: #561050;
+    text-decoration: none;
+    font-size: 20px; 
+}
+
+.profile,.cart{
+
+max-width:40px;
+
+}
+.line{
+    max-width: 2px;
+}
+
+
+
+.logo{
+    width: 200px;
+}
+
+
+
+
+a:hover{
+    color: #926289;
+    cursor: pointer;
+}
+
+
+@media (max-width: 576px) {
+    
+  
+   
+   
+    .logo{
+        width: 150px;
+    }
+    
+    
+}
