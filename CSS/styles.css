@@ -1,95 +1,143 @@
-body{
-    font-family: 'poppins',sans-serif;
+body {
+    font-family: 'poppins', sans-serif;
     background-image: url(/Media/background.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 header {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    padding: 1px;
+    padding: 0px;
     align-items: center;
-    margin-bottom: 50px;
+    margin: 10px 0 30px 0;
 }
-h2{
+
+h2 {
     color: #561050;
     font-size: 32px;
     display: flex;
     justify-content: center;
 }
-h3{
+
+h3 {
     color: #926289;
     display: flex;
     justify-content: center;
-    
+
 }
-h4{
+
+h4 {
     font-weight: normal;
 }
-nav{
+
+nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    margin: auto;
+
 }
-nav a{
+
+nav a {
     color: #561050;
     text-decoration: none;
-    font-size: 20px; 
+    text-align: center;
+    padding: 0 5px 0 5px;
+    font-size: 1em;
 }
-::placeholder,select,input{
+
+.account i {
+    color: #561050;
+    margin-right: 5px;
+    padding-right: 10px;
+    font-size: 1.5em;
+}
+
+.account i:hover {
+    color: #926289;
+    cursor: pointer;
+}
+
+::placeholder,
+select,
+input {
     color: black;
-    font-family: 'poppins',sans-serif;
+    font-family: 'poppins', sans-serif;
 }
-#next,.signup,#host{
+
+#next,
+.signup,
+#host {
     background-color: #561050;
     color: #ffffff;
 }
-.signup{
+
+.signup {
     padding: 10px 20px;
     border: none;
     border-radius: 20px;
-    font-family: 'poppins',sans-serif;
+    font-family: 'poppins', sans-serif;
 }
-#booking,#payment{
-    background-color:#FFF5F1;
+
+#booking,
+#payment {
+    background-color: #FFF5F1;
     border: none;
-    border-bottom:3px solid #561050;
+    border-bottom: 3px solid #561050;
     border-radius: 0px;
 }
-#next,#host{
+
+#next,
+#host {
     padding: 10px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
-    
+
 }
-#next{
+
+#next {
     width: 50%;
     position: relative;
     left: 50%;
 }
-input, select {
+
+input,
+select {
     padding: 7px;
     border: 1px solid #561050;
     border-radius: 5px;
     background-color: #FFF5F1;
 }
-.riyal{
+
+.riyal {
     width: 32px;
 }
-.logo{
-    width: 200px;
-}
-h1 .riyal{
+
+#header-riyal {
     width: 64px;
 }
-.container1,.container3{
+
+.logo {
+    width: 150px;
+}
+
+h1 .riyal {
+    width: 64px;
+}
+
+.container1,
+.container3 {
     margin-top: 20px;
 }
-.buttons{
+
+.buttons {
     margin-left: 5%;
 }
-.order{
+
+.order {
     border: 1px solid #FFF5F1;
     border-radius: 20px;
     background-image: url(/Media/Rectangle.png);
@@ -97,48 +145,61 @@ h1 .riyal{
     background-size: cover;
     width: 90%;
     max-width: 500px;
-    margin:auto;
+    margin: auto;
     margin-bottom: 20%;
 }
-hr{
+
+hr {
     width: 80%;
     border-color: #926289;
 }
-.details span{
+
+.details span {
     display: flex;
     justify-content: flex-end;
 }
-.fields{
+
+.fields {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
 }
-.info{
+
+.info {
     margin-left: 10%;
 }
-.catagory{
+
+.catagory {
     display: flex;
     flex-direction: column;
     margin-left: 5%;
     font-weight: bold;
 }
-.choice{
+
+.choice {
     position: relative;
     bottom: 30px;
     margin-left: 10%;
     color: #926289;
     font-size: 16px;
 }
-.tax,.total{
+
+.tax,
+.total {
     margin-left: 20%;
     font-weight: bold;
 }
-.price{
+
+.price {
     position: relative;
     bottom: 25px;
     margin-right: 10%;
 }
-.container1,.container2,.container3,.container4 {
+
+.container1,
+.container2,
+.container3,
+.container4 {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
@@ -146,14 +207,23 @@ hr{
     width: 100%;
 }
 
-.container1 select,.container1 input,.container2 input,.container2 select,.container3 select,.container3 input,.container4 input {
+.container1 select,
+.container1 input,
+.container2 input,
+.container2 select,
+.container3 select,
+.container3 input,
+.container4 input {
     flex: 1 1 100%;
 }
-a:hover{
+
+a:hover {
     color: #926289;
     cursor: pointer;
 }
-#next:hover,.signup:hover{
+
+#next:hover,
+.signup:hover {
     background-color: #926289;
     color: #561050;
     cursor: pointer;
@@ -163,34 +233,41 @@ a:hover{
     .fields {
         grid-template-columns: 1fr;
     }
+
     .buttons {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 5%;
     }
-    #next{
-        width: 50%; 
+
+    #next {
+        width: 50%;
     }
+
     .buttons input {
         width: 90%;
     }
+
     .order {
         width: 100%;
     }
-   
-    .logo{
+
+    .logo {
         width: 150px;
     }
-    .info{
+
+    .info {
         margin: 5%;
     }
-    .container{
+
+    .container {
         display: grid;
     }
 }
-@media (max-width: 1100px){
-    .container1 input{
+
+@media (max-width: 1100px) {
+    .container1 input {
         width: 90%;
     }
 }
