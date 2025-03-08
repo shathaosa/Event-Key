@@ -38,6 +38,7 @@ h4 {
 nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 35px;
     align-items: center;
     margin: auto;
 
@@ -52,7 +53,7 @@ nav a {
 }
 
 #explore {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .logo {
