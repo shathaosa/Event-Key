@@ -1,6 +1,6 @@
 body {
     font-family: 'poppins', sans-serif;
-    background-image: url(/Media/background.png);
+    background-image: url(/Media/backgroundCover.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -141,7 +141,7 @@ h1 .riyal {
 .order {
     border: 1px solid #FFF5F1;
     border-radius: 20px;
-    background-image: url(/Media/Rectangle.png);
+    background-image: url(/Media/CheckCover.png);
     background-repeat: no-repeat;
     background-size: cover;
     width: 90%;

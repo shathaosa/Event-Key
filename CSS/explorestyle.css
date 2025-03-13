@@ -1,8 +1,9 @@
 body {
     font-family: 'poppins', sans-serif;
-    background-image: url(/Media/background.png);
+    background-image: url(/Media/backgroundCover.png);
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden; /* هذا اللي اضفته*/
 }
 
 header {
@@ -144,7 +145,7 @@ strong {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
     justify-content: center;
-    margin: 0 10% 0 10%;
+    margin: 0 10% 10% 10%;
 }
 
 .store-card {
