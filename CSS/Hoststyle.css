@@ -11,7 +11,7 @@ header {
     flex-wrap: wrap;
     padding: 0px;
     align-items: center;
-    margin: 10px 0 30px 0;
+    margin: 10px 0 30px 15px;
 }
 
 h2 {
@@ -47,6 +47,7 @@ nav a {
     text-align: center;
     padding: 0 5px 0 5px;
     font-size: 1em;
+    transition: transform 0.3s ease;
 }
 
 .account i {
@@ -54,11 +55,13 @@ nav a {
     margin-right: 5px;
     padding-right: 10px;
     font-size: 1.5em;
+    transition: transform 0.3s ease;
 }
 
 .account i:hover {
     color: #926289;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 ::placeholder,
@@ -221,6 +224,7 @@ hr {
 a:hover {
     color: #926289;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 #next:hover,
