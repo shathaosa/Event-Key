@@ -10,49 +10,67 @@
     color: #561050;
   }
   
-  /* Header */
+  /* ---------- Header ------------- */
   header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0px;
     align-items: center;
-    padding: 20px;
-    background-color: #fff5f1;
-  }
+    margin: 10px 8px 30px 8px;
+}
   
   .logo img {
     height: 60px;
   }
   
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  nav ul li a {
+ 
+  nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+    margin: auto;
+
+}
+
+nav a {
+    color: #561050;
     text-decoration: none;
-    color: #561050;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  nav ul li a.active {
-    font-weight: 700;
-  }
-  
-  nav ul li a:hover {
-    color: #efb2e4;
-  }
-  
-  .header-icons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .header-icons .buttons {
-    color: #561050;
-    font-size: 20px;
-  }
+    text-align: center;
+    padding: 0 5px 0 5px;
+    font-size: 1em;
+}
+
+#Home {
+  font-weight: 600;
+}
+
+.logo {
+  width: 150px;
+}
+
+
+a:hover {
+  color: #926289;
+  cursor: pointer;
+}
+
+.buttons i:hover{
+
+  color: #926289;
+  cursor: pointer;
+
+}
+
+.buttons i {
+  color: #561050;
+  margin-right: 5px;
+  padding-right: 10px;
+  font-size: 1.5em;
+}
+
+
   
   /* Hero Section */
   .hero {
