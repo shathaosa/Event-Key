@@ -337,7 +337,22 @@ form {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 576px) {
+    nav{
+        gap: 10px;
+        padding-top: 10px;    }
+        header {
+            flex-direction: row;
+            .logo{ max-width: 80px;}
+          nav a{
+            font-size: 13px;
+          }
+          div {
+           padding-top: 10px;
+           font-size: 10px;
+          }
+          
+          }
     .form-box {
         padding: 20px;
     }
