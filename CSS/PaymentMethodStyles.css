@@ -1,18 +1,6 @@
-<<<<<<< Updated upstream
-#host{
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px;
-}
-
-
-body{
-    font-family: 'Poppins', sans-serif;
-    background-image: url(background.png);
-=======
 body {
     font-family: 'poppins', sans-serif;
     background-image: url(/Media/backgroundCover.png);
->>>>>>> Stashed changes
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -21,55 +9,24 @@ header {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-<<<<<<< Updated upstream
-    padding: 1px;
-    align-items: center;
-    margin-bottom: 50px;
-}
-
-h2{
-=======
     padding: 0px;
     align-items: center;
     margin: 10px 0 30px 15px;
 }
 
 h2 {
->>>>>>> Stashed changes
     color: #561050;
     font-size: 32px;
     display: flex;
     justify-content: center;
 }
 
-<<<<<<< Updated upstream
-h3{
-=======
 h3 {
->>>>>>> Stashed changes
     color: #926289;
     display: flex;
     justify-content: center;
 }
 
-<<<<<<< Updated upstream
-h4{
-    font-weight: normal;
-}
-
-nav{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-nav a{
-    color: #561050;
-    text-decoration: none;
-    font-size: 20px; 
-}
-
-::placeholder, select, input{
-=======
 h4 {
     font-weight: normal;
     margin-left: 5%;
@@ -115,46 +72,10 @@ a:hover {
 
 ::placeholder,
 input {
->>>>>>> Stashed changes
     color: black;
     font-family: 'Poppins', sans-serif;
 }
 
-<<<<<<< Updated upstream
-#next, .signup, #booking{
-    background-color: #561050;
-    color: #ffffff;
-}
-
-.signup{
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    font-family: 'Poppins', sans-serif;
-}
-
-#host, #payment{
-    background-color: #FFF5F1;
-    border: none;
-    border-bottom: 3px solid #561050;
-    border-radius: 0px;
-}
-
-#next, #booking{
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-#next{
-    width: 50%;
-    position: relative;
-    left: 50%;
-}
-
-input, select {
-=======
 .confirm-button,
 #payment {
     background-color: #561050;
@@ -183,68 +104,12 @@ input, select {
 }
 
 input {
->>>>>>> Stashed changes
     padding: 7px;
     border: 1px solid #561050;
     border-radius: 5px;
     background-color: #FFF5F1;
 }
 
-<<<<<<< Updated upstream
-textarea {
-    width: 100%;
-    height: 120px;
-    padding: 7px;
-    border: 1px solid #561050;
-    border-radius: 5px;
-    background-color: #FFF5F1;
-}
-
-.riyal{
-    width: 32px;
-}
-
-.logo{
-    width: 200px;
-}
-
-h2 .riyal{
-    width: 64px;
-}
-
-.container1, .container3{
-    margin-top: 20px;
-}
-
-.buttons{
-    margin-left: 5%;
-}
-
-.order{
-    border: 1px solid #FFF5F1;
-    border-radius: 20px;
-    background-image: url(Rectangle.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 90%;
-    max-width: 500px;
-    margin: auto;
-    margin-bottom: 20%;
-    padding: 20px;
-}
-
-hr{
-    width: 80%;
-    border-color: #926289;
-}
-
-details span{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.fields{
-=======
 .riyal {
     width: 32px;
 }
@@ -271,19 +136,11 @@ h2 .riyal {
 }
 
 .payment-container {
->>>>>>> Stashed changes
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
 }
 
-<<<<<<< Updated upstream
-.info{
-    margin-left: 10%;
-}
-
-.catagory{
-=======
 .payment-box {
     margin-left: 5%;
 }
@@ -356,7 +213,6 @@ hr {
 }
 
 .catagory {
->>>>>>> Stashed changes
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -364,33 +220,18 @@ hr {
     padding: 5px 0;
 }
 
-<<<<<<< Updated upstream
-.choice{
-=======
 .choice {
->>>>>>> Stashed changes
     color: #926289;
     font-size: 16px;
     margin-left: 10px;
 }
 
-<<<<<<< Updated upstream
-.tax, .total{
-=======
 .tax,
 .total {
->>>>>>> Stashed changes
     margin-left: 20%;
     font-weight: bold;
 }
 
-<<<<<<< Updated upstream
-.price{
-    font-weight: bold;
-}
-
-.container1, .container2, .container3, .container4 {
-=======
 .price {
     font-weight: bold;
 }
@@ -399,7 +240,6 @@ hr {
 .container2,
 .container3,
 .container4 {
->>>>>>> Stashed changes
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
@@ -407,9 +247,6 @@ hr {
     width: 100%;
 }
 
-<<<<<<< Updated upstream
-.container1 select, .container1 input, .container2 input, .container2 select, .container3 select, .container3 input, .container4 input {
-=======
 .container1 select,
 .container1 input,
 .container2 input,
@@ -417,7 +254,6 @@ hr {
 .container3 select,
 .container3 input,
 .container4 input {
->>>>>>> Stashed changes
     flex: 1 1 100%;
 }
 
@@ -441,20 +277,12 @@ input[type="checkbox"] {
     accent-color: #561050;
 }
 
-<<<<<<< Updated upstream
-a:hover{
-=======
 a:hover {
->>>>>>> Stashed changes
     color: #926289;
     cursor: pointer;
 }
 
-<<<<<<< Updated upstream
-#next:hover, .signup:hover{
-=======
 .confirm-button:hover {
->>>>>>> Stashed changes
     background-color: #926289;
     color: #561050;
     cursor: pointer;
@@ -464,34 +292,12 @@ a:hover {
     .fields {
         grid-template-columns: 1fr;
     }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     .buttons {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 5%;
     }
-<<<<<<< Updated upstream
-    #next{
-        width: 50%; 
-    }
-    .buttons input {
-        width: 90%;
-    }
-    .order {
-        width: 100%;
-    }
-    .logo{
-        width: 150px;
-    }
-    .info{
-        margin: 5%;
-    }
-    .container{
-=======
 
     #confirm-button {
         width: 50%;
@@ -514,37 +320,10 @@ a:hover {
     }
 
     .container {
->>>>>>> Stashed changes
         display: grid;
     }
 }
 
-<<<<<<< Updated upstream
-@media (max-width: 1100px){
-    .container1 input{
-        width: 90%;
-    }
-}
-.payment-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-    gap: 50px; 
-}
-
-.payment-box, .order {
-    background: transparent;
-    padding: 30px;
-    border-radius: 15px;
-    width: 48%;
-    box-shadow: none;
-    text-align: left;
-    border: none;
-}
-=======
 @media (max-width: 1100px) {
     .container1 input {
         width: 90%;
@@ -553,7 +332,6 @@ a:hover {
 
 /* 
 
->>>>>>> Stashed changes
 .payment-methods {
     display: flex;
     justify-content: center;
@@ -561,14 +339,6 @@ a:hover {
     margin-bottom: 20px;
 }
 
-<<<<<<< Updated upstream
-.payment-methods img {
-    width: 50px;
-    height: auto;
-}
-
-=======
->>>>>>> Stashed changes
 .payment-box h3 {
     color: #561050;
     font-size: 20px;
@@ -613,8 +383,4 @@ a:hover {
 
 .confirm-button:hover {
     background-color: #926289;
-<<<<<<< Updated upstream
-}
-=======
 } */
->>>>>>> Stashed changes
