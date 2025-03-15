@@ -359,22 +359,28 @@ a:hover {
   
   @media (max-width: 576px) {
     header {
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: row;
+      .logo{ max-width: 80px;}
+    nav a{
+      font-size: 13px;
+    }
+    div {
+     padding-top: 10px;
+     font-size: 10px;
+    }
+    
     }
   
-    nav ul {
-      flex-direction: column;
-      align-items: center;
+    nav{
       gap: 10px;
-    }
+      padding-top: 10px;    }
   
     .welcome-content {
       padding: 10px;
     }
   
     .welcome-image img {
-      height: 130px;
+      
     }
   
     .welcome-text p {
@@ -396,21 +402,43 @@ a:hover {
     .image-row {
       flex-direction: column;
       align-items: center;
+      
     }
   
     .image-row img {
-      height: 100px;
+      height: 500px;
     }
-  
+
+  .about-header{
+
+margin-left: 160px;
+
+  }
     .left-section h2 {
       font-size: 1.5rem;
     }
   
     .left-section .paragraph {
       font-size: 0.9rem;
+      align-content: center;
+    }
+    .social-media {
+      margin-top: 50px;
+      margin-left: 180px;
     }
   
+    .contact-info{
+    
+      justify-content: left;
+
+      
+     
+    }
     .contact-info p {
       font-size: 0.9rem;
+
+    }
+    .company-logos img{
+      max-height: 30px;
     }
   }
