@@ -353,7 +353,7 @@ a:hover {
     }
   
     .image-row img {
-      height: 120px;
+      height: 200px;
     }
   }
   
@@ -374,11 +374,11 @@ a:hover {
     }
   
     .welcome-image img {
-      height: 130px;
+      height: 90px;
     }
   
     .welcome-text p {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   
     .welcome-text button {
@@ -399,7 +399,7 @@ a:hover {
     }
   
     .image-row img {
-      height: 100px;
+      height: 200px;
     }
   
     .left-section h2 {
