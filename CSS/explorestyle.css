@@ -4,7 +4,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
-    /* هذا اللي اضفته*/
 }
 
 header {
@@ -30,7 +29,7 @@ h3 {
     display: flex;
     justify-content: left;
     font-family: Montserrat;
-    margin-left: 5%
+    margin-left: 20%
 }
 
 h4 {
@@ -98,7 +97,7 @@ i {
     grid-template-rows: 1fr 1fr;
     font-size: 12px;
     float: right;
-    margin-left: 50%;
+    margin-left: 20%;
     margin-top: 2%;
     color: #424242;
 }
@@ -162,7 +161,8 @@ strong {
     color: #561050;
     /* border: 1px solid #cecece; */
     background-color: #c198bea8;
-    transition: transform 0.3s ease;;
+    transition: transform 0.3s ease;
+    ;
     /* background-image: linear-gradient(to bottom, #ffffff 0%, rgb(175, 170, 168, 50%)); */
 }
 
@@ -171,8 +171,9 @@ strong {
     transform: scale(1.1);
     background-color: hsla(304, 25%, 78%, 0.659);
 }
+
 #categories button>i {
-    color:#561050;
+    color: #561050;
 }
 
 .fa-solid.fa-caret-down:hover {
@@ -249,84 +250,119 @@ strong {
 /* Responsiveness */
 @media (max-width: 992px) {
     .stores-cards {
-        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .explore-header {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr 1fr;
+
     }
 
     .location-date {
+        float: left;
         margin-left: 0;
+        margin-right: 0;
         margin-top: 10px;
     }
 
     #categories button {
-        width: 120px; 
+        width: 120px;
     }
 }
+
 @media (max-width: 768px) {
     .stores-cards {
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr;
     }
 
     nav {
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
     }
 
     .logo {
-        width: 120px; 
-    }
-
-    .buttons i {
-        font-size: 1em; 
+        width: 120px;
     }
 
     #categories button {
-        grid-template-columns: 1fr 1fr; 
-        width: 110px; 
+        grid-template-columns: 1fr 1fr;
+        width: 110px;
         font-size: 0.8em;
-        gap: 10px; 
-    }
-
-     /* Adjust gap for the second row */
-#categories button:nth-child(n+1) {
-        margin-top: 7px;
-    }
-}
-@media (max-width: 576px) {
-    .stores-cards {
-        grid-template-columns: 1fr; 
-    }
-
-    nav {
-        grid-template-columns: 1fr; 
         gap: 10px;
     }
 
-    .logo {
-        width: 100px; 
+    /* Adjust gap for the second row */
+    #categories button:nth-child(n+1) {
+        margin-top: 7px;
     }
 
-    .buttons i {
-        font-size: 1em;
+    .explore-header {
+        margin-top: 5%;
     }
 
-    #categories button {
-        width: 80px; 
-        font-size: 0.5em;
-    }
-  /* Adjust gap for the sec row */
-#categories button:nth-child(n+1) {
-    margin-top: 5px; 
 }
 
-    .store-card {
-        width: 100%; 
+@media (max-width: 770px) {
+    header {
+        margin: 5px 0 0 0;
     }
 
-    .store-card button {
-        padding: 15px; 
+    nav {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 0px;
+    }
+
+    nav a {
+        font-size: 0.9em;
+    }
+
+
+    .location-date {
+        margin: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    nav {
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    nav a {
+        padding: 0;
+        font-size: 13px;
+    }
+
+    header div {
+        padding-top: 10px;
+        font-size: 10px;
+    }
+
+    .location-date {
+        font-size: 0.8em;
+        margin-top: 24px;
+
+        p {
+            padding: 0;
+        }
+
+        strong {
+            font-size: 0.8em;
+
+        }
+
+        span {
+            display: none;
+        }
+
+        #date {
+            font-size: 0.9em;
+            font-weight: 400;
+
+        }
+    }
+
+    .logo {
+        max-width: 80px;
     }
 }

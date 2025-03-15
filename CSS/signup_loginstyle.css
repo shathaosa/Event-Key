@@ -285,23 +285,16 @@ form {
 }
 
 @media screen and (max-width: 650px) {
-    header {
-        margin: 5px 0 0 0;
-    }
 
     nav {
         gap: 0px;
     }
 
     nav a {
-        font-size: 0.9em;
+        font-size: 13px;
     }
 
-    .buttons i{
-        font-size: 1em;
-    }
-
-    .logo{
+    .logo {
         width: 90px;
     }
 
@@ -363,24 +356,38 @@ form {
     .container.active .toggle-panel.toggle-right {
         bottom: 0;
     }
+
+    header div {
+        padding-top: 10px;
+        font-size: 10px;
+
+    }
 }
 
 @media screen and (max-width: 576px) {
-    nav{
+    nav {
         gap: 10px;
-        padding-top: 10px;    }
-        header {
-            flex-direction: row;
-            .logo{ max-width: 80px;}
-          nav a{
+        padding-top: 10px;
+    }
+
+    header {
+        flex-direction: row;
+
+        .logo {
+            max-width: 80px;
+        }
+
+        nav a {
             font-size: 13px;
-          }
-          div {
-           padding-top: 10px;
-           font-size: 10px;
-          }
-          
-          }
+        }
+
+        div {
+            padding-top: 10px;
+            font-size: 10px;
+        }
+
+    }
+
     .form-box {
         padding: 20px;
     }
