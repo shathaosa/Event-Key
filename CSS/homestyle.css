@@ -10,6 +10,10 @@
     color: #561050;
   }
   
+  html {
+    scroll-behavior: smooth;
+  }
+  
   /* ---------- Header ------------- */
   header {
     display: flex;
@@ -24,7 +28,7 @@
     height: 60px;
   }
   
- 
+
   nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -41,6 +45,8 @@ nav a {
     padding: 0 5px 0 5px;
     font-size: 1em;
 }
+
+
 
 #Home {
   font-weight: 600;
