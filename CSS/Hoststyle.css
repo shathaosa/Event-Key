@@ -95,9 +95,8 @@ input {
 }
 
 #next {
-    width: 50%;
+    width: 100%;
     position: relative;
-    left: 50%;
 }
 #host{
     border-bottom-right-radius: 0px;
@@ -115,15 +114,12 @@ select {
     width: 32px;
 }
 
-#header-riyal {
-    width: 64px;
-}
 
 .logo {
     width: 150px;
 }
 
-h1 .riyal {
+h2 .riyal {
     width: 64px;
 }
 
@@ -133,7 +129,7 @@ h1 .riyal {
 }
 
 .buttons {
-    margin-left: 5%;
+    margin: 0  0 0 5%;
 }
 
 .order {
@@ -222,7 +218,11 @@ a:hover {
     transform: scale(1.1);
 }
 
+<<<<<<< Updated upstream
 #next:hover {
+=======
+#next:hover{
+>>>>>>> Stashed changes
     background-color: #926289;
     color: #561050;
     cursor: pointer;
