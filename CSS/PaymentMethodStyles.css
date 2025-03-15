@@ -284,6 +284,22 @@ a:hover {
 
 
 @media (max-width: 576px) {
+    header {
+        flex-direction: row;
+        .logo{ max-width: 80px;}
+      nav a{
+        font-size: 13px;
+      }
+      div {
+       padding-top: 10px;
+       font-size: 10px;
+      }
+      
+      }
+      nav{
+        gap: 10px;
+        padding-top: 10px;    }
+
     .fields {
         grid-template-columns: 1fr;
     }

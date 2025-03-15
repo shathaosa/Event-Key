@@ -1,416 +1,458 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  body {
-    background-color: #fff5f1;
-    color: #561050;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* ---------- Header ------------- */
-  header {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding: 0px;
-    align-items: center;
-    margin: 10px 9px 30px 8px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-  
-  .logo img {
-    height: 60px;
-  }
-  
 
-  nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 35px;
-    align-items: center;
-    margin: auto;
+body {
+  background-color: #fff5f1;
+  color: #561050;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- Header ------------- */
+header {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 0px;
+  align-items: center;
+  margin: 10px 9px 30px 8px;
+}
+
+.logo img {
+  height: 60px;
+}
+
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+  margin: auto;
 
 }
 
 nav a {
-    color: #561050;
-    text-decoration: none;
-    text-align: center;
-    padding: 0 5px 0 5px;
-    font-size: 1em;
+  color: #561050;
+  text-decoration: none;
+  text-align: center;
+  padding: 0 5px 0 5px;
+  font-size: 1em;
 }
 
 
 
 #Home {
-  font-weight: 600;
+font-weight: 600;
 }
 
 .logo {
-  width: 150px;
+width: 150px;
 }
 
 
 a:hover {
-  color: #926289;
-  cursor: pointer;
+color: #926289;
+cursor: pointer;
 }
 
 .buttons i:hover{
 
-  color: #926289;
-  cursor: pointer;
+color: #926289;
+cursor: pointer;
 
 }
 
 .buttons i {
-  color: #561050;
-  margin-right: 5px;
-  padding-right: 10px;
-  font-size: 1.5em;
+color: #561050;
+margin-right: 5px;
+padding-right: 10px;
+font-size: 1.5em;
 }
 
 
+
+/* Hero Section */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("/Media/Background.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.welcome-image img {
+  height: 100px;
+}
+
+.welcome-text p {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.welcome-text button {
+  padding: 10px 20px;
+  background-color: #561050;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-text button:hover {
+  background-color: #efb2e4;
+}
+
+/* About Us Section */
+.about-us {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.about-us h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.separator {
+  width: 300px;
+  height: 2px;
+  background-color: #5610507a;
+  margin: 0 auto 20px;
+}
+
+.about-paragraph {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.image-row {
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+}
+
+.image-row img {
+  height: 500px;
+  border-radius: 10px;
+}
+.right-section{
+
+
+  margin-top: 150px;
   
-  /* Hero Section */
-  .hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    background-image: url("/Media/Background.png");
-    background-size: cover;
-    background-position: center;
-  }
+}
+
+/* Services Section */
+.services {
+  padding: 40px 10px;
+  text-align: center;
+
+}
+
+.separator2 {
+  width: 100%;
+  height: 2px;
+  background-color: #5610507a;
+  margin: 20px auto;
+}
+
+.services-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.left-section {
+  flex: 1;
+  text-align: left;
+}
+
+.about-header {
+  display: flex;
+  align-items: center; 
+  gap: 7px; 
+  margin-bottom: 10px; 
+}
+
+.about-header h2 {
+  font-size: 2rem;
+  margin: 0; 
+}
+
+.about-header .about-logo {
+  height: 70px;
+  transition: transform 0.3s ease;
+}
+
+.about-header .about-logo:hover {
+  transform: scale(1.1);
+}
+
+.left-section .paragraph {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #561050;
+}
+
+.center-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-section .big-key img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 60px;
+  transition: transform 0.3s ease;
+}
+
+.center-section img:hover {
+  transform: scale(1.1);
+}
+
+.right-section {
+  flex: 1;
+  text-align: right;
+  margin-top: 70px;
+}
+
+.contact-info p {
+  margin-bottom: 30px;
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #561050;
+  display: flex;
+  justify-content:left;
+  gap: 25px;
+}
+
+.contact-info img {
+  max-height: 25px;
   
-  .welcome-content {
-    display: flex;
+}
+
+.contact-info img:hover {
+  transform: scale(1.1);
+  
+}
+
+.social-media {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-media img {
+  height: 35px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  padding: 40px;
+  background-color: #fff5f1;
+  text-align: center;
+}
+
+.company-logos {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap:nowrap
+
+}
+
+.company-logos a img {
+  height: 40px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+
+.company-logos a img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .services-content {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    z-index: 1;
-    padding: 20px;
-    border-radius: 10px;
+    gap: 70px;
+  }
+
+  .left-section,
+  .right-section {
     text-align: center;
   }
-  
-  .welcome-image img {
-    height: 100px;
-  }
-  
-  .welcome-text p {
-    margin-bottom: 10px;
-    color: white;
-  }
-  
-  .welcome-text button {
-    padding: 10px 20px;
-    background-color: #561050;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .welcome-text button:hover {
-    background-color: #efb2e4;
-  }
-  
-  /* About Us Section */
-  .about-us {
-    text-align: center;
-    padding: 40px 20px;
-  }
-  
-  .about-us h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .separator {
-    width: 300px;
-    height: 2px;
-    background-color: #5610507a;
-    margin: 0 auto 20px;
-  }
-  
-  .about-paragraph {
-    max-width: 800px;
-    margin: 0 auto 40px;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  .image-row {
-    display: flex;
+
+  .contact-info p {
     justify-content: center;
-    gap: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  div {
+    padding-top: 10px;
+    font-size: 10px;
+   }
+  .welcome-content {
+    padding: 15px;
+  }
+
+  .welcome-image img {
+    height: 50px;
+  }
+
+  .welcome-text p {
+    font-size: 1rem;
+  }
+
+  .welcome-text button {
+    font-size: 1rem;
+  }
+
+  .about-us {
+    padding: 30px 15px;
+  }
+
+  .about-paragraph {
+    font-size: 1rem;
+  }
+
+  .image-row img {
+    height: 300px;
+
+  }
+  .about-header{
+
+    margin-left: 250px;
+    
+    }
+  .social-media {
+    margin-top: 50px;
+    margin-left: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  header {
+    flex-direction: row;
+    .logo{ max-width: 80px;}
+  nav a{
+    font-size: 13px;
+  }
+  div {
+   padding-top: 10px;
+   font-size: 10px;
   }
   
+  }
+
+  nav{
+    gap: 10px;
+    padding-top: 10px;    }
+
+  .welcome-content {
+    padding: 10px;
+  }
+
+  .welcome-image img {
+    
+  }
+
+  .welcome-text p {
+    font-size: 0.9rem;
+  }
+
+  .welcome-text button {
+    font-size: 0.9rem;
+  }
+
+  .about-us {
+    padding: 20px 10px;
+  }
+
+  .about-paragraph {
+    font-size: 0.9rem;
+  }
+
+  .image-row {
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
   .image-row img {
     height: 500px;
-    border-radius: 10px;
   }
-  .right-section{
 
+.about-header{
 
-    margin-top: 150px;
-    
-  }
-  
-  /* Services Section */
-  .services {
-    padding: 40px 10px;
-    text-align: center;
+margin-left: 160px;
 
+}
+  .left-section h2 {
+    font-size: 1.5rem;
   }
-  
-  .separator2 {
-    width: 100%;
-    height: 2px;
-    background-color: #5610507a;
-    margin: 20px auto;
-  }
-  
-  .services-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .left-section {
-    flex: 1;
-    text-align: left;
-  }
-  
-  .about-header {
-    display: flex;
-    align-items: center; 
-    gap: 7px; 
-    margin-bottom: 10px; 
-  }
-  
-  .about-header h2 {
-    font-size: 2rem;
-    margin: 0; 
-  }
-  
-  .about-header .about-logo {
-    height: 70px;
-    transition: transform 0.3s ease;
-  }
-  
-  .about-header .about-logo:hover {
-    transform: scale(1.1);
-  }
-  
+
   .left-section .paragraph {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #561050;
+    font-size: 0.9rem;
+    align-content: center;
   }
-  
-  .center-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .center-section .big-key img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 60px;
-    transition: transform 0.3s ease;
-  }
-  
-  .center-section img:hover {
-    transform: scale(1.1);
-  }
-  
-  .right-section {
-    flex: 1;
-    text-align: right;
-    margin-top: 70px;
-  }
-  
-  .contact-info p {
-    margin-bottom: 30px;
-    margin-top: 5px;
-    font-size: 1rem;
-    color: #561050;
-    display: flex;
-    justify-content:left;
-    gap: 25px;
-  }
-  
-  .contact-info img {
-    max-height: 25px;
-    
-  }
-
-  .contact-info img:hover {
-    transform: scale(1.1);
-    
-  }
-
   .social-media {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-left: 180px;
   }
+
+  .contact-info{
   
-  .social-media img {
-    height: 35px;
-    width: auto;
-    transition: transform 0.3s ease;
+    justify-content: left;
+
+    
+   
   }
-  
-  .social-media img:hover {
-    transform: scale(1.1);
+  .contact-info p {
+    font-size: 0.9rem;
+
   }
-  
-  /* Footer */
-  footer {
-    padding: 40px;
-    background-color: #fff5f1;
-    text-align: center;
+  .company-logos img{
+    max-height: 30px;
   }
-  
-  .company-logos {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap:nowrap
-  
-  }
-  
-  .company-logos a img {
-    height: 40px;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
-  }
-  
-  
-  .company-logos a img:hover {
-    transform: scale(1.1);
-  }
-  
-  /* Responsiveness */
-  @media (max-width: 992px) {
-    .services-content {
-      flex-direction: column;
-      align-items: center;
-      gap: 70px;
-    }
-  
-    .left-section,
-    .right-section {
-      text-align: center;
-    }
-  
-    .contact-info p {
-      justify-content: center;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .welcome-content {
-      padding: 15px;
-    }
-  
-    .welcome-image img {
-      height: 50px;
-    }
-  
-    .welcome-text p {
-      font-size: 1rem;
-    }
-  
-    .welcome-text button {
-      font-size: 1rem;
-    }
-  
-    .about-us {
-      padding: 30px 15px;
-    }
-  
-    .about-paragraph {
-      font-size: 1rem;
-    }
-  
-    .image-row img {
-      height: 200px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    header {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    nav ul {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-  
-    .welcome-content {
-      padding: 10px;
-    }
-  
-    .welcome-image img {
-      height: 90px;
-    }
-  
-    .welcome-text p {
-      font-size: 0.8rem;
-    }
-  
-    .welcome-text button {
-      font-size: 0.9rem;
-    }
-  
-    .about-us {
-      padding: 20px 10px;
-    }
-  
-    .about-paragraph {
-      font-size: 0.9rem;
-    }
-  
-    .image-row {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .image-row img {
-      height: 200px;
-    }
-  
-    .left-section h2 {
-      font-size: 1.5rem;
-    }
-  
-    .left-section .paragraph {
-      font-size: 0.9rem;
-    }
-  
-    .contact-info p {
-      font-size: 0.9rem;
-    }
-  }
+}
