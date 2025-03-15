@@ -17,7 +17,7 @@
     flex-wrap: wrap;
     padding: 0px;
     align-items: center;
-    margin: 10px 8px 30px 8px;
+    margin: 10px 9px 30px 8px;
 }
   
   .logo img {
@@ -155,11 +155,18 @@ a:hover {
     height: 500px;
     border-radius: 10px;
   }
+  .right-section{
+
+
+    margin-top: 150px;
+    
+  }
   
   /* Services Section */
   .services {
-    padding: 40px 20px;
+    padding: 40px 10px;
     text-align: center;
+
   }
   
   .separator2 {
@@ -220,6 +227,7 @@ a:hover {
   .center-section .big-key img {
     max-width: 100%;
     height: auto;
+    margin-top: 60px;
     transition: transform 0.3s ease;
   }
   
@@ -230,22 +238,29 @@ a:hover {
   .right-section {
     flex: 1;
     text-align: right;
+    margin-top: 70px;
   }
   
   .contact-info p {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    margin-top: 5px;
     font-size: 1rem;
     color: #561050;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
+    justify-content:left;
+    gap: 25px;
   }
   
   .contact-info img {
-    height: 20px;
+    max-height: 25px;
+    
   }
-  
+
+  .contact-info img:hover {
+    transform: scale(1.1);
+    
+  }
+
   .social-media {
     display: flex;
     gap: 15px;
@@ -253,7 +268,7 @@ a:hover {
   }
   
   .social-media img {
-    height: 30px;
+    height: 35px;
     width: auto;
     transition: transform 0.3s ease;
   }
@@ -264,7 +279,7 @@ a:hover {
   
   /* Footer */
   footer {
-    padding: 20px;
+    padding: 40px;
     background-color: #fff5f1;
     text-align: center;
   }
@@ -272,15 +287,17 @@ a:hover {
   .company-logos {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    gap: 50px;
+    flex-wrap:nowrap
+  
   }
   
   .company-logos a img {
-    height: 30px;
+    height: 40px;
     border-radius: 5px;
     transition: transform 0.3s ease;
   }
+  
   
   .company-logos a img:hover {
     transform: scale(1.1);
