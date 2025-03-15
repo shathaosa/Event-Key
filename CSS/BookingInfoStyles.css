@@ -1,5 +1,5 @@
-body {
-    font-family: 'poppins', sans-serif;
+body{
+    font-family: 'Poppins', sans-serif;
     background-image: url(/Media/backgroundCover.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,21 +14,20 @@ header {
     margin: 10px 0 30px 15px;
 }
 
-h2 {
+h2{
     color: #561050;
     font-size: 32px;
     display: flex;
     justify-content: center;
 }
 
-h3 {
+h3{
     color: #926289;
     display: flex;
     justify-content: center;
-
 }
 
-h4 {
+h4{
     font-weight: normal;
 }
 
@@ -64,75 +63,73 @@ nav a {
     transform: scale(1.1);
 }
 
-::placeholder,
-select,
-input {
+::placeholder, select, input{
     color: black;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-#next,
-#host {
+#next, #booking{
     background-color: #561050;
     color: #ffffff;
 }
 
-#booking,
-#payment {
+
+#host, #payment{
     background-color: #FFF5F1;
     border: none;
     border-bottom: 3px solid #561050;
     border-radius: 0px;
 }
 
-#next,
-#host {
+#next, #booking{
     padding: 10px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
-
 }
-
-#next {
+#booking{
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+#next{
     width: 50%;
     position: relative;
     left: 50%;
 }
-#host{
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-}
-input,
-select {
+
+input, select {
     padding: 7px;
     border: 1px solid #561050;
     border-radius: 5px;
     background-color: #FFF5F1;
 }
 
-.riyal {
+textarea {
+    width: 97.75%;
+    height: 120px;
+    padding: 7px;
+    border: 1px solid #561050;
+    border-radius: 5px;
+    background-color: #FFF5F1;
+}
+
+.riyal{
     width: 32px;
 }
 
-#header-riyal {
-    width: 64px;
-}
-
-.logo {
+.logo{
     width: 150px;
 }
 
-h1 .riyal {
+h2 .riyal{
     width: 64px;
 }
 
-.container1,
-.container3 {
+.container1, .container3{
     margin-top: 20px;
 }
 
-.buttons {
+.buttons{
     margin-left: 5%;
 }
 
@@ -198,22 +195,36 @@ hr {
 .container1,
 .container2,
 .container3,
-.container4 {
+.container4{
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
     flex: 1;
     width: 100%;
 }
+.event-location {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex: 1;
+    width: 97.75%;
+}
 
 .container1 select,
 .container1 input,
 .container2 input,
 .container2 select,
-.container3 select,
-.container3 input,
-.container4 input {
+.container3 select{
     flex: 1 1 100%;
+}
+
+
+input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    accent-color: #561050;
+    position:relative ;
+    top: 19px;
 }
 
 a:hover {
@@ -222,7 +233,7 @@ a:hover {
     transform: scale(1.1);
 }
 
-#next:hover {
+#next:hover{
     background-color: #926289;
     color: #561050;
     cursor: pointer;
@@ -232,38 +243,32 @@ a:hover {
     .fields {
         grid-template-columns: 1fr;
     }
-
     .buttons {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 5%;
     }
-
-    #next {
-        width: 50%;
+    #next{
+        width: 50%; 
     }
-
     .buttons input {
         width: 90%;
     }
-
     .order {
         width: 100%;
     }
-
-
-    .info {
+    .info{
         margin: 5%;
     }
-
-    .container {
+    .container{
         display: grid;
     }
+    
 }
 
-@media (max-width: 1100px) {
-    .container1 input {
+@media (max-width: 1100px){
+    .container1 input,.container2 input, .container2 select{
         width: 90%;
     }
 }

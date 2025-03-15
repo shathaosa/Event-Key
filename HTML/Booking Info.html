@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Information</title>
+    <link rel="stylesheet" href="/CSS/BookingInfoStyles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <img class="logo" src="/Media/EKlogo.png" alt="logo">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Explore</a>
+            <a href="#">Contact Us</a>
+        </nav>
+        <div>
+            <a href="#" class="account"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#" class="account"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </header>
+
+    <div class="buttons">
+        <input type="button" value="Host Information" id="host">
+        <input type="button" value="Booking Information" id="booking">
+        <input type="button" value="Payment" id="payment">
+    </div>
+
+    <div class="fields">
+        <form method="get">
+            <section class="info">
+                <div class="container1">
+                    <input type="text" placeholder="Event Title" class="event-title">
+                    <select class="event-type">
+                        <option>Event Type</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Corporate">Corporate</option>
+                    </select>
+                </div>
+                <textarea class="event-description" placeholder="Event Description"></textarea>
+                
+                <h4>Event Timing</h4>
+                <div class="container2">
+                    <input placeholder="Date" class="event-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">
+                    <select class="start-time">
+                        <option>Start Time</option>
+                        <option>08:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>04:00 PM</option>
+                        <option>08:00 PM</option>
+                    </select>
+                    <select class="end-time">
+                        <option>End Time</option>
+                        <option>10:00 AM</option>
+                        <option>02:00 PM</option>
+                        <option>06:00 PM</option>
+                        <option>10:00 PM</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="Location" class="event-location">
+                
+                <h4>Guest Options</h4>
+                <div class="container3">
+                    <p class="toggle-label">Hide the guest list from attendees for this event</p>
+                    <input type="checkbox" class="toggle">
+                </div>
+                <div class="container4">
+                    <p class="toggle-label">No Children</p>
+                    <input type="checkbox" class="toggle">
+                </div>
+                
+                <input id="next" type="submit" value="Next">
+            </section>
+        </form>
+
+        <section class="order">
+            <h3>You're paying</h3>
+            <h2>236,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
+            
+            <div class="details">
+                <p class="catagory">Venue<span class="price">70,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Laylaty</p>
+                
+                <p class="catagory">Flowers<span class="price">15,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Elegant White Roses</p>
+                
+                <p class="catagory">Photographer<span class="price">18,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Premium Package (8 hours)</p>
+                
+                <p class="catagory">Decoration<span class="price">32,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Fairy Lights & Drapes</p>
+                
+                <p class="catagory">Music<span class="price">23,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">Live Jazz Band</p>
+                
+                <p class="catagory">Catering<span class="price">48,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="choice">3-course meal for 100 guests</p>
+                <hr>
+                <p class="tax">Tax (15%)<span class="price">30,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+                <p class="total">Total<span class="price">236,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span></p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>     
