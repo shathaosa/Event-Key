@@ -328,6 +328,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+  div {
+    padding-top: 10px;
+    font-size: 10px;
+   }
   .welcome-content {
     padding: 15px;
   }
@@ -353,7 +357,17 @@ footer {
   }
 
   .image-row img {
-    height: 120px;
+    height: 300px;
+
+  }
+  .about-header{
+
+    margin-left: 250px;
+    
+    }
+  .social-media {
+    margin-top: 50px;
+    margin-left: 280px;
   }
 }
 
