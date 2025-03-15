@@ -91,7 +91,8 @@ input {
 }
 
 #payment {
-    border-radius: 5px 5px 5px 0;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 
@@ -131,7 +132,6 @@ h2 .riyal {
 
 .buttons input {
     width: 33%;
-    padding: 10px;
     border: none;
 }
 
@@ -187,14 +187,15 @@ h2 .riyal {
 }
 
 .order {
-    border: 1px solid #FFF5F1;
+    border: none;
     border-radius: 20px;
     background-image: url(/Media/CheckCover.png);
     background-repeat: no-repeat;
     background-size: cover;
     width: 90%;
     max-width: 500px;
-    margin: 45px 10px 20% 20%;
+    margin: auto;
+    margin-bottom: 20%;
 }
 
 hr {
@@ -207,6 +208,11 @@ hr {
     justify-content: flex-end;
 }
 
+.fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
 
 .info {
     margin-left: 10%;
@@ -214,16 +220,17 @@ hr {
 
 .catagory {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    margin-left: 5%;
     font-weight: bold;
-    padding: 5px 0;
 }
 
 .choice {
+    position: relative;
+    bottom: 30px;
+    margin-left: 10%;
     color: #926289;
     font-size: 16px;
-    margin-left: 10px;
 }
 
 .tax,
@@ -233,29 +240,11 @@ hr {
 }
 
 .price {
-    font-weight: bold;
+    position: relative;
+    bottom: 25px;
+    margin-right: 10%;
 }
 
-.container1,
-.container2,
-.container3,
-.container4 {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    flex: 1;
-    width: 100%;
-}
-
-.container1 select,
-.container1 input,
-.container2 input,
-.container2 select,
-.container3 select,
-.container3 input,
-.container4 input {
-    flex: 1 1 100%;
-}
 
 .guest-options {
     display: flex;
@@ -287,6 +276,12 @@ a:hover {
     color: #561050;
     cursor: pointer;
 }
+.container1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
 
 @media (max-width: 576px) {
     .fields {
@@ -319,16 +314,17 @@ a:hover {
         margin: 5%;
     }
 
-    .container {
-        display: grid;
+    .container1{
+        width: 100%;
     }
+    
 }
-
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
     .container1 input {
         width: 90%;
     }
 }
+
 
 /* 
 

@@ -129,7 +129,14 @@ h2 .riyal {
 }
 
 .buttons {
-    margin: 0  0 0 5%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+.buttons input {
+    width: 15.25%;
+    padding: 10px;
+    border: none;
 }
 
 .order {
@@ -218,11 +225,7 @@ a:hover {
     transform: scale(1.1);
 }
 
-<<<<<<< Updated upstream
-#next:hover {
-=======
 #next:hover{
->>>>>>> Stashed changes
     background-color: #926289;
     color: #561050;
     cursor: pointer;

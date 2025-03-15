@@ -129,8 +129,15 @@ h2 .riyal{
     margin-top: 20px;
 }
 
-.buttons{
+.buttons {
     margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+.buttons input {
+    width: 15.25%;
+    padding: 10px;
+    border: none;
 }
 
 .order {
