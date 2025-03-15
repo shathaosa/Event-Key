@@ -156,7 +156,7 @@ strong {
     border-radius: 5px;
     height: 30px;
     width: 150px;
-    font-size: 1em;
+    font-size: 0.9em;
     font-family: poppins;
     border: none;
     color: #561050;
@@ -244,4 +244,89 @@ strong {
 .store-card button:hover {
     background-color: hsl(305, 50%, 30%);
     cursor: pointer;
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+    .stores-cards {
+        grid-template-columns: 1fr 1fr 1fr; 
+    }
+
+    .explore-header {
+        grid-template-columns: 1fr; 
+    }
+
+    .location-date {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    #categories button {
+        width: 120px; 
+    }
+}
+@media (max-width: 768px) {
+    .stores-cards {
+        grid-template-columns: 1fr 1fr; 
+    }
+
+    nav {
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px;
+    }
+
+    .logo {
+        width: 120px; 
+    }
+
+    .buttons i {
+        font-size: 1em; 
+    }
+
+    #categories button {
+        grid-template-columns: 1fr 1fr; 
+        width: 110px; 
+        font-size: 0.8em;
+        gap: 10px; 
+    }
+
+     /* Adjust gap for the second row */
+#categories button:nth-child(n+1) {
+        margin-top: 7px;
+    }
+}
+@media (max-width: 576px) {
+    .stores-cards {
+        grid-template-columns: 1fr; 
+    }
+
+    nav {
+        grid-template-columns: 1fr; 
+        gap: 10px;
+    }
+
+    .logo {
+        width: 100px; 
+    }
+
+    .buttons i {
+        font-size: 1em;
+    }
+
+    #categories button {
+        width: 80px; 
+        font-size: 0.5em;
+    }
+  /* Adjust gap for the sec row */
+#categories button:nth-child(n+1) {
+    margin-top: 5px; 
+}
+
+    .store-card {
+        width: 100%; 
+    }
+
+    .store-card button {
+        padding: 15px; 
+    }
 }
