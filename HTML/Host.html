@@ -10,6 +10,7 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
 </head>
+<script src="/Javascript/Host.js"></script>
 
 <body>
     <header>
@@ -33,7 +34,7 @@
     </div>
 
     <div class="fields">
-        <form method="get">
+        <form  id="form" name="form" method="get">
             <section class="info">
                 <div class="container1">
                     <div class="title">
@@ -45,12 +46,12 @@
                             <option value="Miss">Miss</option>
                         </select>
                     </div>
-                    <input type="text" placeholder="First Name" required>
-                    <input type="text" placeholder="Last Name" required>
+                    <input type="text" name="fname"placeholder="First Name" >
+                    <input type="text" name="lname"placeholder="Last Name" required>
                 </div>
 
                 <div class="container2">
-                    <input placeholder="Date Of Birth" class="textbox-n" type="text" onfocus="(this.type='date')"
+                    <input placeholder="Date Of Birth" name="DOB" class="textbox-n" type="text" onfocus="(this.type='date')"
                         onblur="(this.type='text')" id="date" required>
                     <select name="country" id="country" required>
                         <option>Select Country</option>
@@ -76,10 +77,10 @@
                             <option>+968</option>
                         </select>
                     </div>
-                    <input type="tel" placeholder="Contact Number" minlength="9" maxlength="9" required>
+                    <input type="tel" name="contact"placeholder="Contact Number" minlength="9" maxlength="9" required>
                 </div>
                 <div class="container4">
-                    <input type="email" placeholder="Email Address" pattern="[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}\.*[a-zA-Z]*" required>
+                    <input type="email" name="email" placeholder="Email Address" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
                 </div>
                 <input id="next" type="submit" value="Next">
             </section>
