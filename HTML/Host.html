@@ -37,7 +37,7 @@
             <section class="info">
                 <div class="container1">
                     <div class="title">
-                        <select name="Title">
+                        <select name="Title" required>
                             <option>Title</option>
                             <option value="Mr">Mr</option>
                             <option value="Mrs">Mrs</option>
@@ -45,14 +45,14 @@
                             <option value="Miss">Miss</option>
                         </select>
                     </div>
-                    <input type="text" placeholder="First Name">
-                    <input type="text" placeholder="Last Name">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
                 </div>
 
                 <div class="container2">
                     <input placeholder="Date Of Birth" class="textbox-n" type="text" onfocus="(this.type='date')"
-                        onblur="(this.type='text')" id="date">
-                    <select name="country" id="country">
+                        onblur="(this.type='text')" id="date" required>
+                    <select name="country" id="country" required>
                         <option>Select Country</option>
                         <option>Saudi Arabia</option>
                         <option>UAE</option>
@@ -66,7 +66,7 @@
                 <h4>Contact Details</h4>
                 <div class="container3">
                     <div class="code">
-                        <select name="code">
+                        <select name="code" required>
                             <option>Country Code</option>
                             <option>+996</option>
                             <option>+971</option>
@@ -76,10 +76,10 @@
                             <option>+968</option>
                         </select>
                     </div>
-                    <input type="text" placeholder="Contact Number">
+                    <input type="tel" placeholder="Contact Number" minlength="9" maxlength="9" required>
                 </div>
                 <div class="container4">
-                    <input type="email" placeholder="Email Address">
+                    <input type="email" placeholder="Email Address" pattern="[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}\.*[a-zA-Z]*" required>
                 </div>
                 <input id="next" type="submit" value="Next">
             </section>

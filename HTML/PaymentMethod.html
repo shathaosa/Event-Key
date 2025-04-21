@@ -44,11 +44,11 @@
 
             <h4>Card Details</h4>
             <div class="card-details">
-                <input type="text" placeholder="Cardholder's Name">
-                <input type="text" placeholder="Card Number">
+                <input type="text" placeholder="Cardholder's Name" required>
+                <input type="text" placeholder="Card Number" maxlength="16" required>
                 <div class="container1">
-                <input type="text" placeholder="Expiry Date">
-                <input type="text" placeholder="CVC">
+                <input type="text" placeholder="Expiry Date" onfocus="(this.type='month')" required>
+                <input type="text" placeholder="CVC" maxlength="3" minlength="3" required>
                 </div>
                 <button type="submit" class="confirm-button">Confirm</button>
             </div>
