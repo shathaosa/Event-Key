@@ -10,8 +10,6 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
 </head>
-<script src="/Javascript/Host.js"></script>
-
 <body>
     <header>
         <img class="logo" src="/Media/EKlogo.png" alt="logo">
@@ -46,13 +44,13 @@
                             <option value="Miss">Miss</option>
                         </select>
                     </div>
-                    <input type="text" name="fname"placeholder="First Name" >
+                    <input type="text" name="fname"placeholder="First Name" required>
                     <input type="text" name="lname"placeholder="Last Name" required>
                 </div>
 
                 <div class="container2">
                     <input placeholder="Date Of Birth" name="DOB" class="textbox-n" type="text" onfocus="(this.type='date')"
-                        onblur="(this.type='text')" id="date" required>
+                     id="date" required>
                     <select name="country" id="country" required>
                         <option>Select Country</option>
                         <option>Saudi Arabia</option>
@@ -88,41 +86,42 @@
 
         <section class="order">
             <h3>You're paying</h3>
-            <h2>236,000 <img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
+            <h2><span id="total-payment">0,0</span><img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
 
             <div class="details">
-                <p class="catagory">Venue<span class="price">70,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="catagory">Venue<span class="price"><span id="venue-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
-                <p class="choice">Laylaty</p>
+                <p class="choice" id="venue-choice">----</p>
 
-                <p class="catagory">Flowers<span class="price">15,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="catagory">Flowers<span class="price"><span id="flowers-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
-                <p class="choice">Elegant White Roses</p>
+                <p class="choice" id="flowers-choice">----</p>
 
-                <p class="catagory">Photographer<span class="price">18,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="catagory">Photographer<span class="price"><span id="photo-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
-                <p class="choice">Premium Package (8 hours)</p>
+                <p class="choice" id="photo-choice">----</p>
 
-                <p class="catagory">Decoration<span class="price">32,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="catagory">Decoration<span class="price"><span id="decor-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
-                <p class="choice">Fairy Lights & Drapes</p>
+                <p class="choice" id="decor-choice">----</p>
 
-                <p class="catagory">Music<span class="price">23,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="catagory">Music<span class="price"><span id="music-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
-                <p class="choice">Live Jazz Band</p>
+                <p class="choice" id="music-choice">----</p>
 
-                <p class="catagory">Catering<span class="price">48,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="catagory">Catering<span class="price"><span id="catering-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
-                <p class="choice">3-course meal for 100 guests</p>
+                <p class="choice" id="catering-choice">----</p>
                 <hr>
-                <p class="tax">Tax (15%)<span class="price">30,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="tax">Tax (15%)<span class="price"><span id="tax">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
 
-                <p class="total">Total<span class="price">236,000 <img class="riyal" src="/Media/Riyal.png"
+                <p class="total">Total<span class="price"><span id="total">0,0 </span><img class="riyal" src="/Media/Riyal.png"
                             alt="Riyal"></span></p>
             </div>
         </section>
     </div>
+    <script src="/Javascript/Host.js"></script>
 
 </body>
 
