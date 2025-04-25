@@ -4,6 +4,7 @@
     form.append(msg);
 
     form.addEventListener("submit", (e) => {
+      e.preventDefault();
       let messages = [];
   
       messages = isTitleSelected("Title", messages, "Title is not selected");
@@ -19,14 +20,16 @@
       messages = isElegible("DOB", messages, "<br>Please note: Event planning is restricted to individuals 18 years or older");
 
       if (messages.length > 0) {
-        e.preventDefault();
         msg.style.color = "#C70039";
         msg.style.marginLeft = "75px";
         msg.style.marginTop = "10px";
         msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join(", ") + ".";
       } else {
         msg.innerHTML = "";
+        window.location.href = '/HTML/BookingInfo.html';
+
       }
+
     });
   
     function isFilled(name,messages,msg){
