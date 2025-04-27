@@ -14,20 +14,19 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ---------- Header ------------- */
+
 header {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 0px;
   align-items: center;
-  margin: 10px 9px 30px 8px;
+  margin: 10px 15px 30px 15px;
 }
 
 .logo img {
   height: 60px;
 }
-
 
 nav {
   display: grid;
@@ -63,10 +62,8 @@ cursor: pointer;
 }
 
 .buttons i:hover{
-
 color: #926289;
 cursor: pointer;
-
 }
 
 .buttons i {
@@ -76,7 +73,9 @@ padding-right: 10px;
 font-size: 1.5em;
 }
 
-
+.fa-solid.fa-cart-shopping{
+  margin-right: 10px;
+}
 
 /* Hero Section */
 .hero {

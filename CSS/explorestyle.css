@@ -1,5 +1,8 @@
-body {
+* {
     font-family: 'poppins', sans-serif;
+}
+
+body {
     background-image: url(/Media/backgroundCover.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,11 +11,12 @@ body {
 
 header {
     display: flex;
+    position: sticky;
     justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 0px;
     align-items: center;
-    margin: 10px 0 30px 15px;
+    margin: 10px 15px 30px 15px;
 }
 
 h2 {
@@ -25,11 +29,11 @@ h2 {
 
 h3 {
     color: #561050;
-    font-size: 1.5em;
+    font-size: 2em;
     display: flex;
     justify-content: left;
     font-family: Montserrat;
-    margin-left: 20%
+    margin:0;
 }
 
 h4 {
@@ -70,6 +74,24 @@ nav a {
     transition: transform 0.3s ease;
 }
 
+.fa-solid.fa-cart-shopping{
+    margin-right: 10px;
+}
+
+#cart-quantity {
+    display: none;
+    margin: 0;
+    position: relative;
+    top: 0px;
+    right: 10px;
+    background-color: hsla(305, 69%, 20%, 0.623);
+    color: white;
+    border-radius: 50%;
+    padding: 1px 5px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
 .buttons i:hover {
     color: #926289;
     transform: scale(1.1);
@@ -90,6 +112,7 @@ i {
 .explore-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
 }
 
 .location-date {
@@ -97,20 +120,43 @@ i {
     grid-template-rows: 1fr 1fr;
     font-size: 12px;
     float: right;
-    margin-left: 20%;
-    margin-top: 2%;
+    margin: 0;
     color: #424242;
 }
 
-strong {
+.city-select-toggle {
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    padding-top: 15px;
+    margin-top: 2%;
+}
+
+#city-select {
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 12px;
     font-weight: 700;
-    color: #000;
+    margin: 0;
+    width: 100px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.city-select-toggle>i {
+    position: relative;
+    z-index: 1;
+    right: 50px;
 }
 
 .date-picker-toggle {
     position: relative;
     width: 100%;
-    padding: 0;
+    padding: 5px;
+    padding-bottom: 0px;
     margin: 0;
 }
 
@@ -118,11 +164,10 @@ strong {
     border-radius: 5px;
     background-color: transparent;
     border: none;
-    font-family: poppins;
+    outline: none;
     font-size: 12px;
     font-weight: 700;
     margin: 0;
-
 }
 
 #date::-webkit-calendar-picker-indicator {
@@ -159,11 +204,9 @@ strong {
     font-family: poppins;
     border: none;
     color: #561050;
-    /* border: 1px solid #cecece; */
     background-color: #c198bea8;
     transition: transform 0.3s ease;
-    ;
-    /* background-image: linear-gradient(to bottom, #ffffff 0%, rgb(175, 170, 168, 50%)); */
+    
 }
 
 #categories button:hover {
@@ -189,25 +232,25 @@ strong {
     margin: 0 10% 10% 10%;
 }
 
-.store-card {
+#store-card {
     width: 250px;
     border-radius: 16px 16px 16px 16px;
     box-shadow: #cecece 0px 2px 5px;
     transition: transform 0.3s ease;
 }
 
-.store-card:hover {
+#store-card:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
 
-.store-image {
+#store-image {
     height: 250px;
     border-radius: 16px 16px 0 0;
     background: linear-gradient(136deg, rgb(158 158 158 / 80%) 0%, rgba(255, 255, 255, 0.5) 50%, rgb(197 197 197 / 0%) 100%), linear-gradient(0deg, rgb(107 107 107 / 30%) 0%, rgb(10 10 10 / 0%) 100%)
 }
 
-.store-name {
+#store-name {
     font-family: 'Montserrat';
     font-size: 1.1em;
     font-weight: 700;
@@ -215,14 +258,14 @@ strong {
     margin: 10px 0 0 5px;
 }
 
-.store-location {
+#store-location {
     font-family: 'Montserrat';
     font-size: 0.8em;
     color: #C198BE;
     margin: 10px 0 0 5px;
 }
 
-.store-budget {
+#store-budget {
     font-family: 'Montserrat';
     font-size: 0.9em;
     font-weight: 600;
@@ -230,7 +273,7 @@ strong {
     margin: 10px 0 10px 5px;
 }
 
-.store-card button {
+#store-card button {
     font-family: 'Montserrat';
     font-weight: 600;
     font-size: 0.8em;
@@ -242,7 +285,7 @@ strong {
     padding: 20px;
 }
 
-.store-card button:hover {
+#store-card button:hover {
     background-color: hsl(305, 50%, 30%);
     cursor: pointer;
 }
@@ -351,7 +394,7 @@ strong {
 
         }
 
-        span {
+        label {
             display: none;
         }
 

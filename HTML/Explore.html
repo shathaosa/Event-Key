@@ -22,8 +22,12 @@
             <a id="explore" href="Explore.html">Explore</a>
             <a href="/HTML/Home.html#contact-section">Contact Us</a>
         </nav>
+        <div id="cart-div">
+            <a href="/HTML/Host.html" class="buttons">
+                <i class="fa-solid fa-cart-shopping"> <span id="cart-quantity"> </span></i>
+            </a>
+        </div>
         <div>
-            <a href="/HTML/Host.html" class="buttons"><i class="fa-solid fa-cart-shopping"></i></a>
             <a href="/HTML/Signup_Login.html" class="buttons"><i class="fa-solid fa-user"></i></a>
         </div>
 
@@ -31,13 +35,18 @@
     <section class="explore-header">
         <h3>Explore Categories</h3>
         <div class="location-date">
-            <p>
-                <i class="fa-solid fa-location-dot"></i> Current Location
-                <strong>Jeddah, Saudi Arabia <i class="fa-solid fa-caret-down"></i></strong>
-            </p>
+
+            <div class="city-select-toggle">
+                <label for="city"><i class="fa-solid fa-location-dot"></i> Current Location </label>
+                <select name="city" id="city-select">
+                    <option value="jeddah">Jeddah</option>
+                    <option value="alriyadh">AlRiyadh</option>
+                </select>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
 
             <div class="date-picker-toggle">
-                <label for="date"><i class="fa-solid fa-calendar"></i><span> Schedule for</span></label>
+                <label for="date"><i class="fa-solid fa-calendar"></i> Schedule for</label>
                 <input type="date" id="date">
                 <i class="fa-solid fa-caret-down"></i>
             </div>
@@ -46,87 +55,32 @@
     </section>
 
     <div id="categories">
-        <button> Venues </button>
+        <button id="venues"> Venues </button>
 
-        <button>Music</button>
+        <button id="music">Music</button>
 
-        <button>Catering</button>
+        <button id="catering">Catering</button>
 
-        <button>Flowers</button>
+        <button id="flowers">Flowers</button>
 
-        <button>Photographers</button>
+        <button id="photographers">Photographers</button>
 
-        <button> Decor</button>
+        <button id="decor">Decor</button>
 
     </div>
 
     <section class="stores-cards">
 
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Laylaty</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> King Abdulaziz Street</p>
-            <p class="store-budget">$$$$</p>
-            <button>Book Now</button>
-        </div>
-
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Levento</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> Abdul Maqsud Khojah</p>
-            <p class="store-budget">$$$<span style="color:#C198BE">$</span></p>
-            <button>Book Now</button>
-        </div>
-
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Lazurde Ballroom</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> Park Hyatt Jeddah</p>
-            <p class="store-budget">$$$$</p>
-            <button>Book Now</button>
-        </div>
-
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Sunset Jeddah</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> Prince Saud Alfaisal, Ar Rawdah</p>
-            <p class="store-budget">$$<span style="color:#C198BE">$$</span></p>
-            <button>Book Now</button>
-        </div>
-
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Laylaty</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> King Abdulaziz Street</p>
-            <p class="store-budget">$$$$</p>
-            <button>Book Now</button>
-        </div>
-
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Levento</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> Abdul Maqsud Khojah</p>
-            <p class="store-budget">$$$<span style="color:#C198BE">$</span></p>
-            <button>Book Now</button>
-        </div>
-
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Lazurde Ballroom</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> Park Hyatt Jeddah</p>
-            <p class="store-budget">$$$$</p>
-            <button>Book Now</button>
-        </div>
-
-        <div class="store-card">
-            <div class="store-image"> </div>
-            <h4 class="store-name">Sunset Jeddah</h4>
-            <p class="store-location"><i class="fa-solid fa-location-dot"></i> Prince Saud Alfaisal, Ar Rawdah</p>
-            <p class="store-budget">$$<span style="color:#C198BE">$$</span></p>
-            <button>Book Now</button>
+        <div id="store-card">
+            <div id="store-image"> </div>
+            <h4 id="store-name">Laylaty</h4>
+            <p id="store-location"><i class="fa-solid fa-location-dot"></i> King Abdulaziz Street</p>
+            <p id="store-budget">$$$$</p>
+            <button id="add-to-cart">Add to Cart</button>
         </div>
 
     </section>
+    <script src="/Javascript/Explore.js"></script>
 </body>
 
 </html>
