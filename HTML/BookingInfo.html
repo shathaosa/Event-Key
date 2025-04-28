@@ -9,110 +9,104 @@
     <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <img class="logo" src="/Media/EKlogo.png" alt="logo">
-        <nav>
-            <a href="/HTML/Home.html">Home</a>
-            <a href="/HTML/Home.html#about-us">About</a>
-            <a href="/HTML/Explore.html">Explore</a>
-            <a href="/HTML/Home.html#contact-section">Contact Us</a>
-        </nav>
-        <div>
-            <a href="/HTML/Host.html" class="account"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="/HTML/Signup_Login.html" class="account"><i class="fa-solid fa-user"></i></a>
-        </div>
-    </header>
 
-    <div class="buttons">
-        <input type="button" value="Host Information" id="host">
-        <input type="button" value="Booking Information" id="booking">
-        <input type="button" value="Payment" id="payment">
+<header>
+    <img class="logo" src="/Media/EKlogo.png" alt="logo">
+    <nav>
+        <a href="/HTML/Home.html">Home</a>
+        <a href="/HTML/Home.html#about-us">About</a>
+        <a href="/HTML/Explore.html">Explore</a>
+        <a href="/HTML/Home.html#contact-section">Contact Us</a>
+    </nav>
+    <div>
+        <a href="/HTML/Host.html" class="account"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="/HTML/Signup_Login.html" class="account"><i class="fa-solid fa-user"></i></a>
     </div>
+</header>
 
-    <div class="fields">
-        <form method="get">
-            <section class="info">
-                <div class="container1">
-                    <input type="text" placeholder="Event Title" class="event-title" required>
-                    <select class="event-type" required>
-                        <option>Event Type</option>
-                        <option value="Wedding">Wedding</option>
-                        <option value="Birthday">Birthday</option>
-                        <option value="Corporate">Corporate</option>
-                    </select>
-                </div>
-                <textarea class="event-description" placeholder="Event Description" required></textarea>
-                
-                <h4>Event Timing</h4>
-                <div class="container2">
-                    <input placeholder="Date" class="event-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-                    <select class="start-time" required>
-                        <option>Start Time</option>
-                        <option>08:00 AM</option>
-                        <option>12:00 PM</option>
-                        <option>04:00 PM</option>
-                        <option>08:00 PM</option>
-                    </select>
-                    <select class="end-time" required>
-                        <option>End Time</option>
-                        <option>10:00 AM</option>
-                        <option>02:00 PM</option>
-                        <option>06:00 PM</option>
-                        <option>10:00 PM</option>
-                    </select>
-                </div>
-                <input type="text" placeholder="Location" class="event-location" required>
-                
-                <h4>Guest Options</h4>
-                <div class="container3">
-                    <p class="toggle-label">Hide the guest list from attendees for this event</p>
-                    <input type="checkbox" class="toggle">
-                </div>
-                <div class="container4">
-                    <p class="toggle-label">No Children</p>
-                    <input type="checkbox" class="toggle">
-                </div>
-                
-                <input id="next" type="submit" value="Next">
-            </section>
-        </form>
+<div class="buttons">
+    <input type="button" value="Host Information" id="host">
+    <input type="button" value="Booking Information" id="booking">
+    <input type="button" value="Payment" id="payment">
+</div>
 
-        <section class="order">
-            <h3>You're paying</h3>
-            <h2><span id="total-payment">0,0</span><img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
-
-            <div class="details">
-                <p class="catagory">Venue<span class="price"><span id="venue-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="venue-choice">----</p>
-
-                <p class="catagory">Flowers<span class="price"><span id="flowers-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="flowers-choice">----</p>
-
-                <p class="catagory">Photographer<span class="price"><span id="photo-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="photo-choice">----</p>
-
-                <p class="catagory">Decoration<span class="price"><span id="decor-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="decor-choice">----</p>
-
-                <p class="catagory">Music<span class="price"><span id="music-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="music-choice">----</p>
-
-                <p class="catagory">Catering<span class="price"><span id="catering-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="catering-choice">----</p>
-                <hr>
-                <p class="tax">Tax (15%)<span class="price"><span id="tax">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-
-                <p class="total">Total<span class="price"><span id="total">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
+<div class="fields">
+    <form id="form" method="get">
+        <section class="info">
+            <div class="container1">
+                <input type="text" placeholder="Event Title" class="event-title" required>
+                <select class="event-type" required>
+                    <option value="Event Type">Event Type</option>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Corporate">Corporate</option>
+                </select>
             </div>
+            <textarea class="event-description" placeholder="Event Description" required></textarea>
+
+            <h4>Event Timing</h4>
+            <div class="container2">
+                <input type="date" class="event-date" required>
+                <input type="text" placeholder="Start Time (e.g. 08:00 AM)" class="start-time" required>
+                <input type="text" placeholder="End Time (e.g. 10:00 AM)" class="end-time" required>
+            </div>
+
+            <input type="text" placeholder="Location" class="event-location" required>
+
+            <h4>Guest Options</h4>
+            <div class="container3">
+                <p class="toggle-label">Hide the guest list from attendees for this event</p>
+                <input type="checkbox" class="toggle">
+            </div>
+            <div class="container4">
+                <p class="toggle-label">No Children</p>
+                <input type="checkbox" class="toggle">
+            </div>
+
+            <input id="next" type="submit" value="Next">
         </section>
-    </div>
+    </form>
+
+    <section class="order">
+        <h3>You're paying</h3>
+        <h2><span id="total-payment">0,0</span><img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
+        <div class="details">
+            <p class="catagory">Venue<span class="price"><span id="venue-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+    <p class="choice" id="venue-choice">----</p>
+
+    <p class="catagory">Flowers<span class="price"><span id="flowers-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+    <p class="choice" id="flowers-choice">----</p>
+
+    <p class="catagory">Photographer<span class="price"><span id="photo-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+    <p class="choice" id="photo-choice">----</p>
+
+    <p class="catagory">Decoration<span class="price"><span id="decor-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+    <p class="choice" id="decor-choice">----</p>
+
+    <p class="catagory">Music<span class="price"><span id="music-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+    <p class="choice" id="music-choice">----</p>
+
+    <p class="catagory">Catering<span class="price"><span id="catering-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+    <p class="choice" id="catering-choice">----</p>
+    <hr>
+    <p class="tax">Tax (15%)<span class="price"><span id="tax">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+
+    <p class="total">Total<span class="price"><span id="total">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                alt="Riyal"></span></p>
+        </div>
+    </section>
+</div>
+
+<script src="/Javascript/Booking.js"></script>
+
 </body>
-</html>     
+</html>
+
+       
