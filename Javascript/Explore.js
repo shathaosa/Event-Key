@@ -30,12 +30,16 @@ else {
 
 // Assign event listeners
 cartIcon.addEventListener('click', toggleCartVisibility);
+
 if (closeCart) closeCart.addEventListener('click', closeCartInfo);
+
 addToCartButtons.forEach((button) => button.addEventListener("click", addToCart));
+
 cartItemsBody.addEventListener("click", removeCartItem);
+
 clearCartBtn.addEventListener("click", clearCart);
 
-// Functions
+
 function toggleCartVisibility(event) {
     event.preventDefault();
     cartInfo.style.display = cartInfo.style.display === 'none' ? 'block' : 'none';
