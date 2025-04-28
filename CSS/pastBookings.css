@@ -1,0 +1,239 @@
+body {
+    font-family: 'poppins', sans-serif;
+    background-image: url(/Media/backgroundCover.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 0px;
+    align-items: center;
+    margin: 10px 15px 30px 15px;
+}
+
+h2 {
+    color: #561050;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    color: #926289;
+    display: flex;
+    justify-content: center;
+
+}
+
+h4 {
+    font-weight: normal;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    margin: auto;
+    gap: 35px;
+
+}
+
+nav a {
+    color: #561050;
+    text-decoration: none;
+    text-align: center;
+    padding: 0 5px 0 5px;
+    font-size: 1em;
+    transition: transform 0.3s ease;
+}
+
+.account i {
+    color: #561050;
+    margin-right: 5px;
+    padding-right: 10px;
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+.fa-solid.fa-cart-shopping{
+    margin-right: 10px;
+}
+
+.account i:hover {
+    color: #926289;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#host {
+    background-color: #561050;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#booking {
+    background-color: #FFF5F1;
+    border: none;
+    border-bottom: 3px solid #561050;
+    border-radius: 0px;
+    cursor: pointer;
+}
+.buttons {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+.buttons input {
+    width: 15.25%;
+    padding: 10px;
+    border: none;
+}
+.logo {
+    width: 150px;
+}
+
+
+hr {
+    width: 80%;
+    border-color: #926289;
+}
+
+a:hover {
+    color: #926289;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.bookings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.content-table {
+    border-collapse: collapse;
+    background: #fff;
+    margin: 25px;
+    min-width: 400px; 
+    font-size: 0.9em; 
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+  .content-table thead tr {
+    background-color: #561050;
+    color: #ffffff;
+    text-align: left;
+    font-weight: normal;
+  }
+  .content-table th, .content-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  .content-table tbody tr:nth-child(even) {
+    background-color: #fbe9f7;
+  }
+  .content-table tbody tr:hover {
+    background-color: #f4dbef;
+  }
+  .content-table tbody tr{
+    border-bottom: 1px solid #dddddd;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 35px;
+}
+
+.account-field {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    background-color: #FFF5F1;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.account-label {
+    font-weight: bold;
+    margin-right: 10px;
+    width: 150px;
+}
+
+.account-value {
+    flex: 1;
+    padding: 5px 10px;
+}
+
+.edit-icon {
+    margin-left: 10px;
+    color: #561050;
+    transition: color 0.3s ease;
+}
+
+.edit-icon:hover {
+    color: #9b59b6;
+}
+.editing {
+    border: 1px dashed #561050;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+
+@media (max-width: 576px) {
+    header {
+        flex-direction: row;
+        .logo{ max-width: 80px;}
+      nav a{
+        font-size: 13px;
+      }
+      div {
+       padding-top: 10px;
+       font-size: 10px;
+      }
+      
+      }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 5%;
+    }
+
+    
+    nav{
+        gap: 10px;
+        padding-top: 10px;}
+
+    
+}
