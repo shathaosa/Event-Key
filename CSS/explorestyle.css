@@ -22,7 +22,7 @@ header {
 h2 {
     color: #561050;
     font-size: 32px;
-    font-family: monsterrat;
+    font-family: Montserrat;
     display: flex;
     justify-content: center;
 }
@@ -33,7 +33,7 @@ h3 {
     display: flex;
     justify-content: left;
     font-family: Montserrat;
-    margin:0;
+    margin: 0;
 }
 
 h4 {
@@ -66,7 +66,8 @@ nav a {
     width: 150px;
 }
 
-.buttons i {
+.buttons i,
+#cart-icon {
     color: #561050;
     margin-right: 5px;
     padding-right: 10px;
@@ -74,8 +75,15 @@ nav a {
     transition: transform 0.3s ease;
 }
 
-.fa-solid.fa-cart-shopping{
+#cart-icon {
     margin-right: 10px;
+}
+
+.buttons i:hover,
+#cart-icon:hover {
+    color: #926289;
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 #cart-quantity {
@@ -92,10 +100,173 @@ nav a {
     font-weight: 500;
 }
 
-.buttons i:hover {
+#cart-info {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 85%;
+    background-color: #fff8f5;
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 19;
+    width: 220px;
+    min-height: 200px;
+    cursor: move;
+    overflow-y: hidden;
+}
+
+#cart-header {
+    position: absolute;
+    z-index: 20;
+}
+
+#cart-header h4 {
+    font-family: Montserrat;
+    display: inline;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #561050;
+}
+
+#cart-header hr {
+    margin: 5px 0;
+    border: none;
+    background-color: #C198BE;
+    height: 0.5px;
+}
+
+#close-cart {
+    margin-left: 110px;
+    background-color: transparent;
+    color: #561050;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#close-cart:hover {
     color: #926289;
     transform: scale(1.1);
+}
+
+#cart-items {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    margin-top: 45px;
+    font-size: 0.9em;
+    text-align: left;
+    overflow: hidden;
+}
+
+#cart-items td {
+    border-bottom: 2px solid #926289;
+}
+
+#cart-items th,
+#cart-items td {
+    font-family: Montserrat;
+    padding: 3px;
+    font-size: 0.8em;
+    font-weight: 400;
+}
+
+#cart-items th {
+    background-color: #926289ba;
+    color: white;
+    font-weight: 500;
+    font-size: 0.8em;
+    padding: 3px 6px;
+}
+
+#price-header {
+    border-radius: 0px 5px 0px 0px;
+
+    span {
+        color: #926289ba;
+    }
+}
+
+#remove-col {
+    display: none;
+}
+
+td.remove-item {
+    border: none !important;
+}
+
+#remove-row {
+    padding: 0px 0px 0px 5px;
+    background-color: transparent;
+    color: rgb(183, 13, 13);
+    font-size: 1.1em;
+    border: none;
+    transition: transform 0.3s ease-in-out;
+}
+
+#remove-row:hover {
+    color: rgb(203, 70, 46);
+    transform: scale(1.1);
     cursor: pointer;
+}
+
+#cart-total {
+    margin-top: 15px;
+    font-size: 0.9em;
+    font-weight: 300;
+}
+
+#cart-total h5,
+#cart-total p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+#cart-total h5 {
+    font-weight: 600;
+    color: #561050;
+}
+
+#cart-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#checkout {
+    background-color: #561050;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 15px;
+    font-size: 0.8em;
+    font-weight: 500;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#checkout:hover {
+    background-color: hsl(305, 50%, 30%);
+    transform: scale(1.1);
+}
+
+#checkout:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#clear-cart {
+    background-color: transparent;
+    color: #561050;
+    font-size: 0.75em;
+    margin-top: 0.8em;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 
 a:hover {
@@ -104,24 +275,24 @@ a:hover {
     transform: scale(1.1);
 }
 
-i {
-    color: #C198BE;
-}
-
-
 .explore-header {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
+    padding: 0 10%;
 }
 
 .location-date {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    font-size: 12px;
-    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
     margin: 0;
     color: #424242;
+    font-size: 12px;
+}
+
+.location-date i {
+    color: #C198BE;
 }
 
 .city-select-toggle {
@@ -193,7 +364,7 @@ i {
     flex-wrap: wrap;
     padding: 0px;
     align-items: center;
-    margin: 0 10% 2% 10%;
+    margin: 1% 10% 2% 10%;
 }
 
 #categories button {
@@ -201,12 +372,11 @@ i {
     height: 30px;
     width: 150px;
     font-size: 0.9em;
-    font-family: poppins;
     border: none;
     color: #561050;
     background-color: #c198bea8;
     transition: transform 0.3s ease;
-    
+
 }
 
 #categories button:hover {
@@ -276,7 +446,7 @@ i {
 #store-card button {
     font-family: 'Montserrat';
     font-weight: 600;
-    font-size: 0.8em;
+    font-size: 0.9em;
     width: 100%;
     background-color: #561050;
     color: #ffffff;
