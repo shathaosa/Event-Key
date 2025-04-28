@@ -44,7 +44,7 @@ form.addEventListener("submit", (e) => {
     showMessages(messages);
   } else {
     msg.innerHTML = "";
-    window.location.href = '/HTML/Payment.html';
+    window.location.href = '/HTML/PaymentMethod.html';
   }
 });
 
