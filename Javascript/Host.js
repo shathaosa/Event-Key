@@ -1,7 +1,20 @@
-    const form = document.querySelector("#form");
+const form = document.querySelector("#form");
     const msg = document.createElement("div");
     msg.id = "msg";
     form.append(msg);
+
+    const items = []; // Array to store data passed from checkoutbtn
+
+    // Retrieve data from URL and store in items array
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedData = urlParams.get("selected");
+      if (selectedData) {
+        const decodedData = decodeURIComponent(selectedData);
+        items.push(...JSON.parse(decodedData));
+        console.log("Items:", items); // Log the items array
+      }
+    };
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -103,6 +116,5 @@
     
       return messages;
     }
-    
 
-  
+

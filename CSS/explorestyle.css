@@ -30,7 +30,7 @@ body {
 #remove-row,
 #checkout,
 #categories button,
-#store-card:hover {
+.store-card:hover {
     transition: transform 0.3s ease;
 }
 
@@ -40,7 +40,7 @@ body {
 #remove-row:focus,
 #checkout:focus,
 #categories button:focus,
-#store-card:focus {
+.store-card:focus {
     outline: 2px solid #926289;
 }
 
@@ -444,25 +444,28 @@ a:hover {
     margin: 0 10% 10% 10%;
 }
 
-#store-card {
+.store-card {
     width: 250px;
     border-radius: 16px 16px 16px 16px;
     box-shadow: #cecece 0px 2px 5px;
     transition: transform 0.3s ease;
 }
 
-#store-card:hover {
+.store-card:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
 
-#store-image {
+.store-image {
     height: 250px;
     border-radius: 16px 16px 0 0;
-    background: linear-gradient(136deg, rgb(158 158 158 / 80%) 0%, rgba(255, 255, 255, 0.5) 50%, rgb(197 197 197 / 0%) 100%), linear-gradient(0deg, rgb(107 107 107 / 30%) 0%, rgb(10 10 10 / 0%) 100%)
+    overflow: hidden;
 }
 
-#store-name {
+.store-image img{
+    width: 250px;
+}
+.store-name {
     font-family: 'Montserrat';
     font-size: 1.1em;
     font-weight: 700;
@@ -470,14 +473,14 @@ a:hover {
     margin: 10px 0 0 5px;
 }
 
-#store-location {
+.store-location {
     font-family: 'Montserrat';
     font-size: 0.8em;
     color: #C198BE;
     margin: 10px 0 0 5px;
 }
 
-#store-budget {
+.store-budget {
     font-family: 'Montserrat';
     font-size: 0.9em;
     font-weight: 600;
@@ -485,7 +488,7 @@ a:hover {
     margin: 10px 0 10px 5px;
 }
 
-#store-card button {
+.store-card button {
     font-family: 'Montserrat';
     font-weight: 600;
     font-size: 0.9em;
@@ -497,7 +500,7 @@ a:hover {
     padding: 20px;
 }
 
-#store-card button:hover {
+.store-card button:hover {
     background-color: hsl(305, 50%, 30%);
     cursor: pointer;
 }

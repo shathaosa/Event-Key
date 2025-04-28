@@ -1,21 +1,24 @@
-const storeCard = document.getElementById("store-card");
-const storeImg = document.getElementById("store-image");
-const storeName = document.getElementById("store-name");
-const storeLocation = document.getElementById("store-location");
-const storeBudget = document.getElementById("store-budget");
+const storeCard = document.querySelector(".store-card");
+const storeImg = document.querySelector(".store-image");
+const storeName = document.querySelector(".store-name");
+const storeLocation = document.querySelector(".store-location");
+const storeBudget = document.querySelector(".store-budget");
 
-const cartIcon = document.getElementById('cart-icon');
-const cartInfo = document.getElementById('cart-info');
-const closeCart = document.getElementById('close-cart');
+const cartIcon = document.querySelector('#cart-icon');
+const cartInfo = document.querySelector('#cart-info');
+const closeCart = document.querySelector('#close-cart');
 
-const addToCartButtons = document.querySelectorAll("#add-to-cart");
-const quantity = document.getElementById("cart-quantity");
+const addToCartButtons = document.querySelectorAll(".add-to-cart");
+const quantity = document.querySelector("#cart-quantity");
 let quantityValue = 0;
 
 const cartItemsBody = document.getElementById("cart-items-body");
 const clearCartBtn = document.getElementById("clear-cart");
+const checkoutBtn = document.getElementById("checkout");
 
 let cartRowCount = cartItemsBody.querySelectorAll("tr").length;
+let data = []; // Array to store retrieved data
+let selected=[]; // Array to store selected items
 
 // Set initial quantity value based on existing cart items
 if (!(cartRowCount === 0)) {
@@ -49,8 +52,11 @@ function closeCartInfo() {
     cartInfo.style.display = 'none';
 }
 
-function addToCart() {
-    const vendor = storeName.textContent; // Get the vendor name
+function addToCart(event) {
+    const button = event.target; // Get the clicked button
+    const storeCard = button.closest('.store-card'); // Find the parent store card
+    const vendor = storeCard.querySelector('.store-name').textContent; // Get the vendor name
+
     const existingItem = Array.from(cartItemsBody.querySelectorAll("tr")).find(row => {
         const vendorCell = row.querySelector("td:nth-child(2)");
         return vendorCell && vendorCell.textContent === vendor; // Exclude rows without a vendor cell
@@ -66,10 +72,14 @@ function addToCart() {
         quantity.style.display = "inline";
         quantity.innerHTML = `${quantityValue}`;
 
-        // Add item details to the cart table
-        const category = "Category Name";
-        const price = "$$$$";
+        // Retrieve item details from the data array
+        const item = data.find(store => store.vendor === vendor);
+        const category = item ? item.category : "Unknown Category";
+        const price = item ? item.price : "Unknown Price";
+        selected.push(item); // Add the selected item to the array
+        console.log(selected); // Log the selected items
 
+        // Add item details to the cart table
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
             <td>${category}</td>
@@ -86,6 +96,7 @@ function addToCart() {
 function removeCartItem(event) {
     if (event.target.closest(".remove-item")) {
         const row = event.target.closest("tr");
+        const vendor = row.querySelector("td:nth-child(2)").textContent; // Get vendor name from the row
         row.remove();
         quantityValue--;
         quantity.innerHTML = `${quantityValue}`;
@@ -93,6 +104,11 @@ function removeCartItem(event) {
             quantity.style.display = "none";
         }
         cartRowCount--; // Update and log the row count
+
+        // Remove the item from the selected array
+        selected = selected.filter(item => item.vendor !== vendor);
+        console.log(selected); // Log the updated selected items
+
         // Check if the cart is empty and add "No items in the cart!" row if it is
         if (cartItemsBody.querySelectorAll("tr").length === 0) {
             noItemsInCart();
@@ -164,3 +180,83 @@ function dragElement(elmnt) {
 }
 
 
+
+// Function to fetch user data
+function fetchUserData() {
+    fetch('http://localhost:3000/explore')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(items => {
+            data = items; // Store data in the array
+            console.log(data); // Log the data to the console
+            displayStores(data); // Call the function to display stores
+        })
+        .catch(error => {
+           console.error('Error fetching data:', error);
+        });
+
+}
+
+function displayStores(stores) {
+    const storesSection = document.querySelector('.stores-cards');
+    storesSection.innerHTML = ''; // Clear any existing content
+
+    stores.forEach(store => {
+        // Create store card
+        const storeCard = document.createElement('div');
+        storeCard.classList.add('store-card'); // Use class instead of id for multiple cards
+
+        // Create store image
+        const storeImage = document.createElement('div');
+        storeImage.classList.add('store-image');
+        img=document.createElement('img');
+        storeImage.appendChild(img);
+        img.setAttribute('alt', 'Store Image'); // Set alt attribute for accessibility
+        img.src = store.image; // Set background image
+
+        // Create store name
+        const storeName = document.createElement('h4');
+        storeName.classList.add('store-name');
+        storeName.textContent = store.vendor; // Use vendor as store name
+
+        // Create store location
+        const storeLocation = document.createElement('p');
+        storeLocation.classList.add('store-location');
+        storeLocation.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${store.category}`; // Use category for location
+
+        // Create store budget
+        const storeBudget = document.createElement('p');
+        storeBudget.classList.add('store-budget');
+        storeBudget.textContent = '$$$$'; // Update as needed
+
+        // Create add to cart button
+        const addToCartButton = document.createElement('button');
+        addToCartButton.classList.add('add-to-cart');
+        addToCartButton.textContent = 'Add to Cart';
+        addToCartButton.onclick = addToCart; // Add event listener for adding to cart
+
+        // Append elements to the store card
+        storeCard.appendChild(storeImage);
+        storeCard.appendChild(storeName);
+        storeCard.appendChild(storeLocation);
+        storeCard.appendChild(storeBudget);
+        storeCard.appendChild(addToCartButton);
+
+        // Append store card to the section
+        storesSection.appendChild(storeCard);
+    });
+}
+
+
+// Fetch data when the page loads
+window.onload = fetchUserData;
+
+checkoutBtn.onclick = function () {
+    const selectedData = JSON.stringify(selected);
+    const encodedData = encodeURIComponent(selectedData);
+    window.location.href = `Host.html?selected=${encodedData}`;
+};
