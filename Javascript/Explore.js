@@ -191,9 +191,8 @@ function fetchUserData() {
             return response.json();
         })
         .then(items => {
-            data = items; // Store data in the array
-            console.log(data); // Log the data to the console
-            displayStores(data); // Call the function to display stores
+            data = items; 
+            displayStores(data); 
         })
         .catch(error => {
            console.error('Error fetching data:', error);
