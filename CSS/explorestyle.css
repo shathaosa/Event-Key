@@ -14,6 +14,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
+    background-attachment: fixed;
 }
 
 @keyframes fadeInUp {
@@ -414,7 +415,6 @@ a:hover {
     justify-content: space-evenly;
     flex-wrap: wrap;
     padding: 0px;
-    align-items: center;
     margin: 1% 10% 2% 10%;
     animation: fadeInUp 1.0s ease-out backwards;
     
@@ -422,9 +422,9 @@ a:hover {
 
 #categories button {
     border-radius: 5px;
-    height: 2.5rem;
-    width: 10rem;
-    font-size: 1em;
+    height: 2rem;
+    width: 8rem;
+    font-size: 0.9em;
     font-weight: 500;
     border: none;
     color: #561050;
@@ -448,18 +448,26 @@ a:hover {
     color: #561050;
 }
 
+.selected  {
+    background-color: #926289 !important; 
+    color: #ffffff !important; 
+    font-weight: 600 !important;
+    box-shadow: 0px 2px 5px rgba(206, 206, 206, 0.8),
+        inset 0px -2px 5px rgba(0, 0, 0, 0.1) !important;
+}
 .fa-solid.fa-caret-down:hover {
     color: #561050;
     cursor: pointer;
 }
 
 .stores-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
     margin: 0 10% 10% 10%;
     animation: fadeInUp 1.0s ease-out backwards;
+    column-gap: 5%; 
+    row-gap: 20px; 
 }
 
 .store-card {
@@ -524,6 +532,16 @@ a:hover {
     cursor: pointer;
 }
 
+#error-message{
+    margin: 1% 0 0 0;
+    animation: fadeInUp 1.0s ease-out backwards;
+    color: #C70039;
+}
+.loading-text, .error-text {
+    margin: auto;
+    color: #C198BE;
+    font-size: 1.2em;
+}
 
 /* Responsiveness */
 @media (max-width: 992px) {

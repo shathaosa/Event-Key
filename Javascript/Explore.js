@@ -1,35 +1,35 @@
+const storesSection = document.querySelector('.stores-cards');
 const storeCard = document.querySelector(".store-card");
 const storeImg = document.querySelector(".store-image");
 const storeName = document.querySelector(".store-name");
 const storeLocation = document.querySelector(".store-location");
 const storeBudget = document.querySelector(".store-budget");
+const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+const dateInput = document.querySelector("#date");
+const errorMessage = document.getElementById("error-message");
+const quantity = document.querySelector("#cart-quantity");
+let quantityValue = 0;
 
 const cartIcon = document.querySelector('#cart-icon');
 const cartInfo = document.querySelector('#cart-info');
 const closeCart = document.querySelector('#close-cart');
-
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
-const quantity = document.querySelector("#cart-quantity");
-let quantityValue = 0;
-
 const cartItemsBody = document.getElementById("cart-items-body");
 const clearCartBtn = document.getElementById("clear-cart");
 const checkoutBtn = document.getElementById("checkout");
 
+const allCategories = document.getElementById("all");
+const venuesCategory = document.getElementById("venues");
+const musicCategory = document.getElementById("music");
+const cateringCategory = document.getElementById("catering");
+const flowersCategory = document.getElementById("flowers");
+const photographersCategory = document.getElementById("photographers");
+const decorCategory = document.getElementById("decor");
+
 let cartRowCount = cartItemsBody.querySelectorAll("tr").length;
 let data = []; // Array to store retrieved data
-let selected=[]; // Array to store selected items
+let selected = []; // Array to store selected items
 
-// Set initial quantity value based on existing cart items
-if (!(cartRowCount === 0)) {
-    quantityValue = cartRowCount;
-    quantity.style.display = "inline";
-    quantity.innerHTML = `${quantityValue}`;
-    console.log(`Cart Row Count: ${cartRowCount}`);
-}
-else {
-    noItemsInCart();
-}
 
 // Assign event listeners
 cartIcon.addEventListener('click', toggleCartVisibility);
@@ -43,6 +43,25 @@ cartItemsBody.addEventListener("click", removeCartItem);
 clearCartBtn.addEventListener("click", clearCart);
 
 
+// Set initial quantity value based on existing cart items
+if (!(cartRowCount === 0)) {
+    quantityValue = cartRowCount;
+    quantity.style.display = "inline";
+    quantity.innerHTML = `${quantityValue}`;
+    console.log(`Cart Row Count: ${cartRowCount}`);
+}
+else {
+    noItemsInCart();
+}
+
+if (dateInput) {
+    dateInput.addEventListener("input", () => {
+        if (dateInput.value) {
+            errorMessage.style.display = "none";
+        }
+    });
+}
+
 function toggleCartVisibility(event) {
     event.preventDefault();
     cartInfo.style.display = cartInfo.style.display === 'none' ? 'block' : 'none';
@@ -52,79 +71,81 @@ function closeCartInfo() {
     cartInfo.style.display = 'none';
 }
 
-function addToCart(event) {
-    const button = event.target; // Get the clicked button
-    const storeCard = button.closest('.store-card'); // Find the parent store card
-    const vendor = storeCard.querySelector('.store-name').textContent; // Get the vendor name
+function updateCartQuantity(change) {
+    quantityValue += change;
+    quantity.style.display = quantityValue > 0 ? "inline" : "none";
+    quantity.innerHTML = `${quantityValue}`;
+}
 
-    const existingItem = Array.from(cartItemsBody.querySelectorAll("tr")).find(row => {
+function findCartItem(vendor) {
+    return Array.from(cartItemsBody.querySelectorAll("tr")).find(row => {
         const vendorCell = row.querySelector("td:nth-child(2)");
-        return vendorCell && vendorCell.textContent === vendor; // Exclude rows without a vendor cell
+        return vendorCell && vendorCell.textContent === vendor;
     });
+}
 
-    if (!existingItem) {
-        // Remove "No items in the cart!" row if it exists
+function addCartRow(category, vendor, price) {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td>${category}</td>
+        <td>${vendor}</td>
+        <td>${price}</td>
+        <td class="remove-item"><button id="remove-row"><i class="fa-solid fa-xmark"></i></button></td>
+    `;
+    cartItemsBody.appendChild(newRow);
+}
+
+function handleEmptyCart() {
+    if (cartItemsBody.querySelectorAll("tr").length === 0) {
+        noItemsInCart();
+    }
+}
+
+function addToCart(event) {
+    const button = event.target;
+    const storeCard = button.closest('.store-card'); // Get the specific store card
+    const vendor = storeCard.querySelector('.store-name').textContent; // Get vendor name from the card
+
+    if (!dateInput || !dateInput.value) {
+        errorMessage.textContent = "Please select a date before adding items to the cart.";
+        return;
+    }
+
+    if (!findCartItem(vendor)) {
         const noItemsRow = cartItemsBody.querySelector("tr td[colspan='4']");
-        if (noItemsRow) {
-            noItemsRow.parentElement.remove();
-        }
-        quantityValue++;
-        quantity.style.display = "inline";
-        quantity.innerHTML = `${quantityValue}`;
+        if (noItemsRow) noItemsRow.parentElement.remove();
 
-        // Retrieve item details from the data array
+        updateCartQuantity(1);
+
         const item = data.find(store => store.vendor === vendor);
         const category = item ? item.category : "Unknown Category";
         const price = item ? item.price : "Unknown Price";
-        selected.push(item); // Add the selected item to the array
-        console.log(selected); // Log the selected items
+        selected.push(item);
+        console.log(selected);
 
-        // Add item details to the cart table
-        const newRow = document.createElement("tr");
-        newRow.innerHTML = `
-            <td>${category}</td>
-            <td>${vendor}</td>
-            <td>${price}</td>
-            <td class="remove-item"><button id="remove-row"><i class="fa-solid fa-xmark"></i></button></td>
-        `;
-        cartItemsBody.appendChild(newRow);
-
-        cartRowCount--; // Update and log the row count
+        addCartRow(category, vendor, price);
     }
 }
 
 function removeCartItem(event) {
     if (event.target.closest(".remove-item")) {
         const row = event.target.closest("tr");
-        const vendor = row.querySelector("td:nth-child(2)").textContent; // Get vendor name from the row
+        const vendor = row.querySelector("td:nth-child(2)").textContent;
         row.remove();
-        quantityValue--;
-        quantity.innerHTML = `${quantityValue}`;
-        if (quantityValue === 0) {
-            quantity.style.display = "none";
-        }
-        cartRowCount--; // Update and log the row count
 
-        // Remove the item from the selected array
+        updateCartQuantity(-1);
         selected = selected.filter(item => item.vendor !== vendor);
-        console.log(selected); // Log the updated selected items
+        console.log(selected);
 
-        // Check if the cart is empty and add "No items in the cart!" row if it is
-        if (cartItemsBody.querySelectorAll("tr").length === 0) {
-            noItemsInCart();
-        }
+        handleEmptyCart();
     }
 }
 
 function clearCart() {
-    cartItemsBody.innerHTML = ""; // Clear all rows
-    quantityValue = 0;
-    quantity.style.display = "none";
-    quantity.innerHTML = `${quantityValue}`;
-    cartRowCount--; // Update and log the row count
-    if (cartItemsBody.querySelectorAll("tr").length === 0) {
-        noItemsInCart();
-    }
+    cartItemsBody.innerHTML = "";
+    updateCartQuantity(-quantityValue);
+    selected = [];
+    handleEmptyCart();
 }
 
 function noItemsInCart() {
@@ -181,8 +202,10 @@ function dragElement(elmnt) {
 
 
 
-// Function to fetch user data
 function fetchUserData() {
+    // Display loading text
+    storesSection.innerHTML = '<p class="loading-text">Loading stores...</p>';
+
     fetch('http://localhost:3000/explore')
         .then(response => {
             if (!response.ok) {
@@ -191,65 +214,84 @@ function fetchUserData() {
             return response.json();
         })
         .then(items => {
-            data = items; 
-            displayStores(data); 
+            data = items;
+            displayStores(data); // Display stores after fetching
         })
         .catch(error => {
-           console.error('Error fetching data:', error);
+            console.error('Error fetching data:', error);
+            // Show error message
+            storesSection.innerHTML = '<p class="error-text">Failed to load stores. Please try again later.</p>';
         });
-
 }
 
-function displayStores(stores) {
-    const storesSection = document.querySelector('.stores-cards');
-    storesSection.innerHTML = ''; // Clear any existing content
+// Add 'selected' class to allCategories by default
+allCategories.classList.add('selected');
 
-    stores.forEach(store => {
-        // Create store card
+// Add event listeners to category buttons
+const categoryButtons = [allCategories, venuesCategory, musicCategory, cateringCategory, flowersCategory, photographersCategory, decorCategory];
+categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove 'selected' class from all buttons
+        categoryButtons.forEach(btn => btn.classList.remove('selected'));
+        // Add 'selected' class to the clicked button
+        button.classList.add('selected');
+        // Filter stores based on the selected category
+        const category = button.id === 'all' ? null : button.id;
+        displayStores(data, category);
+    });
+});
+
+function displayStores(stores, filterCategory = null) {
+    storesSection.innerHTML = ''; // Clear existing content
+
+    const filteredStores = filterCategory
+        ? stores.filter(store => store.category.toLowerCase() === filterCategory.toLowerCase())
+        : stores;
+
+    if (filteredStores.length === 0) {
+        storesSection.innerHTML = '<p class="error-text">No stores found for the selected category.</p>';
+        return;
+    }
+
+    filteredStores.forEach(store => {
         const storeCard = document.createElement('div');
-        storeCard.classList.add('store-card'); // Use class instead of id for multiple cards
+        storeCard.classList.add('store-card');
 
-        // Create store image
         const storeImage = document.createElement('div');
         storeImage.classList.add('store-image');
-        img=document.createElement('img');
+        const img = document.createElement('img');
+        img.setAttribute('alt', 'Store Image');
+        img.src = store.image || 'path/to/default-image.jpg'; // Fallback image
         storeImage.appendChild(img);
-        img.setAttribute('alt', 'Store Image'); // Set alt attribute for accessibility
-        img.src = store.image; // Set background image
 
-        // Create store name
         const storeName = document.createElement('h4');
         storeName.classList.add('store-name');
-        storeName.textContent = store.vendor; // Use vendor as store name
+        storeName.textContent = store.vendor;
 
-        // Create store location
         const storeLocation = document.createElement('p');
         storeLocation.classList.add('store-location');
-        storeLocation.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${store.category}`; // Use category for location
+        storeLocation.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${store.location}`;
 
-        // Create store budget
         const storeBudget = document.createElement('p');
         storeBudget.classList.add('store-budget');
-        storeBudget.textContent = '$$$$'; // Update as needed
+        storeBudget.textContent = Number(store.price).toLocaleString(); // Format price with commas
 
-        // Create add to cart button
+        const budgetImg = document.createElement('img');
+        budgetImg.src = '/Media/Riyal.png'; 
+        budgetImg.alt = 'Riyal Icon';
+        budgetImg.style.marginLeft = '5px'; 
+        budgetImg.width= 15;
+        storeBudget.appendChild(budgetImg);
+
         const addToCartButton = document.createElement('button');
         addToCartButton.classList.add('add-to-cart');
         addToCartButton.textContent = 'Add to Cart';
-        addToCartButton.onclick = addToCart; // Add event listener for adding to cart
+        addToCartButton.onclick = addToCart;
 
-        // Append elements to the store card
-        storeCard.appendChild(storeImage);
-        storeCard.appendChild(storeName);
-        storeCard.appendChild(storeLocation);
-        storeCard.appendChild(storeBudget);
-        storeCard.appendChild(addToCartButton);
-
-        // Append store card to the section
+        storeCard.append(storeImage, storeName, storeLocation, storeBudget, addToCartButton);
         storesSection.appendChild(storeCard);
     });
 }
-
 
 // Fetch data when the page loads
 window.onload = fetchUserData;
