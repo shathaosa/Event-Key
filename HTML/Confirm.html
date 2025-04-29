@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Confirmation</title>
+    <link rel="stylesheet" href="/CSS/Confirm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <img class="logo" src="/Media/EKlogo.png" alt="logo">
+        <nav>
+            <a href="/HTML/Home.html">Home</a>
+            <a href="Home.html#about-us">About</a>
+            <a href="Explore.html">Explore</a>
+            <a href="/HTML/Home.html#contact-section">Contact Us</a>
+        </nav>
+
+        <div id="cart-div">
+            <i class="fa-solid fa-cart-shopping" id="cart-icon">
+                <span id="cart-quantity"></span>
+            </i>
+        </div>
+
+        <div id="cart-info">
+            <div id="cart-header">
+                <h4>Your Cart</h4>
+                <button id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+                <hr>
+            </div>
+
+            <table id="cart-items">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Vendor</th>
+                        <th id="price-header">Price<span>..</span></th>
+                        <th id="remove-col"></th>
+                    </tr>
+                </thead>
+
+                <tbody id="cart-items-body">
+                    <!-- Cart items will be inserted here dynamically -->
+                </tbody>
+            </table>
+
+            <div id="cart-total">
+                <h5>Tax(15%): </h5>
+                <p id="tax"></p>
+                <h5>Total:</h5>
+                <p id="total-price"></p>
+            </div>
+
+            <div id="cart-footer">
+                <button id="checkout">Checkout</button>
+                <button id="clear-cart">Clear Cart</button>
+            </div>
+        </div>
+
+        <div>
+            <a href="/HTML/Signup_Login.html" class="buttons"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <h1>Your Reservation Details</h1>
+        
+        <div class="reservation-card">
+            <div class="reservation-header">
+                <span class="status-badge confirmed">Confirmed</span>
+            </div>
+
+            <h2>Host Information</h2>
+            <div class="info-section">
+                <div class="info-row">
+                    <span class="info-label">Title:</span>
+                    <span class="info-value" id="host-title">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Name:</span>
+                    <span class="info-value" id="host-name">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Date of Birth:</span>
+                    <span class="info-value" id="host-dob">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Country:</span>
+                    <span class="info-value" id="host-country">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Phone Number:</span>
+                    <span class="info-value" id="host-contact">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value" id="host-email">-</span>
+                </div>
+            </div>
+
+            <h2>Event Details</h2>
+            <div class="info-section">
+                <div class="info-row">
+                    <span class="info-label">Title:</span>
+                    <span class="info-value" id="event-title">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Type:</span>
+                    <span class="info-value" id="booking-type">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Date:</span>
+                    <span class="info-value" id="booking-date">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Start Time:</span>
+                    <span class="info-value" id="booking-start-time">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">End Time:</span>
+                    <span class="info-value" id="booking-end-time">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Location:</span>
+                    <span class="info-value" id="booking-location">-</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/Confirm.js"></script>
+    <img src="/Media/border.png" alt="Border Decoration" id="border-image">
+</body>
+</html>
