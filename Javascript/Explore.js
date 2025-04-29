@@ -151,7 +151,7 @@ function clearCart() {
 function noItemsInCart() {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td colspan="4" style="height: 100px;text-align: center;font-size: 1em; font-weight: 500;">No items in the cart!</td>
+        <td colspan="4" style="height: 100px;text-align: center;">No items in the cart!</td>
     `;
     cartItemsBody.appendChild(newRow);
 }
@@ -199,8 +199,6 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
-
-
 
 function fetchUserData() {
     // Display loading text

@@ -43,7 +43,7 @@ app.get("/print", (req, res) => {
 // Route to fetch users
 app.get("/users", async (req, res) => {
     try {
-        const result = await sql.query('SELECT * FROM [user]'); // Change 'user' to your actual table name
+        const result = await sql.query('SELECT * FROM users'); // Change 'user' to your actual table name
         res.json(result.recordset); // Send the results as JSON
     } catch (err) {
         return res.status(500).send('Error retrieving data');
