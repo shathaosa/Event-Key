@@ -1,14 +1,23 @@
-* {
-    font-family: 'poppins', sans-serif;
+:root {
+    --primary-color: #561050;
+    --secondary-color: #926289;
+    --highlight-color: #C198BE;
+    --background-color: #FFF5F1;
+    --font-family-primary: 'poppins', sans-serif;
+    --font-family-secondary: 'Montserrat';
+    --box-shadow: 0px 2px 5px rgba(206, 206, 206, 0.8), inset 0px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
+* {
+    font-family: var(--font-family-primary);
+}
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #FFF5F1;
+    background-color: var(--background-color);
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/Media/RadBack.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -47,14 +56,13 @@ body {
     transition: transform 0.3s ease;
 }
 
-
 .buttons i:focus,
 #cart-icon:focus,
 #remove-row:focus,
 #checkout:focus,
 #categories button:focus,
 .store-card:focus {
-    outline: 2px solid #926289;
+    outline: 2px solid var(--secondary-color);
 }
 
 header {
@@ -68,20 +76,22 @@ header {
     animation: fadeInUp 1.0s ease-out backwards;
 }
 
+h2, h3, #cart-header h4, #checkout, .store-budget {
+    color: var(--primary-color);
+}
+
 h2 {
-    color: #561050;
     font-size: 32px;
-    font-family: Montserrat;
+    font-family: var(--font-family-secondary);
     display: flex;
     justify-content: center;
 }
 
 h3 {
-    color: #561050;
     font-size: 2em;
     display: flex;
     justify-content: left;
-    font-family: Montserrat;
+    font-family: var(--font-family-secondary);
     margin: 0;
 }
 
@@ -95,11 +105,10 @@ nav {
     gap: 35px;
     align-items: center;
     margin: auto;
-
 }
 
 nav a {
-    color: #561050;
+    color: var(--primary-color);
     text-decoration: none;
     text-align: center;
     padding: 0 5px 0 5px;
@@ -117,7 +126,7 @@ nav a {
 
 .buttons i,
 #cart-icon {
-    color: #561050;
+    color: var(--primary-color);
     margin-right: 5px;
     padding-right: 10px;
     font-size: 1.5em;
@@ -130,7 +139,7 @@ nav a {
 
 .buttons i:hover,
 #cart-icon:hover {
-    color: #926289;
+    color: var(--secondary-color);
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -172,18 +181,16 @@ nav a {
 }
 
 #cart-header h4 {
-    font-family: Montserrat;
+    font-family: var(--font-family-secondary);
     display: inline;
     font-weight: 600;
     font-size: 1.1em;
-    color: #561050;
 }
 
 #cart-header hr {
     margin: 5px 0;
     border: none;
-    background-color: #926289;
-    ;
+    background-color: var(--secondary-color);
     height: 2px;
     width: 100%;
 }
@@ -191,7 +198,7 @@ nav a {
 #close-cart {
     margin-left: 120px;
     background-color: transparent;
-    color: #561050;
+    color: var(--primary-color);
     font-size: 1.1em;
     border: none;
     cursor: pointer;
@@ -199,7 +206,7 @@ nav a {
 }
 
 #close-cart:hover {
-    color: #926289;
+    color: var(--secondary-color);
     transform: scale(1.1);
 }
 
@@ -214,12 +221,12 @@ nav a {
 }
 
 #cart-items td {
-    border-bottom: 2px solid #926289;
+    border-bottom: 2px solid var(--secondary-color);
 }
 
 #cart-items th,
 #cart-items td {
-    font-family: Montserrat;
+    font-family: var(--font-family-secondary);
     padding: 8px;
     font-size: 0.8em;
     font-weight: 400;
@@ -279,7 +286,6 @@ td.remove-item {
 
 #cart-total h5 {
     font-weight: 600;
-    color: #561050;
 }
 
 #cart-footer {
@@ -290,7 +296,7 @@ td.remove-item {
 }
 
 #checkout {
-    background-color: #561050;
+    background-color: var(--primary-color);
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -313,7 +319,7 @@ td.remove-item {
 
 #clear-cart {
     background-color: transparent;
-    color: #561050;
+    color: var(--primary-color);
     font-size: 0.75em;
     margin-top: 0.8em;
     text-decoration: underline;
@@ -323,7 +329,7 @@ td.remove-item {
 }
 
 a:hover {
-    color: #926289;
+    color: var(--secondary-color);
     cursor: pointer;
     transform: scale(1.1);
 }
@@ -345,7 +351,7 @@ a:hover {
 }
 
 .location-date i {
-    color: #C198BE;
+    color: var(--highlight-color);
 }
 
 .city-select-toggle {
@@ -417,7 +423,6 @@ a:hover {
     padding: 0px;
     margin: 1% 10% 2% 10%;
     animation: fadeInUp 1.0s ease-out backwards;
-    
 }
 
 #categories button {
@@ -427,36 +432,26 @@ a:hover {
     font-size: 0.9em;
     font-weight: 500;
     border: none;
-    color: #561050;
-    background-color: #c198bea8;
+    color: var(--primary-color);
+    background-color: var(--highlight-color);
     transition: transform 0.3s ease;
-    box-shadow: 0px 2px 5px rgba(206, 206, 206, 0.8),
-        inset 0px -2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
-#categories button:hover {
-    cursor: pointer;
+#categories button:hover, .selected {
+    cursor: pointer !important;
     transform: scale(1.1);
-    background-color: #561050ae;
-    color: #ffffff;
-    box-shadow: 0px 2px 5px rgba(206, 206, 206, 0.8),
-        inset 0px -2px 5px rgba(0, 0, 0, 0.1);
-
+    background-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+    box-shadow: var(--box-shadow) !important;
 }
 
 #categories button>i {
-    color: #561050;
+    color: var(--primary-color);
 }
 
-.selected  {
-    background-color: #926289 !important; 
-    color: #ffffff !important; 
-    font-weight: 600 !important;
-    box-shadow: 0px 2px 5px rgba(206, 206, 206, 0.8),
-        inset 0px -2px 5px rgba(0, 0, 0, 0.1) !important;
-}
 .fa-solid.fa-caret-down:hover {
-    color: #561050;
+    color: var(--primary-color);
     cursor: pointer;
 }
 
@@ -493,7 +488,7 @@ a:hover {
 }
 
 .store-name {
-    font-family: 'Montserrat';
+    font-family: var(--font-family-secondary);
     font-size: 1.1em;
     font-weight: 700;
     color: #424242;
@@ -501,26 +496,25 @@ a:hover {
 }
 
 .store-location {
-    font-family: 'Montserrat';
+    font-family: var(--font-family-secondary);
     font-size: 0.8em;
-    color: #C198BE;
+    color: var(--highlight-color);
     margin: 10px 0 0 5px;
 }
 
 .store-budget {
-    font-family: 'Montserrat';
+    font-family: var(--font-family-secondary);
     font-size: 0.9em;
     font-weight: 600;
-    color: #561050;
     margin: 10px 0 10px 5px;
 }
 
 .store-card button {
-    font-family: 'Montserrat';
+    font-family: var(--font-family-secondary);
     font-weight: 600;
     font-size: 0.9em;
     width: 100%;
-    background-color: #561050;
+    background-color: var(--primary-color);
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -532,23 +526,26 @@ a:hover {
     cursor: pointer;
 }
 
-#error-message{
+#error-message {
     margin: 1% 0 0 0;
     animation: fadeInUp 1.0s ease-out backwards;
     color: #C70039;
 }
+
 .loading-text, .error-text {
     margin: auto;
-    color: #C198BE;
+    color: var(--highlight-color);
     font-size: 1.2em;
 }
 
-/* Responsiveness */
 @media (max-width: 992px) {
+    .date-picker-toggle, .city-select-toggle{
+        width: 50%
+    }
     .stores-cards {
         grid-template-columns: 1fr 1fr 1fr;
+        justify-content: center;
     }
-
 
     .location-date {
         float: left;
@@ -560,16 +557,28 @@ a:hover {
     #categories button {
         width: 120px;
     }
+
+    .explore-header {
+        padding: 0 5%;
+    }
+
+    #categories {
+        row-gap: 10px; /* Add gap between rows */
+    }
 }
 
 @media (max-width: 768px) {
     .stores-cards {
         grid-template-columns: 1fr 1fr;
+        justify-content: center;
     }
 
     nav {
-        grid-template-columns: 1fr 1fr;
         gap: 20px;
+    }
+
+    nav a{
+        font-size: 0.9em;
     }
 
     .logo {
@@ -589,66 +598,181 @@ a:hover {
 
     .explore-header {
         margin-top: 5%;
+        text-align: center;
     }
 
-}
-
-@media (max-width: 770px) {
-    header {
-        margin: 5px 0 0 0;
+    #categories {
+        margin: 2% 5%;
+        row-gap: 10px; /* Add gap between rows */
     }
 
-    nav {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 0px;
+    .store-card {
+        width: 200px;
     }
 
-    nav a {
-        font-size: 0.9em;
+    .store-image {
+        height: 200px;
     }
 
+    .store-image img {
+        width: 200px;
+    }
 
-    .location-date {
+    .city-select-toggle {
+        width: 40%;
+        padding: 5px;
+        padding-top: 15px;
+    }
+
+    #city-select {
+        border-radius: 5px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        font-weight: 400;
         margin: 0;
+        width: 140px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+    }
+
+    .date-picker-toggle {
+        width: 50%;
+        padding: 5px;
+        padding-bottom: 0px;
+        margin: 0;
+    }
+
+    #date {
+        border-radius: 5px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        font-weight: 400;
+        margin: 0;
+        width: 140px;
+    }
+
+    #cart-info {
+        width: 200px;
+        min-height: 200px;
+    }
+
+    h3 {
+        font-size: 1.5em;
     }
 }
 
 @media (max-width: 576px) {
+    .stores-cards {
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
     nav {
+        grid-template-columns: 1fr;
         gap: 10px;
-        padding-top: 10px;
-    }
-
-    nav a {
-        padding: 0;
-        font-size: 13px;
-    }
-
-    header div {
-        padding-top: 10px;
-        font-size: 10px;
-    }
-
-    .location-date {
-        font-size: 0.8em;
-        margin-top: 24px;
-
-        p {
-            padding: 0;
-        }
-
-        label {
-            display: none;
-        }
-
-        #date {
-            font-size: 0.9em;
-            font-weight: 400;
-
-        }
     }
 
     .logo {
-        max-width: 80px;
+        width: 100px;
+    }
+
+    #categories button {
+        width: 100px;
+        font-size: 0.7em;
+    }
+
+    .explore-header {
+        margin-top: 10%;
+        text-align: center;
+        padding: 0 2%;
+    }
+
+    #categories {
+        margin: 5% 2%;
+        row-gap: 15px; /* Increase gap between rows for smaller screens */
+    }
+
+    .location-date {
+        font-size: 10px;
+    }
+
+    .store-card {
+        width: 180px;
+    }
+
+    .store-image {
+        height: 180px;
+    }
+
+    .store-image img {
+        width: 180px;
+    }
+
+    .store-name, .store-location, .store-budget {
+        font-size: 0.8em;
+    }
+
+    .store-card button {
+        font-size: 0.8em;
+        padding: 10px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .city-select-toggle {
+        width: 50%;
+        padding: 5px;
+        padding-top: 15px;
+    }
+
+    #city-select {
+        border-radius: 5px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        font-weight: 400;
+        margin: 0;
+        width: 120px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+    }
+
+    .date-picker-toggle {
+        width: 60%;
+        padding: 5px;
+        padding-bottom: 0px;
+        margin: 0;
+    }
+
+    #date {
+        border-radius: 5px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        font-weight: 400;
+        margin: 0;
+        width: 120px;
+    }
+
+    #cart-info {
+        width: 180px;
+        min-height: 180px;
+    }
+
+    h3 {
+        font-size: 1.2em;
     }
 }
+
