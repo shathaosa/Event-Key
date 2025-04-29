@@ -8,47 +8,31 @@ window.onload = function () {
     items.push(...JSON.parse(decodedData));
     console.log("Items:", items);
 
-    const venue = document.getElementById("venue-choice");
-    venue.innerText = items[0].category;
-    const venueprice = document.getElementById("venue-price");
-    venueprice.innerText = items[0].price;
+    const detailsContainer = document.querySelector(".details");
+    const sp = document.getElementById("separator");
+    // detailsContainer.innerHTML = ""; // Clear existing content
 
-    const flowers = document.getElementById("flowers-choice");
-    flowers.innerText = items[1].category;
-    const flowersprice = document.getElementById("flowers-price");
-    flowersprice.innerText = items[1].price;
+    items.forEach((item) => {
+      const categoryElement = document.createElement("p");
+      categoryElement.className = "catagory";
+      categoryElement.innerHTML = `${item.category}<span class="price"><span>${item.price}</span><img class="riyal" src="/Media/Riyal.png" alt="Riyal"></span>`;
+      detailsContainer.insertBefore(categoryElement,sp);
 
-    const photo = document.getElementById("photo-choice");
-    photo.innerText = items[2].category;
-    const photosprice = document.getElementById("photo-price");
-    photosprice.innerText = items[2].price;
+      const choiceElement = document.createElement("p");
+      choiceElement.className = "choice";
+      choiceElement.innerText = item.vendor || "----";
+      detailsContainer.insertBefore(choiceElement,sp);
+    });
 
-    const decor = document.getElementById("decor-choice");
-    decor.innerText = items[3].category;
-    const decorprice = document.getElementById("decor-price");
-    decorprice.innerText = items[3].price;
-
-    const music = document.getElementById("music-choice");
-    music.innerText = items[4].category;
-    const musicprice = document.getElementById("music-price");
-    musicprice.innerText = items[4].price;
-
-    const catering = document.getElementById("catering-choice");
-    catering.innerText = items[5].category;
-    const cateringprice = document.getElementById("catering-price");
-    cateringprice.innerText = items[5].price;
-
-    const totalWithoutTax = calcTotal();
-    const taxAmount = calcTax(totalWithoutTax);
-
-    const tax = document.getElementById("tax");
-    tax.innerText = taxAmount;
-
-    const total = document.getElementById("total");
-    total.innerText = calcFinalTotal();
-
-    const totalPayment = document.getElementById("total-payment");
-    totalPayment.innerText = calcFinalTotal();
+   const totalWithoutTax = calcTotal();
+   const taxAmount = calcTax(totalWithoutTax);
+   const total =calcFinalTotal();
+   const t1 = document.getElementById("total-payment");
+   t1.innerText=total;
+   const t2 = document.getElementById("total");
+   t2.innerText=total;
+   const tax = document.getElementById("tax");
+   tax.innerText=taxAmount;
   }
 };
 
@@ -82,5 +66,5 @@ function calcTotal() {
     const finalTotal = parseFloat(totalWithoutTax) + parseFloat(taxAmount); 
     return finalTotal.toFixed(2); 
   }
-  
-  
+
+
