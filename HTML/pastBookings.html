@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Bookings</title>
+    <link rel="stylesheet" href="/CSS/pastBookings.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="/Media/EKlogo.png" alt="logo">
+        <nav>
+            <a href="/HTML/Home.html">Home</a>
+            <a href="Home.html#about-us">About</a>
+            <a id="explore" href="Explore.html">Explore</a>
+            <a href="/HTML/Home.html#contact-section">Contact Us</a>
+        </nav>
+        <div>
+            <a href="/HTML/Host.html" class="account"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="/HTML/Signup_Login.html" class="account"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </header>
+
+    <div class="buttons">
+        <input type="button" value="Account" id="host" onclick="activate(this, document.getElementById('booking')); viewAccount();">
+        <input type="button" value="Bookings" id="booking" onclick="activate(this, document.getElementById('host')); viewBookings();">
+    </div>
+
+    <div class="content">
+        <div id="bookingsContainer"></div> <!-- Only need one container! -->
+    </div>
+
+    <script src="/Javascript/pastBookings.js"></script>
+</body>
+
+</html>

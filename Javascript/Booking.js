@@ -3,89 +3,118 @@ const msg = document.createElement("div");
 msg.id = "msg";
 form.append(msg);
 
-form.addEventListener("submit", (e) => {
+const items = [];
+
+window.onload = function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedData = urlParams.get("selected");
+  if (selectedData) {
+    const decodedData = decodeURIComponent(selectedData);
+    items.push(...JSON.parse(decodedData));
+    console.log("Items:", items);
+  }
+};
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   let messages = [];
 
-  resetValidation();
-
-  const startValue = document.querySelector(".start-time").value.trim();
-  const endValue = document.querySelector(".end-time").value.trim();
-
-  if (!isFilled(".event-title")) {
-    messages.push("Event Title is missing");
-  }
-
-  if (!isEventTypeSelected(".event-type")) {
-    messages.push("Please select an Event Type");
-  }
-
-  if (!isFilled(".event-description")) {
-    messages.push("Event Description is missing");
-  }
-
-  if (!isDateValid(".event-date")) {
-    messages.push("Please select a future Event Date");
-  }
-
-  if (!isValidTimeFormat(startValue)) {
-    messages.push("Start Time format is wrong. Example: 08:00 AM");
-  }
-
-  if (!isValidTimeFormat(endValue)) {
-    messages.push("End Time format is wrong. Example: 10:00 AM");
-  }
-
-  if (!isFilled(".event-location")) {
-    messages.push("Event Location is missing");
-  }
+  messages = isFilled("event-title", messages, "Event Title is missing");
+  messages = isEventTypeSelected("event-type", messages, "Please select an Event Type");
+  messages = isFilled("event-description", messages, "Event Description is missing");
+  messages = isFutureDate("event-date", messages, "Please select a future Event Date");
+  messages = isValidTime("start-time", messages, "Start Time format is wrong. Example: 08:00 AM");
+  messages = isValidTime("end-time", messages, "End Time format is wrong. Example: 10:00 AM");
+  messages = isFilled("event-location", messages, "Event Location is missing");
 
   if (messages.length > 0) {
-    showMessages(messages);
+    msg.style.color = "#C70039";
+    msg.style.marginLeft = "75px";
+    msg.style.marginTop = "10px";
+    msg.innerHTML = "Issues found [" + messages.length + "]:<br>• " + messages.join("<br>• ");
   } else {
     msg.innerHTML = "";
-    window.location.href = '/HTML/Payment.html';
+
+    const formData = {
+      eventTitle: document.getElementsByClassName("event-title")[0].value.trim(),
+      eventType: document.getElementsByClassName("event-type")[0].value.trim(),
+      eventDescription: document.getElementsByClassName("event-description")[0].value.trim(),
+      eventDate: document.getElementsByClassName("event-date")[0].value.trim(),
+      startTime: document.getElementsByClassName("start-time")[0].value.trim(),
+      endTime: document.getElementsByClassName("end-time")[0].value.trim(),
+      eventLocation: document.getElementsByClassName("event-location")[0].value.trim(),
+      hideGuestList: document.querySelectorAll(".toggle")[0]?.checked || false,
+      noChildren: document.querySelectorAll(".toggle")[1]?.checked || false
+    };
+
+    console.log("Form Data:", formData);
+
+    try {
+      const response = await fetch('/submit-event', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        window.location.href = '/HTML/PaymentMethod.html';
+      } else {
+        msg.innerHTML = "Server error: " + result.message;
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      msg.innerHTML = "Server error: Please try again later.";
+    }
   }
 });
 
 
-function resetValidation() {
-  const elements = document.querySelectorAll(".event-title, .event-type, .event-description, .event-date, .start-time, .end-time, .event-location");
-  elements.forEach(el => el.setCustomValidity(""));
+function isFilled(className, messages, errorMsg) {
+  const element = document.getElementsByClassName(className)[0];
+  if (!element || element.value.trim() === "") {
+    messages.push(errorMsg);
+  }
+  return messages;
 }
 
-function isFilled(className) {
-  const element = document.querySelector(className);
-  return element && element.value.trim() !== "";
+function isEventTypeSelected(className, messages, errorMsg) {
+  const element = document.getElementsByClassName(className)[0];
+  if (!element || element.value.trim() === "Event Type") {
+    messages.push(errorMsg);
+  }
+  return messages;
 }
 
-function isEventTypeSelected(className) {
-  const element = document.querySelector(className);
-  return element && element.value !== "Event Type";
-}
-
-function isDateValid(className) {
-  const element = document.querySelector(className);
-  if (!element || element.value.trim() === "") return false;
-
+function isFutureDate(className, messages, errorMsg) {
+  const element = document.getElementsByClassName(className)[0];
+  if (!element) {
+    messages.push(errorMsg);
+    return messages;
+  }
   const selectedDate = new Date(element.value);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  return selectedDate > today;
+  if (selectedDate <= today) {
+    messages.push(errorMsg);
+  }
+  return messages;
 }
 
-function isValidTimeFormat(timeStr) {
+function isValidTime(className, messages, errorMsg) {
+  const element = document.getElementsByClassName(className)[0];
+  const timeStr = element?.value.trim() || "";
   const regex = /^([0][1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
-  return regex.test(timeStr);
+  if (!regex.test(timeStr)) {
+    messages.push(errorMsg);
+  }
+  return messages;
 }
 
-function isStartBeforeEnd(startTime, endTime) {
-  const startMinutes = convertToMinutes(startTime);
-  const endMinutes = convertToMinutes(endTime);
-
-  return startMinutes < endMinutes;
-}
 
 function convertToMinutes(timeStr) {
   if (!timeStr.includes(' ')) return 0;
@@ -101,11 +130,4 @@ function convertToMinutes(timeStr) {
   }
 
   return (hour * 60) + minute;
-}
-
-function showMessages(messages) {
-  msg.style.color = "#C70039";
-  msg.style.marginLeft = "75px";
-  msg.style.marginTop = "10px";
-  msg.innerHTML = "Issues found [" + messages.length + "]:<br>• " + messages.join("<br>• ");
 }
