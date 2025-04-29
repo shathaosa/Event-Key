@@ -16,11 +16,23 @@ body {
     overflow-x: hidden;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 #border-image {
     position: fixed;
     bottom: 0;
     right: 0;
-    z-index: -2; /* Lowered to ensure it stays behind other elements */
+    z-index: -2;
     width: 500px;
     opacity: 0.8;
 }
@@ -52,6 +64,7 @@ header {
     padding: 0px;
     align-items: center;
     margin: 10px 15px 30px 15px;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
 
 h2 {
@@ -144,7 +157,7 @@ nav a {
     border-radius: 2px;
     padding: 10px;
     box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 20; 
+    z-index: 25; 
     width: 250px;
     min-height: 260px;
     cursor: move;
@@ -154,7 +167,7 @@ nav a {
 #cart-header {
     position: absolute;
     width: 90%;
-    z-index: 15; 
+    z-index: 15;
 }
 
 #cart-header h4 {
@@ -168,7 +181,8 @@ nav a {
 #cart-header hr {
     margin: 5px 0;
     border: none;
-    background-color: #926289;;
+    background-color: #926289;
+    ;
     height: 2px;
     width: 100%;
 }
@@ -318,6 +332,7 @@ a:hover {
     grid-template-rows: 1fr auto;
     align-items: center;
     padding: 0 10%;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .location-date {
@@ -401,6 +416,8 @@ a:hover {
     padding: 0px;
     align-items: center;
     margin: 1% 10% 2% 10%;
+    animation: fadeInUp 1.0s ease-out backwards;
+    
 }
 
 #categories button {
@@ -442,13 +459,14 @@ a:hover {
     gap: 20px;
     justify-content: center;
     margin: 0 10% 10% 10%;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .store-card {
     width: 250px;
     border-radius: 16px 16px 16px 16px;
     box-shadow: #cecece 0px 2px 5px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
 .store-card:hover {
@@ -462,9 +480,10 @@ a:hover {
     overflow: hidden;
 }
 
-.store-image img{
+.store-image img {
     width: 250px;
 }
+
 .store-name {
     font-family: 'Montserrat';
     font-size: 1.1em;
