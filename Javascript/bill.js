@@ -35,12 +35,13 @@ window.onload = function () {
   const totalWithoutTax = calcTotal();
   taxAmount = calcTax(totalWithoutTax);
   total =calcFinalTotal();
-   const t1 = document.getElementById("total-payment");
-   t1.innerText=total;
-   const t2 = document.getElementById("total");
-   t2.innerText=total;
-   const tax = document.getElementById("tax");
-   tax.innerText=taxAmount;
+  const t1 = document.getElementById("total-payment");
+  t1.innerText=total;
+  const t2 = document.getElementById("total");
+  t2.innerText=total;
+  const tax = document.getElementById("Tax");
+  tax.innerText=taxAmount;
+   
   }
 };
 

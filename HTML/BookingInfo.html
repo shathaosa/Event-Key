@@ -5,118 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Information</title>
     <link rel="stylesheet" href="/CSS/BookingInfoStyles.css">
-    <link rel="stylesheet" href="/CSS/cart.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<header>
-    <img class="logo" src="/Media/EKlogo.png" alt="logo">
-    <nav>
-        <a href="/HTML/Home.html">Home</a>
-        <a href="/HTML/Home.html#about-us">About</a>
-        <a href="/HTML/Explore.html">Explore</a>
-        <a href="/HTML/Home.html#contact-section">Contact Us</a>
-    </nav>
-    <div id="cart-div">
-        <i class="fa-solid fa-cart-shopping" id="cart-icon">
-            <span id="cart-quantity"></span>
-        </i>
-    </div>
-
-    <div id="cart-info">
-        <h4>Your Cart</h4>
-        <button id="close-cart"><i class="fa-solid fa-xmark"></i></button>
-        <hr>
-        <table id="cart-items">
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Vendor</th>
-                    <th id="price-header">Price<span>..</span></th>
-                    <th id="remove-col"></th>
-                </tr>
-            </thead>
-
-            <tbody id="cart-items-body">
-                <!-- Example row structure -->
-                <!-- <tr>
-                    <td>Category Name</td>
-                    <td>Vendor Name</td>
-                    <td>Price</td>
-                    <td class="remove-item"><button id="remove-row"><i class="fa-solid fa-xmark"></i></button></td>
-                </tr> -->
-
-            </tbody>
-        </table>
-
-        <div id="cart-total">
-            <h5>Tax(15%): </h5>
-            <p id="tax"></p>
-            <h5>Total:</h5>
-            <p id="total-price"></p>
+    <header>
+        <img class="logo" src="/Media/EKlogo.png" alt="logo">
+        <nav>
+            <a href="/HTML/Home.html">Home</a>
+            <a href="/HTML/Home.html#about-us">About</a>
+            <a href="/HTML/Explore.html">Explore</a>
+            <a href="/HTML/Home.html#contact-section">Contact Us</a>
+        </nav>
+        
+        <div>
+            <a href="/HTML/Signup_Login.html" class="account"><i class="fa-solid fa-user"></i></a>
         </div>
+    </header>
 
-        <div id="cart-footer">
-            <button id="clear-cart">Clear Cart</button>
-        </div>
+    <div class="buttons">
+        <input type="button" value="Host Information" id="host">
+        <input type="button" value="Booking Information" id="booking">
+        <input type="button" value="Payment" id="payment">
     </div>
 
-    <div>
-    <div>
-        <a href="/HTML/Signup_Login.html" class="account"><i class="fa-solid fa-user"></i></a>
-    </div>
-</header>
+    <div class="fields">
+        <form id="form" method="get">
+            <section class="info">
+                <div class="container1">
+                    <input type="text" placeholder="Event Title" class="event-title" required>
+                    <select class="event-type" required>
+                        <option value="Event Type">Event Type</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Corporate">Corporate</option>
+                    </select>
+                </div>
+                <textarea class="event-description" placeholder="Event Description" required></textarea>
 
-<div class="buttons">
-    <input type="button" value="Host Information" id="host">
-    <input type="button" value="Booking Information" id="booking">
-    <input type="button" value="Payment" id="payment">
-</div>
+                <h4>Guest Options</h4>
+                <div class="container4">
+                    <p class="toggle-label">No Children</p>
+                    <input type="checkbox" class="toggle">
+                </div>
 
-<div class="fields">
-    <form id="form" method="get">
-        <section class="info">
-            <div class="container1">
-                <input type="text" placeholder="Event Title" class="event-title" required>
-                <select class="event-type" required>
-                    <option value="Event Type">Event Type</option>
-                    <option value="Wedding">Wedding</option>
-                    <option value="Birthday">Birthday</option>
-                    <option value="Corporate">Corporate</option>
-                </select>
+                <input id="next" type="submit" value="Next">
+            </section>
+        </form>
+
+        <section class="order">
+            <h3>You're paying</h3>
+            <h2><span id="total-payment">0,0</span><img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
+            <div class="details">
+
+                <hr id="separator">
+                <p class="tax">Tax (15%)<span class="price"><span id="tax">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                            alt="Riyal"></span></p>
+
+                <p class="total">Total<span class="price"><span id="total">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                            alt="Riyal"></span></p>
             </div>
-            <textarea class="event-description" placeholder="Event Description" required></textarea>
-
-            <h4>Guest Options</h4>
-            <div class="container4">
-                <p class="toggle-label">No Children</p>
-                <input type="checkbox" class="toggle">
-            </div>
-
-            <input id="next" type="submit" value="Next">
         </section>
-    </form>
+    </div>
 
-    <section class="order">
-        <h3>You're paying</h3>
-        <h2><span id="total-payment">0,0</span><img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
-        <div class="details">
-
-            <hr id="separator">
-            <p class="tax">Tax (15%)<span class="price"><span id="tax">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                        alt="Riyal"></span></p>
-
-            <p class="total">Total<span class="price"><span id="total">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                        alt="Riyal"></span></p>
-        </div>
-    </section>
-</div>
-
-<script src="/Javascript/Booking.js"></script>
-<script src="/Javascript/bill.js"></script>
-<script src="/Javascript/Explore.js"></script>
+    <script src="/Javascript/Booking.js"></script>
+    <script src="/Javascript/bill.js"></script>
 
 </body>
 </html>
