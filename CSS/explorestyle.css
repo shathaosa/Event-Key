@@ -486,6 +486,10 @@ a:hover {
     cursor: pointer;
 }
 
+.store-card.booked {
+    display: none;
+}
+
 .store-image {
     height: 250px;
     border-radius: 16px 16px 0 0;

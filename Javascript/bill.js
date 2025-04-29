@@ -1,12 +1,20 @@
-const items = []; 
+window.items = []; 
+window.total=0;
+window.taxAmount=0;
 
 window.onload = function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const selectedData = urlParams.get("selected");
-  if (selectedData) {
-    const decodedData = decodeURIComponent(selectedData);
-    items.push(...JSON.parse(decodedData));
-    console.log("Items:", items);
+  const storedSelectedData = localStorage.getItem('products'); // Retrieve bookingData
+  if (storedSelectedData) {
+    const selectedData = JSON.parse(storedSelectedData);
+    
+    // Store booking data in an array called bookingInfo
+    
+    for (const key in selectedData) {
+      if (selectedData.hasOwnProperty(key)) {
+        items.push( selectedData[key]);
+      }
+    }
+    console.log("Items", items); // Debugging output
 
     const detailsContainer = document.querySelector(".details");
     const sp = document.getElementById("separator");
@@ -24,9 +32,9 @@ window.onload = function () {
       detailsContainer.insertBefore(choiceElement,sp);
     });
 
-   const totalWithoutTax = calcTotal();
-   const taxAmount = calcTax(totalWithoutTax);
-   const total =calcFinalTotal();
+  const totalWithoutTax = calcTotal();
+  taxAmount = calcTax(totalWithoutTax);
+  total =calcFinalTotal();
    const t1 = document.getElementById("total-payment");
    t1.innerText=total;
    const t2 = document.getElementById("total");

@@ -120,6 +120,7 @@ function addToCart(event) {
         const item = data.find(store => store.vendor === vendor);
         const category = item ? item.category : "Unknown Category";
         const price = item ? item.price : "Unknown Price";
+        item.date=dateInput.value; // Add date to the item object
         selected.push(item);
         console.log(selected);
 
@@ -295,7 +296,56 @@ function displayStores(stores, filterCategory = null) {
 window.onload = fetchUserData;
 
 checkoutBtn.onclick = function () {
-    const selectedData = JSON.stringify(selected);
-    const encodedData = encodeURIComponent(selectedData);
-    window.location.href = `Host.html?selected=${encodedData}`;
+    try {
+        console.log("Saving form data to localStorage");
+        localStorage.setItem('products', JSON.stringify(selected));
+        window.location.href = '/HTML/Host.html';
+      } catch (error) {
+        console.error("Error saving form data to localStorage:", error);
+        errorMessage.textContent = "Unable to save form data. Please try again.";
+      }
 };
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const dateInput = document.getElementById("date");
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    // Set the minimum date to tomorrow
+    dateInput.min = tomorrow.toISOString().split("T")[0];
+
+    try {
+        // Fetch disabled dates and vendors from the server
+        const response = await fetch("http://localhost:3000/getEventDates");
+        const disabledData = await response.json();
+
+        // Disable the retrieved dates and update store cards
+        dateInput.addEventListener("input", () => {
+            const selectedDate = new Date(dateInput.value);
+            const bookedVendors = disabledData.filter(item => 
+                new Date(item.date).toDateString() === selectedDate.toDateString()
+            ).map(item => item.vendor);
+
+            // Update store cards
+            const storeCards = document.querySelectorAll(".store-card");
+            storeCards.forEach(card => {
+                const vendorName = card.querySelector(".store-name").textContent;
+                if (bookedVendors.includes(vendorName)) {
+                    card.classList.add("booked");
+                } else {
+                    card.classList.remove("booked");
+                }
+            });
+
+            if (bookedVendors.length > 0) {
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "Some vendors are unavailable on this date.";
+            } else {
+                errorMessage.style.display = "none";
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching event dates:", error);
+    }
+});
