@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const sql = require('mssql');
 const cors = require('cors');
+const mysql = require('mysql2/promise');
 
 const app = express();
 const port = 3000; // or any other desired port
@@ -64,3 +65,62 @@ app.get("/explore", async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+
+async function insertUserEventProduct(userData, eventData, productVendors) {
+  
+    try {
+ 
+        // Start a transaction
+        const transaction = new sql.Transaction();
+        await transaction.begin();
+
+        try {
+            const request = new sql.Request(transaction);
+
+            // Check if the user already exists
+            const userResult = await request.query`SELECT id FROM users WHERE email = ${userData.email}`;
+            let userId;
+
+            if (userResult.recordset.length > 0) {
+                // User exists, get the user ID
+                userId = userResult.recordset[0].id;
+            } else {
+                // User does not exist, insert new user
+                const insertUserResult = await request.query`INSERT INTO users (name, email, phone) OUTPUT INSERTED.id VALUES (${userData.name}, ${userData.email}, ${userData.phone})`;
+                userId = insertUserResult.recordset[0].id; // Get the new user ID
+            }
+
+            // Insert the event
+            const eventInsertResult = await request.query`INSERT INTO event (user_id, title, type, description, date, tax, total, children) OUTPUT INSERTED.id VALUES (${userId}, ${eventData.title}, ${eventData.type}, ${eventData.description}, ${eventData.date}, ${eventData.tax}, ${eventData.total}, ${eventData.children})`;
+            const eventId = eventInsertResult.recordset[0].id; // Get the new event ID
+
+            // Insert products into the product_event table
+            for (const vendor of productVendors) {
+                // Check if the product exists
+                const productResult = await request.query`SELECT id FROM products WHERE vendor = ${vendor}`;
+
+                if (productResult.recordset.length > 0) {
+                    const productId = productResult.recordset[0].id;
+
+                    // Insert into product_event
+                    await request.query`INSERT INTO product_event (event_id, product_id) VALUES (${eventId}, ${productId})`;
+                } else {
+                    console.log(`Product with vendor ${vendor} does not exist.`);
+                }
+            }
+
+            // Commit the transaction
+            await transaction.commit();
+            console.log('Transaction committed.');
+        } catch (err) {
+            // Rollback the transaction on error
+            await transaction.rollback();
+            console.error('Transaction rolled back:', err);
+        }
+    } catch (err) {
+        console.error('Database connection error:', err);
+    } finally {
+        await sql.close();
+    }
+}
