@@ -5,6 +5,18 @@ body {
     background-size: cover;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 header {
     display: flex;
     justify-content: space-evenly;
@@ -12,7 +24,9 @@ header {
     padding: 0px;
     align-items: center;
     margin: 10px 15px 30px 15px;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
+
 
 h2 {
     color: #561050;
@@ -25,6 +39,7 @@ h3 {
     color: #926289;
     display: flex;
     justify-content: center;
+    animation: fadeInUp 1.0s ease-out backwards;
 
 }
 
@@ -101,7 +116,9 @@ input {
 #next {
     width: 100%;
     position: relative;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
+
 #host{
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -136,6 +153,7 @@ h2 .riyal {
     margin-left: 5%;
     display: flex;
     flex-direction: row;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
 .buttons input {
     width: 15.25%;
@@ -153,6 +171,7 @@ h2 .riyal {
     max-width: 500px;
     margin: auto;
     margin-bottom: 20%;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
 
 hr {
@@ -211,6 +230,7 @@ hr {
     margin-bottom: 20px;
     flex: 1;
     width: 100%;
+    animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .container1 select,
