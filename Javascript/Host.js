@@ -11,7 +11,6 @@ const form = document.querySelector("#form");
       messages = isFilled("fname", messages, "First name is missing");
       messages = isFilled("lname", messages, "Last name is missing");
       messages = isFilled("DOB", messages, "Date of birth is missing");
-      messages = isCountrySelected("country", messages, "Country is not selected");
       messages = isCountryCodeSelected("code", messages, "Country code is not selected");
       messages = isFilled("contact", messages, "Contact number is missing");
       messages = isMobile("contact", messages, "Contact number must be a 9-digit number");
@@ -32,31 +31,18 @@ const form = document.querySelector("#form");
           fname: document.getElementsByName("fname")[0].value,
           lname: document.getElementsByName("lname")[0].value,
           dob: document.getElementsByName("DOB")[0].value,
-          country: document.getElementsByName("country")[0].value,
           code: document.getElementsByName("code")[0].value,
           contact: document.getElementsByName("contact")[0].value,
           email: document.getElementsByName("email")[0].value,
         };
     
         try {
-          const response = await fetch('/submit-host', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-          });
-    
-          const result = await response.json();
-    
-          if (result.success) {
-            window.location.href = '/HTML/BookingInfo.html'; 
-          } else {
-            msg.innerHTML = "Server error: " + result.message;
-          }
+          console.log("Saving form data to localStorage");
+          localStorage.setItem('hostFormData', JSON.stringify(formData));
+          window.location.href = '/HTML/BookingInfo.html';
         } catch (error) {
-          console.error("Error submitting form:", error);
-          msg.innerHTML = "Server error: Please try again later.";
+          console.error("Error saving form data to localStorage:", error);
+          msg.innerHTML = "Error: Unable to save form data. Please try again.";
         }
       }
     });
@@ -72,7 +58,7 @@ const form = document.querySelector("#form");
   
     function isEmail(name,messages,msg){
       const element = document.getElementsByName(name)[0].value.trim();
-      if(!element.match("[a-z0-9]+@[a-z]+\.[a-z]{2,4}")){
+      if (!element.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
         messages.push(msg);
       }
       return messages;
@@ -87,14 +73,7 @@ const form = document.querySelector("#form");
     }
     
   
-    function isCountrySelected(name, messages, msg) {
-      const value = document.getElementsByName(name)[0]?.value.trim();
-      console.log(`[isCountrySelected] ${name} = "${value}"`);
-      if (value === "Select Country") {
-        messages.push(msg);
-      }
-      return messages;
-    }
+
   
     function isCountryCodeSelected(name, messages, msg) {
       const value = document.getElementsByName(name)[0]?.value.trim();
