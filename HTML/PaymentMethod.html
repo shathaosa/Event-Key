@@ -27,31 +27,32 @@
     </header>
 
     <div class="payment-container">
-
         <div class="payment-box">
             <div class="buttons">
                 <input type="button" value="Host Information" id="host">
                 <input type="button" value="Booking Information" id="booking">
                 <input type="button" value="Payment" id="payment">
             </div>
-            <h3>Payment Methods</h3>
-            <div class="payment-methods">
-                <i class="fa-solid fa-credit-card"></i>
-                <i class="fa-brands fa-apple-pay"></i>
-                <i class="fa-brands fa-google-pay"></i>
-                <i class="fa-brands fa-paypal"></i>
-            </div>
-
-            <h4>Card Details</h4>
-            <div class="card-details">
-                <input type="text" placeholder="Cardholder's Name" required>
-                <input type="text" placeholder="Card Number" maxlength="16" required>
-                <div class="container1">
-                <input type="text" placeholder="Expiry Date" onfocus="(this.type='month')" required>
-                <input type="text" placeholder="CVC" maxlength="3" minlength="3" required>
+            <form id="form" name="form" method="get">
+                <h3>Payment Methods</h3>
+                <div class="payment-methods">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <i class="fa-brands fa-apple-pay"></i>
+                    <i class="fa-brands fa-google-pay"></i>
+                    <i class="fa-brands fa-paypal"></i>
                 </div>
-                <button type="submit" class="confirm-button">Confirm</button>
-            </div>
+
+                <h4>Card Details</h4>
+                <div class="card-details">
+                    <input type="text" placeholder="Cardholder's Name" name="holderName" required>
+                    <input type="text" placeholder="Card Number" maxlength="16" name="cardNumber" required>
+                    <div class="container1">
+                    <input type="text" placeholder="Expiry Date" onfocus="(this.type='month')" name="expiry" required>
+                    <input type="text" placeholder="CVC" maxlength="3" minlength="3" name="cvc" required>
+                    </div>
+                    <button type="submit" class="confirm-button">Confirm</button>
+                </div>
+            </form>
         </div>
 
         <section class="order">
@@ -91,5 +92,8 @@
             </div>
         </section>
     </div>
+    <script src="/Javascript/payment.js"></script>
+    <script src="/Javascript/bill.js"></script>
+
 </body>
 </html>
