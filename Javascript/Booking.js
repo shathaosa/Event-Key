@@ -3,17 +3,6 @@ const msg = document.createElement("div");
 msg.id = "msg";
 form.append(msg);
 
-const items = [];
-
-window.onload = function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const selectedData = urlParams.get("selected");
-  if (selectedData) {
-    const decodedData = decodeURIComponent(selectedData);
-    items.push(...JSON.parse(decodedData));
-    console.log("Items:", items);
-  }
-};
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -25,7 +14,6 @@ form.addEventListener("submit", async (e) => {
   messages = isFutureDate("event-date", messages, "Please select a future Event Date");
   messages = isValidTime("start-time", messages, "Start Time format is wrong. Example: 08:00 AM");
   messages = isValidTime("end-time", messages, "End Time format is wrong. Example: 10:00 AM");
-  messages = isFilled("event-location", messages, "Event Location is missing");
 
   if (messages.length > 0) {
     msg.style.color = "#C70039";
@@ -42,7 +30,6 @@ form.addEventListener("submit", async (e) => {
       eventDate: document.getElementsByClassName("event-date")[0].value.trim(),
       startTime: document.getElementsByClassName("start-time")[0].value.trim(),
       endTime: document.getElementsByClassName("end-time")[0].value.trim(),
-      eventLocation: document.getElementsByClassName("event-location")[0].value.trim(),
       hideGuestList: document.querySelectorAll(".toggle")[0]?.checked || false,
       noChildren: document.querySelectorAll(".toggle")[1]?.checked || false
     };
