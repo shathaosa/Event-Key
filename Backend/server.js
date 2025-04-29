@@ -7,20 +7,6 @@ const app = express();
 const port = 3000; // or any other desired port
 
 app.use(cors()); // Enable CORS for all routes
-// Setting up DB connection
-const connection = mysql.createConnection({
-    host: 'localhost', // MySQL host
-    user: 'root',
-    password: '',
-    database: 'eventKey'
-});
-
-connection.connect(err => {
-    if (err) throw err;
-    console.log('Connected to the database!');
-});
-
-// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Add this line to handle JSON requests
 
