@@ -6,34 +6,6 @@ form.append(msg);
 hostInfo = {};
 bookingInfo = {};
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const storedData = localStorage.getItem('hostFormData'); // Retrieve hostFormData
-//   if (storedData) {
-//     const formData = JSON.parse(storedData);
-
-//     // Store data in an array called hostInfo
-//     for (const key in formData) {
-//       if (formData.hasOwnProperty(key)) {
-//         hostInfo.push({ key: key, value: formData[key] });
-//       }
-//     }
-//     console.log("Host Info:", hostInfo); // Debugging output
-//   }
-
-//   const storedBookingData = localStorage.getItem('bookingData'); // Retrieve bookingData
-//   if (storedBookingData) {
-//     const bookingData = JSON.parse(storedBookingData);
-
-//     // Store booking data in an array called bookingInfo
-//     for (const key in bookingData) {
-//       if (bookingData.hasOwnProperty(key)) {
-//         bookingInfo.push({ key: key, value: bookingData[key] });
-//       }
-//     }
-//     console.log("Booking Info:", bookingInfo); // Debugging output
-//   }
-// });
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const storedData = localStorage.getItem('hostFormData'); // Retrieve hostFormData
