@@ -129,11 +129,11 @@ input {
 }
 
 .riyal {
-    width: 32px;
+    width: 18px;
 }
 
 h2 .riyal {
-    width: 64px;
+    width: 36px;
 }
 
 .logo {
@@ -214,6 +214,7 @@ h2 .riyal {
     max-width: 500px;
     margin: auto;
     margin-bottom: 20%;
+    z-index: -1;
 }
 
 hr {

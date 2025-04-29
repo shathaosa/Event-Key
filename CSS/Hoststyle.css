@@ -132,7 +132,7 @@ select {
 }
 
 .riyal {
-    width: 32px;
+    width: 18px;
 }
 
 
@@ -141,7 +141,7 @@ select {
 }
 
 h2 .riyal {
-    width: 64px;
+    width: 36px;
 }
 
 .container1,
@@ -172,6 +172,7 @@ h2 .riyal {
     margin: auto;
     margin-bottom: 20%;
     animation: fadeInUp 1.0s ease-out backwards;
+    z-index: -1;
 }
 
 hr {

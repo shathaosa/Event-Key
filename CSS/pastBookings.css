@@ -68,7 +68,7 @@ nav a {
     transform: scale(1.1);
 }
 
-#host {
+#booking {
     background-color: #561050;
     color: #ffffff;
     padding: 10px;
@@ -77,15 +77,9 @@ nav a {
     margin-top: 10px;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
-}
-
-#booking {
-    background-color: #FFF5F1;
-    border: none;
-    border-bottom: 3px solid #561050;
-    border-radius: 0px;
     cursor: pointer;
 }
+
 .buttons {
     margin-left: 5%;
     display: flex;

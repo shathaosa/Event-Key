@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
     <link rel="stylesheet" href="/CSS/PaymentMethodStyles.css">
+    <link rel="stylesheet" href="/CSS/cart.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
@@ -20,8 +21,52 @@
             <a href="Explore.html">Explore</a>
             <a href="/HTML/Home.html#contact-section">Contact Us</a>
         </nav>
+        <div id="cart-div">
+            <i class="fa-solid fa-cart-shopping" id="cart-icon">
+                <span id="cart-quantity"></span>
+            </i>
+        </div>
+
+        <div id="cart-info">
+            <h4>Your Cart</h4>
+            <button id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+            <hr>
+            <table id="cart-items">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Vendor</th>
+                        <th id="price-header">Price<span>..</span></th>
+                        <th id="remove-col"></th>
+                    </tr>
+                </thead>
+
+                <tbody id="cart-items-body">
+                    <!-- Example row structure -->
+                    <!-- <tr>
+                        <td>Category Name</td>
+                        <td>Vendor Name</td>
+                        <td>Price</td>
+                        <td class="remove-item"><button id="remove-row"><i class="fa-solid fa-xmark"></i></button></td>
+                    </tr> -->
+
+                </tbody>
+            </table>
+
+            <div id="cart-total">
+                <h5>Tax(15%): </h5>
+                <p id="tax"></p>
+                <h5>Total:</h5>
+                <p id="total-price"></p>
+            </div>
+
+            <div id="cart-footer">
+                <button id="clear-cart">Clear Cart</button>
+            </div>
+        </div>
+
         <div>
-            <a href="/HTML/Host.html" class="account"> <i class="fa-solid fa-cart-shopping"></i></a>
+        <div>
             <a href="/HTML/Signup_Login.html" class="account"><i class="fa-solid fa-user"></i></a>
         </div>
     </header>
@@ -73,6 +118,7 @@
     </div>
     <script src="/Javascript/payment.js"></script>
     <script src="/Javascript/bill.js"></script>
+    <script src="/Javascript/Explore.js"></script>
 
 </body>
 </html>

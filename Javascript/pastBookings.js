@@ -1,28 +1,6 @@
 window.onload = function() {
-    viewAccount();
+    viewBookings();
 };
-
-function activate(active, unactive) {
-    active.setAttribute("style", `
-        background-color: #561050;
-        color: #ffffff;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        margin-top: 10px;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 0px;
-    `);
-
-    unactive.setAttribute("style", `
-        background-color: #FFF5F1;
-        color: black;
-        border: none;
-        border-bottom: 3px solid #561050;
-        border-radius: 0px;
-        cursor: pointer;
-    `);
-}
 
 function viewBookings() {
     const bookingData = [
@@ -49,7 +27,7 @@ function viewBookings() {
     ];
 
     const tableContainer = document.getElementById("bookingsContainer");
-    tableContainer.innerHTML = ''; 
+    tableContainer.innerHTML = '';
 
     const table = document.createElement("table");
     table.setAttribute("id", "booking-table");
@@ -83,55 +61,4 @@ function viewBookings() {
 
     table.appendChild(tbody);
     tableContainer.appendChild(table);
-}
-
-function viewAccount() {
-    const accountData = {
-        name: "John Doe",
-        email: "john@example.com",
-        phone: "+1234567890",
-        address: "123 Main Street, City, Country"
-    };
-
-    const container = document.getElementById("bookingsContainer");
-    container.innerHTML = ''; 
-
-    const accountDiv = document.createElement("div");
-    accountDiv.classList.add("account-info");
-
-    Object.entries(accountData).forEach(([field, value]) => {
-        const fieldContainer = document.createElement("div");
-        fieldContainer.classList.add("account-field");
-
-        const label = document.createElement("label");
-        label.innerText = field.charAt(0).toUpperCase() + field.slice(1) + ": ";
-        label.classList.add("account-label");
-
-        const span = document.createElement("span");
-        span.innerText = value;
-        span.classList.add("account-value");
-
-        const editIcon = document.createElement("i");
-        editIcon.className = "fa-solid fa-pen-to-square edit-icon";
-        editIcon.style.cursor = "pointer";
-        editIcon.addEventListener("click", () => {
-            if (span.isContentEditable) {
-                span.contentEditable = "false";
-                span.classList.remove("editing");
-                editIcon.style.color = "#561050"; 
-            } else {
-                span.contentEditable = "true";
-                span.focus();
-                span.classList.add("editing");
-                editIcon.style.color = "green"; 
-            }
-        });
-
-        fieldContainer.appendChild(label);
-        fieldContainer.appendChild(span);
-        fieldContainer.appendChild(editIcon);
-        accountDiv.appendChild(fieldContainer);
-    });
-
-    container.appendChild(accountDiv);
 }
