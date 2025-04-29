@@ -31,12 +31,9 @@
         </div>
 
         <div id="cart-info">
-            <div id="cart-header">
-                <h4>Your Cart</h4>
-                <button id="close-cart"><i class="fa-solid fa-xmark"></i></button>
-                <hr>
-            </div>
-
+            <h4>Your Cart</h4>
+            <button id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+            <hr>
             <table id="cart-items">
                 <thead>
                     <tr>
@@ -86,7 +83,6 @@
                 <label><i class="fa-solid fa-location-dot"></i> Current Location </label>
                 <select name="city" id="city-select">
                     <option value="jeddah">Jeddah</option>
-                    <option value="alriyadh">AlRiyadh</option>
                 </select>
                 <i class="fa-solid fa-caret-down"></i>
             </div>
@@ -98,9 +94,12 @@
             </div>
 
         </div>
+        <p id="error-message"></p>
     </section>
 
     <section id="categories">
+        <button id="all"> All </button>
+
         <button id="venues"> Venues </button>
 
         <button id="music">Music</button>

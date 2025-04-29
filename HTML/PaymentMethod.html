@@ -50,7 +50,7 @@
                     <input type="text" placeholder="Expiry Date" onfocus="(this.type='month')" name="expiry" required>
                     <input type="text" placeholder="CVC" maxlength="3" minlength="3" name="cvc" required>
                     </div>
-                    <button type="submit" class="confirm-button">Confirm</button>
+                    <button class="confirm-button" onclick="window.location.href='confirm.html'">Confirm</button>
                 </div>
             </form>
         </div>
@@ -60,36 +60,15 @@
             <h2><span id="total-payment">0,0</span><img class="riyal" src="/Media/Riyal.png" alt="Riyal"></h2>
 
             <div class="details">
-                <p class="catagory">Venue<span class="price"><span id="venue-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="venue-choice">----</p>
+                <div class="details">
 
-                <p class="catagory">Flowers<span class="price"><span id="flowers-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="flowers-choice">----</p>
-
-                <p class="catagory">Photographer<span class="price"><span id="photo-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="photo-choice">----</p>
-
-                <p class="catagory">Decoration<span class="price"><span id="decor-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="decor-choice">----</p>
-
-                <p class="catagory">Music<span class="price"><span id="music-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="music-choice">----</p>
-
-                <p class="catagory">Catering<span class="price"><span id="catering-price">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-                <p class="choice" id="catering-choice">----</p>
-                <hr>
-                <p class="tax">Tax (15%)<span class="price"><span id="tax">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-
-                <p class="total">Total<span class="price"><span id="total">0,0 </span><img class="riyal" src="/Media/Riyal.png"
-                            alt="Riyal"></span></p>
-            </div>
+                    <hr id="separator">
+                    <p class="tax">Tax (15%)<span class="price"><span id="tax">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                                alt="Riyal"></span></p>
+    
+                    <p class="total">Total<span class="price"><span id="total">0,0 </span><img class="riyal" src="/Media/Riyal.png"
+                                alt="Riyal"></span></p>
+                </div>
         </section>
     </div>
     <script src="/Javascript/payment.js"></script>

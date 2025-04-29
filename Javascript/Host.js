@@ -3,9 +3,6 @@ const form = document.querySelector("#form");
     msg.id = "msg";
     form.append(msg);
 
-   
-
-
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       let messages = [];

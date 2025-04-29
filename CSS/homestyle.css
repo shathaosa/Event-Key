@@ -14,6 +14,17 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
 
 header {
   display: flex;
@@ -22,6 +33,7 @@ header {
   padding: 0px;
   align-items: center;
   margin: 10px 15px 30px 15px;
+  animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .logo img {
@@ -34,6 +46,7 @@ nav {
   gap: 35px;
   align-items: center;
   margin: auto;
+  animation: fadeInUp 1.0s ease-out backwards;
 
 }
 
@@ -43,37 +56,40 @@ nav a {
   text-align: center;
   padding: 0 5px 0 5px;
   font-size: 1em;
+  transition: transform 0.3s ease;
 }
-
 
 
 #Home {
-font-weight: 600;
+  font-weight: 600;
 }
 
 .logo {
-width: 150px;
+  width: 150px;
 }
 
 
 a:hover {
-color: #926289;
-cursor: pointer;
+  color: #926289;
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
-.buttons i:hover{
-color: #926289;
-cursor: pointer;
+.buttons i:hover {
+  color: #926289;
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .buttons i {
-color: #561050;
-margin-right: 5px;
-padding-right: 10px;
-font-size: 1.5em;
+  color: #561050;
+  margin-right: 5px;
+  padding-right: 10px;
+  font-size: 1.5em;
+  transition: transform 0.3s ease;
 }
 
-.fa-solid.fa-cart-shopping{
+.fa-solid.fa-cart-shopping {
   margin-right: 10px;
 }
 
@@ -88,6 +104,7 @@ font-size: 1.5em;
   background-image: url("/Media/Background.png");
   background-size: cover;
   background-position: center;
+  animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .welcome-content {
@@ -127,8 +144,12 @@ font-size: 1.5em;
 
 /* About Us Section */
 .about-us {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/Media/RadBack.png');
+  background-position: center;
+  background-repeat: no-repeat;
   text-align: center;
   padding: 40px 20px;
+  animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .about-us h2 {
@@ -160,17 +181,19 @@ font-size: 1.5em;
   height: 500px;
   border-radius: 10px;
 }
-.right-section{
+
+.right-section {
 
 
   margin-top: 150px;
-  
+
 }
 
 /* Services Section */
 .services {
   padding: 40px 10px;
   text-align: center;
+  animation: fadeInUp 1.0s ease-out backwards;
 
 }
 
@@ -197,14 +220,14 @@ font-size: 1.5em;
 
 .about-header {
   display: flex;
-  align-items: center; 
-  gap: 7px; 
-  margin-bottom: 10px; 
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 10px;
 }
 
 .about-header h2 {
   font-size: 2rem;
-  margin: 0; 
+  margin: 0;
 }
 
 .about-header .about-logo {
@@ -227,6 +250,7 @@ font-size: 1.5em;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .center-section .big-key img {
@@ -244,6 +268,7 @@ font-size: 1.5em;
   flex: 1;
   text-align: right;
   margin-top: 70px;
+  animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .contact-info p {
@@ -252,33 +277,41 @@ font-size: 1.5em;
   font-size: 1rem;
   color: #561050;
   display: flex;
-  justify-content:left;
+  justify-content: left;
   gap: 25px;
 }
 
-.contact-info img {
-  max-height: 25px;
-  
+.contact-info i {
+  font-size: 1.5em;
+  transition: transform 0.3s ease;
+
 }
 
-.contact-info img:hover {
+.contact-info i:hover {
   transform: scale(1.1);
-  
+
 }
 
 .social-media {
   display: flex;
   gap: 15px;
   margin-top: 20px;
+  animation: fadeInUp 1.0s ease-out backwards;
 }
 
-.social-media img {
-  height: 35px;
-  width: auto;
+.social-media>span {
+  padding: 5px 10px;
+  background-color: #561050;
+  border-radius: 20px;
   transition: transform 0.3s ease;
 }
 
-.social-media img:hover {
+.social-media>span>i {
+  color: #ffffff;
+  font-size: 1.1em;
+}
+
+.social-media span:hover {
   transform: scale(1.1);
 }
 
@@ -287,14 +320,14 @@ footer {
   padding: 40px;
   background-color: #fff5f1;
   text-align: center;
+  animation: fadeInUp 1.0s ease-out backwards;
 }
 
 .company-logos {
   display: flex;
   justify-content: center;
   gap: 50px;
-  flex-wrap:nowrap
-
+  flex-wrap: nowrap
 }
 
 .company-logos a img {
@@ -330,7 +363,8 @@ footer {
   div {
     padding-top: 10px;
     font-size: 10px;
-   }
+  }
+
   .welcome-content {
     padding: 15px;
   }
@@ -359,11 +393,13 @@ footer {
     height: 300px;
 
   }
-  .about-header{
+
+  .about-header {
 
     margin-left: 250px;
-    
-    }
+
+  }
+
   .social-media {
     margin-top: 50px;
     margin-left: 280px;
@@ -373,26 +409,32 @@ footer {
 @media (max-width: 576px) {
   header {
     flex-direction: row;
-    .logo{ max-width: 80px;}
-  nav a{
-    font-size: 13px;
-  }
-  div {
-   padding-top: 10px;
-   font-size: 10px;
-  }
-  
+
+    .logo {
+      max-width: 80px;
+    }
+
+    nav a {
+      font-size: 13px;
+    }
+
+    div {
+      padding-top: 10px;
+      font-size: 10px;
+    }
+
   }
 
-  nav{
+  nav {
     gap: 10px;
-    padding-top: 10px;    }
+    padding-top: 10px;
+  }
 
   .welcome-content {
     padding: 10px;
   }
 
-  
+
   .welcome-text p {
     font-size: 0.9rem;
   }
@@ -412,18 +454,19 @@ footer {
   .image-row {
     flex-direction: column;
     align-items: center;
-    
+
   }
 
   .image-row img {
     height: 500px;
   }
 
-.about-header{
+  .about-header {
 
-margin-left: 160px;
+    margin-left: 160px;
 
-}
+  }
+
   .left-section h2 {
     font-size: 1.5rem;
   }
@@ -432,23 +475,26 @@ margin-left: 160px;
     font-size: 0.9rem;
     align-content: center;
   }
+
   .social-media {
     margin-top: 50px;
     margin-left: 180px;
   }
 
-  .contact-info{
-  
+  .contact-info {
+
     justify-content: left;
 
-    
-   
+
+
   }
+
   .contact-info p {
     font-size: 0.9rem;
 
   }
-  .company-logos img{
+
+  .company-logos img {
     max-height: 30px;
   }
 }
