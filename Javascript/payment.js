@@ -44,7 +44,7 @@ const form = document.querySelector("#form");
           const result = await response.json();
     
           if (result.success) {
-            window.location.href = '/HTML/BookingInfo.html'; 
+            window.location.href = '/HTML/Confirm.html'; 
           } else {
             msg.innerHTML = "Server error: " + result.message;
           }
