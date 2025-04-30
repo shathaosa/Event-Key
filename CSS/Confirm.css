@@ -10,6 +10,7 @@
     --glass-blur: blur(14px);
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -120,7 +121,7 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-.buttons i,
+.account i,
 #cart-icon {
     color: var(--primary-color);
     margin-right: 5px;
@@ -133,7 +134,7 @@ nav a:hover {
     margin-right: 10px;
 }
 
-.buttons i:hover,
+.account i:hover,
 #cart-icon:hover {
     color: var(--secondary-color);
     transform: scale(1.1);

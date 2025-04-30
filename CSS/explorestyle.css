@@ -3,6 +3,8 @@
     --secondary-color: #926289;
     --highlight-color: #C198BE;
     --background-color: #FFF5F1;
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-blur: blur(14px);
     --font-family-primary: 'poppins', sans-serif;
     --font-family-secondary: 'Montserrat';
     --box-shadow: 0px 2px 5px rgba(206, 206, 206, 0.8), inset 0px -2px 5px rgba(0, 0, 0, 0.1);
@@ -68,12 +70,17 @@ body {
 header {
     display: flex;
     position: sticky;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0px;
+    padding: 12px 6%;
     align-items: center;
-    margin: 10px 15px 30px 15px;
-    animation: fadeInUp 1.0s ease-out backwards;
+    background-color: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    animation: fadeInUp 0.8s ease-out backwards;
+    top: 0;
+    z-index: 1000;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.06);
 }
 
 h2,
@@ -97,6 +104,7 @@ h3 {
     justify-content: left;
     font-family: var(--font-family-secondary);
     margin: 0;
+    margin-top: 1%;
 }
 
 h4 {
@@ -680,6 +688,7 @@ a:hover {
 
     h3 {
         font-size: 1.5em;
+        margin: 0;
     }
 }
 
@@ -799,5 +808,6 @@ a:hover {
 
     h3 {
         font-size: 1.2em;
+        margin: 0;
     }
 }

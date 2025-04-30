@@ -1,3 +1,8 @@
+:root{
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-blur: blur(14px);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -17,11 +22,18 @@ body {
 
 header {
     display: flex;
-    justify-content: space-evenly;
+    position: sticky;
+    justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0px;
+    padding: 12px 6%;
     align-items: center;
-    margin: 10px 15px 30px 15px;
+    background-color: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    animation: fadeInUp 0.8s ease-out backwards;
+    top: 0;
+    z-index: 1000;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.06);
 }
 
 nav {

@@ -34,11 +34,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     console.log("Booking Info:", bookingInfo); // Debugging output
   }
+
+  // Check if the button should be disabled
+  const isButtonDisabled = localStorage.getItem('isButtonDisabled');
+  if (isButtonDisabled === 'true') {
+    btn.disabled = true;
+    btn.classList.remove("confirm-button");
+    btn.classList.add("disabled");
+  }
 });
 
 // Attach the event listener to the form, not the button
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  btn.disabled = true; // Disable the button to prevent multiple submissions
+  btn.classList.remove("confirm-button"); // Remove the original class
+  btn.classList.add("disabled"); // Add the disabled class
+
+  // Save the button state in localStorage
+  localStorage.setItem('isButtonDisabled', 'true');
+
   let messages = [];
   console.log("Items", items); // Debugging output
   messages = isFilled("holderName", messages, "Card holder's name is missing");
@@ -54,6 +69,11 @@ form.addEventListener("submit", async (e) => {
     msg.style.marginLeft = "55px";
     msg.style.marginTop = "10px";
     msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
+    btn.disabled = false; // Re-enable the button if there are validation errors
+    btn.classList.remove("disabled"); // Remove the disabled class
+
+    // Reset the button state in localStorage
+    localStorage.setItem('isButtonDisabled', 'false');
   } else {
     msg.innerHTML = "";
 
@@ -86,11 +106,15 @@ form.addEventListener("submit", async (e) => {
         window.location.href = '/HTML/Confirm.html';
       } else {
         msg.innerHTML = "Server error: " + result.message;
+        btn.disabled = false; // Re-enable the button if the server returns an error
+        btn.classList.remove("disabled"); // Remove the disabled class
         return;
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       msg.innerHTML = "Server error: Please try again later.";
+      btn.disabled = false; // Re-enable the button if there is a network error
+      btn.classList.remove("disabled"); // Remove the disabled class
     }
   }
 });
