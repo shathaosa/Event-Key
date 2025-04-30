@@ -126,6 +126,7 @@ function addToCart(event) {
         console.log(selected);
 
         addCartRow(category, vendor, price);
+        calculateCartTotals(); // Update totals
     }
 }
 
@@ -140,6 +141,7 @@ function removeCartItem(event) {
         console.log(selected);
 
         handleEmptyCart();
+        calculateCartTotals(); // Update totals
     }
 }
 
@@ -148,6 +150,7 @@ function clearCart() {
     updateCartQuantity(-quantityValue);
     selected = [];
     handleEmptyCart();
+    calculateCartTotals(); // Reset totals
 }
 
 function noItemsInCart() {
@@ -350,3 +353,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Error fetching event dates:", error);
     }
 });
+
+function calculateCartTotals() {
+    const taxRate = 0.15; // 15% tax
+    let subtotal = 0;
+
+    selected.forEach(item => {
+        const price = parseFloat(item.price) || 0;
+        subtotal += price;
+    });
+
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax;
+
+    const riyalIcon = '<img alt="Saudi Riyal" src="/Media/Riyal.png" width="10">';
+    document.getElementById("tax").innerHTML = `${tax.toFixed(2)} ${riyalIcon}`;
+    document.getElementById("total-price").innerHTML = `${total.toFixed(2)} ${riyalIcon}`;
+}

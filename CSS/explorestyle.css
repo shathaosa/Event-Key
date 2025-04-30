@@ -281,8 +281,9 @@ td.remove-item {
 
 #cart-total h5,
 #cart-total p {
+    display: inline;
     font-size: 0.9em;
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 #cart-total h5 {
