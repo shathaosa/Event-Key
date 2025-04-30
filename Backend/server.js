@@ -195,9 +195,7 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
     } 
 }
 
-app.post("/userBookings", async (req, res) => {
-    console.log("Request received at /userBookings:", req.body); // Debugging log
-
+  app.post("/userBookings", async (req, res) => {
     const { email, contact } = req.body;
 
     if (!email || !contact) {

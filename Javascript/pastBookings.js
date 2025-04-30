@@ -7,16 +7,18 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
   
     try {
-      const response = await fetch("http://localhost:3000/userBookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          contact: formData.contact,
-        }),
-      });
+        const response = await fetch("http://localhost:3000/userBookings", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: formData.email,
+                contact: formData.contact
+              })              
+          });
+          
+          
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -78,6 +80,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   
       table.appendChild(tbody);
       tableContainer.appendChild(table);
+      console.log("FormData from localStorage:", formData);
+
     } catch (error) {
       console.error("Error fetching bookings:", error);
       document.getElementById("bookingsContainer").innerText = "Error loading bookings. Please try again later.";
