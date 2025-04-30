@@ -83,7 +83,7 @@ form.addEventListener("submit", async (e) => {
 
       if (result.success) {
         console.log("Form Data:", items);
-        window.location.href = '/HTML/BookingInfo.html';
+        window.location.href = '/HTML/Confirm.html';
       } else {
         msg.innerHTML = "Server error: " + result.message;
         return;
