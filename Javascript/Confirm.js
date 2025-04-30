@@ -4,13 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const booking = JSON.parse(localStorage.getItem("bookingData"));
   const products = JSON.parse(localStorage.getItem("products")) || [];
 
-<<<<<<< HEAD
   if (!host || !booking) {
       alert("Missing host or booking data.");
       return;
   }
 
-  // show the data of host
+  // show host data
   document.getElementById("host-title").textContent = host.title || "-";
   document.getElementById("host-name").textContent = `${host.fname || ""} ${host.lname || ""}`.trim() || "-";
   document.getElementById("host-dob").textContent = host.dob || "-";
@@ -18,13 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("host-contact").textContent = host.contact || "-";
   document.getElementById("host-email").textContent = host.email || "-";
 
-  // show the data of booking
+  // show booking data
   document.getElementById("event-title").textContent = booking.eventTitle || "-";
   document.getElementById("booking-type").textContent = booking.eventType || "-";
   document.getElementById("booking-description").textContent = booking.eventDescription || "-";
   document.getElementById("booking-children").textContent = booking.noChildren === "true" ? "Yes" : "No";
 
-  // show the data of products  
+  // show products data
   const productsContainer = document.getElementById("booked-products");
   if (products.length === 0) {
       productsContainer.innerHTML = "<p class='no-products'>No products booked</p>";
@@ -35,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       products.forEach(product => {
           subtotal += product.price;
           
-          // format the dtae
+          // date format
           const eventDate = new Date(product.date);
           const formattedDate = eventDate.toLocaleDateString('en-US', {
               weekday: 'long',
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       productsContainer.innerHTML = html;
       
-      // calucate the subtotal and tax and the total
+      // calucate subtotal, tax, total
       const tax = subtotal * 0.15;
       const total = subtotal + tax;
       
@@ -70,26 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("tax").textContent = `${tax.toLocaleString()} SAR`;
       document.getElementById("total").textContent = `${total.toLocaleString()} SAR`;
   }
-=======
-    if (!host || !booking) {
-        alert("Missing host or booking data.");
-        return;
-    }
-    console.log("Host Data:", host);
-    // Display host data
-    document.getElementById("host-title").textContent = host.title || "-";
-    document.getElementById("host-name").textContent = `${host.fname || ""} ${host.lname || ""}`.trim() || "-";
-    document.getElementById("host-dob").textContent = host.dob || "-";
-    document.getElementById("host-country").textContent = host.code || "-";
-    document.getElementById("host-contact").textContent = host.contact || "-";
-    document.getElementById("host-email").textContent = host.email || "-";
-    console.log("Booking Data:", booking);
-    // Display booking data
-    document.getElementById("event-title").textContent = booking.eventTitle || "-";
-    document.getElementById("booking-type").textContent = booking.eventType || "-";
-    document.getElementById("booking-description").textContent = booking.eventDescription || "-";
-    document.getElementById("booking-children").textContent = booking.noChildren === false ? "Yes" : "No";
->>>>>>> 960a3cbe5e8aeca1a47113a1d78400522c03a364
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const butterfly = document.querySelector('.butterfly');
 });
     
     function moveButterfly() {
