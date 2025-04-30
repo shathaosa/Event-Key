@@ -516,6 +516,7 @@ a:hover {
     border-radius: 16px 16px 16px 16px;
     box-shadow: #cecece 0px 2px 5px;
     transition: transform 0.3s ease-in-out;
+    background-color: #fff5f1b1;
 }
 
 .store-card:hover {
@@ -550,6 +551,10 @@ a:hover {
     font-size: 0.8em;
     color: var(--highlight-color);
     margin: 10px 0 0 5px;
+}
+
+.store-location i {
+    color: var(--highlight-color);
 }
 
 .store-budget {
