@@ -8,8 +8,6 @@ const form = document.querySelector("#form");
       let messages = [];
     
       messages = isFilled("email", messages, "Email is required");
-      messages = isFilled("contact", messages, "Phone Number is required");
-      messages = isMobile("contact", messages, "Contact number must be a 9-digit number");
       messages = isEmail("email", messages, "Email format is wrong");
     
       if (messages.length > 0) {
@@ -21,11 +19,37 @@ const form = document.querySelector("#form");
         msg.innerHTML = "";
     
         const formData = {
-          contact: document.getElementsByName("contact")[0].value,
-          email: document.getElementsByName("email")[0].value,
+          email: document.getElementsByName("email")[0].value
         };
     
-        window.location.href = '/HTML/pastBookings.html';
+        try {
+            const response = await fetch("http://localhost:3000/getUserBookings", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: formData.email }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch bookings");
+            }
+
+            const result = await response.json();
+            if (result.success) {
+                const bookings = result.bookings;
+                console.log("Bookings retrieved:", bookings);
+                // Store bookings in localStorage or handle as needed
+                localStorage.setItem("bookings", JSON.stringify(bookings));
+                console.log("Bookings stored in localStorage:", bookings);
+                window.location.href = '/HTML/pastBookings.html';
+            } else {
+                msg.style.color = "#C70039";
+                msg.innerHTML = result.message;
+            }
+        } catch (err) {
+            console.error("Error fetching bookings:", err);
+            msg.style.color = "#C70039";
+            msg.innerHTML = "An error occurred while fetching bookings.";
+        }
       }
     });
     
@@ -46,10 +70,10 @@ const form = document.querySelector("#form");
       return messages;
     }
     
-    function isMobile(name,messages,msg){
-      const element = document.getElementsByName(name)[0].value.trim();
-      if(!element.match("[0-9]{9}")){
-        messages.push(msg);
-      }
-      return messages;
-    }
+    // function isMobile(name,messages,msg){
+    //   const element = document.getElementsByName(name)[0].value.trim();
+    //   if(!element.match("[0-9]{9}")){
+    //     messages.push(msg);
+    //   }
+    //   return messages;
+    // }

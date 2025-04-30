@@ -86,6 +86,46 @@ app.get("/getEventDates", async (req, res) => {
     }
 });
 
+app.post("/getUserBookings", async (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(400).json({ 
+            success: false, 
+            message: "Email is required" 
+        });
+    }
+
+    try {
+        const request = new sql.Request();
+        const query = `
+            SELECT u.id AS User_id, u.name AS User_name, 
+                   e.id AS Event_id, e.title AS Event_title, 
+                   e.date AS Event_Date ,e.title , e.type , e.description , e.children ,e.tax, e.total
+            FROM event e
+            JOIN users u ON u.id = e.user_id
+            WHERE u.email = @Email`;
+
+        request.input('Email', sql.VarChar, email);
+        const result = await request.query(query);
+
+        if (result.recordset.length === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                message: "No bookings found for the provided email" 
+            });
+        }
+
+        res.json({ success: true, bookings: result.recordset });
+    } catch (err) {
+        console.error("Error in /getUserBookings:", err);
+        res.status(500).json({ 
+            success: false, 
+            message: "Server error" 
+        });
+    }
+});
+
 // Activating server 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -152,9 +192,8 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
             request.input('date', sql.DateTime, productVendors[0].date);
             request.input('tax', sql.Decimal, eventData.tax);
             request.input('total', sql.Decimal, eventData.total);
-            request.input('children', sql.Bit, eventData.children?0:1 );
-
-
+            request.input('children', sql.Bit, eventData.noChildren === false? 1 : 0);
+            
             const eventInsertResult = await request.query`
                 INSERT INTO event (user_id, title, type, description, date, tax, total, children) 
                 OUTPUT INSERTED.id 
