@@ -199,22 +199,26 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
     const { email, contact } = req.body;
 
     if (!email || !contact) {
+        console.error("Missing email or contact in request body");
         return res.status(400).json({ 
             success: false, 
             message: "Email and contact are required" 
         });
     }
 
+    console.log("Formatted contact received:", contact); // Log the contact value
+
     try {
         const request = new sql.Request();
         
         // Search for the user by email and phone suffix
-        const userQuery = await request.query`
-            SELECT id FROM users 
-            WHERE email = ${email} 
-            AND phone LIKE '%${contact}'`;
+        const userQuery = await request.query 
+        `SELECT id FROM users 
+            WHERE email = '${email}' 
+            AND phone = '+966%${contact}'`; // Adjusted to include +966 prefix
 
         if (userQuery.recordset.length === 0) {
+            console.error("User not found for email:", email, "and contact:", contact);
             return res.status(404).json({ 
                 success: false, 
                 message: "User not found" 
@@ -225,37 +229,35 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
 
         // Fetch the user's most recent booking
         const bookingsQuery = await request.query`
-            SELECT TOP 1 
-                e.id, e.title, e.type, e.description, 
-                e.date, e.tax, e.total, e.children
+            SELECT e.id, e.title, e.type, e.description, 
+                   e.date, e.tax, e.total, e.children
             FROM event e
             WHERE e.user_id = ${userId}
             ORDER BY e.date DESC`;
 
         if (bookingsQuery.recordset.length === 0) {
+            console.error("No bookings found for user ID:", userId);
             return res.status(404).json({ 
                 success: false, 
                 message: "No bookings found" 
             });
         }
 
-        const booking = bookingsQuery.recordset[0];
+        const bookings = bookingsQuery.recordset;
 
-        // Fetch products associated with this booking
-        const productsQuery = await request.query`
-            SELECT p.id, p.name, p.vendor, p.price
-            FROM product_event pe
-            JOIN products p ON pe.product_id = p.id
-            WHERE pe.event_id = ${booking.id}`;
+        // Fetch products associated with each booking
+        for (const booking of bookings) {
+            const productsQuery = await request.query`
+                SELECT p.id, p.name, p.vendor
+                FROM product_event pe
+                JOIN products p ON pe.product_id = p.id
+                WHERE pe.event_id = ${booking.id}`;
+            
+            booking.products = productsQuery.recordset;
+        }
 
-        res.json({ 
-            success: true,
-            bookings: [{
-                ...booking,
-                products: productsQuery.recordset
-            }]
-        });
-
+        console.log("Bookings retrieved successfully:", bookings);
+        res.json({ success: true, bookings });
     } catch (err) {
         console.error("Database error:", err);
         res.status(500).json({ 
@@ -264,6 +266,7 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
         });
     }
 });
+
 async function sendConfirmation(data) {
     try {
       const response = await fetch("/api/confirm", {

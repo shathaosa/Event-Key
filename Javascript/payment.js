@@ -152,6 +152,5 @@ form.addEventListener("submit", async (e) => {
   // 3.  save it at localStorage
   localStorage.setItem('confirmationData', JSON.stringify(confirmationData));
 
-  // 4. move to the confirmation page
-  window.location.href = '/HTML/Confirm.html';
+  
 });

@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const booking = JSON.parse(localStorage.getItem("bookingData"));
   const products = JSON.parse(localStorage.getItem("products")) || [];
 
+<<<<<<< HEAD
   if (!host || !booking) {
       alert("Missing host or booking data.");
       return;
@@ -69,6 +70,26 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("tax").textContent = `${tax.toLocaleString()} SAR`;
       document.getElementById("total").textContent = `${total.toLocaleString()} SAR`;
   }
+=======
+    if (!host || !booking) {
+        alert("Missing host or booking data.");
+        return;
+    }
+    console.log("Host Data:", host);
+    // Display host data
+    document.getElementById("host-title").textContent = host.title || "-";
+    document.getElementById("host-name").textContent = `${host.fname || ""} ${host.lname || ""}`.trim() || "-";
+    document.getElementById("host-dob").textContent = host.dob || "-";
+    document.getElementById("host-country").textContent = host.code || "-";
+    document.getElementById("host-contact").textContent = host.contact || "-";
+    document.getElementById("host-email").textContent = host.email || "-";
+    console.log("Booking Data:", booking);
+    // Display booking data
+    document.getElementById("event-title").textContent = booking.eventTitle || "-";
+    document.getElementById("booking-type").textContent = booking.eventType || "-";
+    document.getElementById("booking-description").textContent = booking.eventDescription || "-";
+    document.getElementById("booking-children").textContent = booking.noChildren === false ? "Yes" : "No";
+>>>>>>> 960a3cbe5e8aeca1a47113a1d78400522c03a364
 });
     
     function moveButterfly() {
