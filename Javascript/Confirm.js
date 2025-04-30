@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Missing host or booking data.");
         return;
     }
-
+    console.log("Host Data:", host);
     // Display host data
     document.getElementById("host-title").textContent = host.title || "-";
     document.getElementById("host-name").textContent = `${host.fname || ""} ${host.lname || ""}`.trim() || "-";
@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("host-country").textContent = host.code || "-";
     document.getElementById("host-contact").textContent = host.contact || "-";
     document.getElementById("host-email").textContent = host.email || "-";
-
+    console.log("Booking Data:", booking);
     // Display booking data
     document.getElementById("event-title").textContent = booking.eventTitle || "-";
     document.getElementById("booking-type").textContent = booking.eventType || "-";
     document.getElementById("booking-description").textContent = booking.eventDescription || "-";
-    document.getElementById("booking-children").textContent = booking.noChildren === "true" ? "Yes" : "No";
+    document.getElementById("booking-children").textContent = booking.noChildren === false ? "Yes" : "No";
 });
 
 

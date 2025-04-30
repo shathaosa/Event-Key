@@ -1,7 +1,8 @@
 window.addEventListener("DOMContentLoaded", async () => {
     const formData = JSON.parse(localStorage.getItem("hostFormData"));
     if (!formData || !formData.email || !formData.contact) {
-      document.getElementById("bookingsContainer").innerText = "Missing login information.";
+      console.error("Missing or invalid hostFormData:", formData);
+      document.getElementById("bookingsContainer").innerText = "Missing login information. Please sign up again.";
       return;
     }
   
@@ -16,6 +17,10 @@ window.addEventListener("DOMContentLoaded", async () => {
           contact: formData.contact,
         }),
       });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
   
       const data = await response.json();
   
@@ -75,7 +80,6 @@ window.addEventListener("DOMContentLoaded", async () => {
       tableContainer.appendChild(table);
     } catch (error) {
       console.error("Error fetching bookings:", error);
-      document.getElementById("bookingsContainer").innerText = "Error loading bookings.";
+      document.getElementById("bookingsContainer").innerText = "Error loading bookings. Please try again later.";
     }
   });
-  

@@ -25,14 +25,7 @@ const form = document.querySelector("#form");
           email: document.getElementsByName("email")[0].value,
         };
     
-        try {
-          console.log("Saving form data to localStorage");
-          localStorage.setItem('hostFormData', JSON.stringify(formData));
-          window.location.href = '/HTML/pastBooking.html';
-        } catch (error) {
-          console.error("Error saving form data to localStorage:", error);
-          msg.innerHTML = "Error: Unable to save form data. Please try again.";
-        }
+        window.location.href = '/HTML/pastBookings.html';
       }
     });
     
@@ -60,4 +53,3 @@ const form = document.querySelector("#form");
       }
       return messages;
     }
-    
