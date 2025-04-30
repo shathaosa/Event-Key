@@ -18,13 +18,13 @@ html {
 
 @keyframes fadeInUp {
   from {
-      opacity: 0;
-      transform: translateY(10px);
+    opacity: 0;
+    transform: translateY(10px);
   }
 
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -139,7 +139,7 @@ a:hover {
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
-  }
+}
 
 .welcome-text button:hover {
   background-color: #efb2e4;
@@ -162,7 +162,8 @@ a:hover {
 
 .separator {
   width: 300px;
-  height: 2px;
+  border: none;
+  height: 3px;
   background-color: #5610507a;
   margin: 0 auto 20px;
 }
@@ -202,9 +203,9 @@ a:hover {
 
 .separator2 {
   width: 100%;
+  border: none;
   height: 2px;
   background-color: #5610507a;
-  margin: 20px auto;
 }
 
 .services-content {
@@ -346,17 +347,39 @@ footer {
 
 /* Responsiveness */
 @media (max-width: 992px) {
+  .about-us h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+  }
+
   .services-content {
     flex-direction: column;
     align-items: center;
-    gap: 70px;
+    gap: 50px;
+  }
+
+  .image-row {
+    gap: 60px;
   }
 
   .left-section,
-  .right-section {
+  .right-section,
+  .social-media,
+  .about-header {
+    justify-content: center;
     text-align: center;
+    margin: 10px;
   }
 
+  .social-media span{
+    padding: 12px 15px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+  }
+.center-section .big-key img {
+    margin-top: 0px;
+    width: 300px;
+  }
   .contact-info p {
     justify-content: center;
   }
@@ -392,9 +415,13 @@ footer {
     font-size: 1rem;
   }
 
-  .image-row img {
-    height: 300px;
+  .image-row {
+    gap: 50px;
 
+  }
+
+  .image-row img {
+    height: 400px;
   }
 
   .about-header {
@@ -404,8 +431,12 @@ footer {
   }
 
   .social-media {
-    margin-top: 50px;
-    margin-left: 280px;
+    justify-content: center;
+  }
+
+  .social-media span {
+    padding: 10px 15px;
+    font-size: 1rem;
   }
 }
 
@@ -457,11 +488,12 @@ footer {
   .image-row {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 
   }
 
   .image-row img {
-    height: 500px;
+    height: 450px;
   }
 
   .about-header {
@@ -479,17 +511,20 @@ footer {
     align-content: center;
   }
 
+  .services-content {
+    gap: 20px;
+  }
+
+  .center-section .big-key img {
+    margin-top: 20px;
+  }
+
   .social-media {
-    margin-top: 50px;
-    margin-left: 180px;
+    justify-content: center;
   }
 
   .contact-info {
-
     justify-content: left;
-
-
-
   }
 
   .contact-info p {
@@ -499,5 +534,9 @@ footer {
 
   .company-logos img {
     max-height: 30px;
+  }
+
+  .right-section {
+    margin: 10px;
   }
 }

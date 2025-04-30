@@ -107,7 +107,8 @@ function addToCart(event) {
     const vendor = storeCard.querySelector('.store-name').textContent; // Get vendor name from the card
 
     if (!dateInput || !dateInput.value) {
-        errorMessage.textContent = "Please select a date before adding items to the cart.";
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please select a date before adding items to the cart.';
         return;
     }
 
@@ -125,6 +126,7 @@ function addToCart(event) {
         console.log(selected);
 
         addCartRow(category, vendor, price);
+        calculateCartTotals(); // Update totals
     }
 }
 
@@ -139,6 +141,7 @@ function removeCartItem(event) {
         console.log(selected);
 
         handleEmptyCart();
+        calculateCartTotals(); // Update totals
     }
 }
 
@@ -147,6 +150,7 @@ function clearCart() {
     updateCartQuantity(-quantityValue);
     selected = [];
     handleEmptyCart();
+    calculateCartTotals(); // Reset totals
 }
 
 function noItemsInCart() {
@@ -219,7 +223,7 @@ function fetchUserData() {
         .catch(error => {
             console.error('Error fetching data:', error);
             // Show error message
-            storesSection.innerHTML = '<p class="error-text">Failed to load stores. Please try again later.</p>';
+            storesSection.innerHTML = '<p class="error-text"><i class="fa-solid fa-triangle-exclamation"></i>Failed to load stores. Please try again later.</p>';
         });
 }
 
@@ -349,3 +353,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Error fetching event dates:", error);
     }
 });
+
+function calculateCartTotals() {
+    const taxRate = 0.15; // 15% tax
+    let subtotal = 0;
+
+    selected.forEach(item => {
+        const price = parseFloat(item.price) || 0;
+        subtotal += price;
+    });
+
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax;
+
+    const riyalIcon = '<img alt="Saudi Riyal" src="/Media/Riyal.png" width="10">';
+    document.getElementById("tax").innerHTML = `${tax.toFixed(2)} ${riyalIcon}`;
+    document.getElementById("total-price").innerHTML = `${total.toFixed(2)} ${riyalIcon}`;
+}
