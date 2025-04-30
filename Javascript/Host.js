@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (messages.length > 0) {
       msg.style.color = "#C70039";
-      msg.style.marginLeft = "75px";
+      msg.style.marginLeft = "55px";
       msg.style.marginTop = "10px";
-      msg.innerHTML = "Issues found [" + messages.length + "]:<br>• " + messages.join("<br>• ");
+      msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
     } else {
       msg.innerHTML = "";
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         console.log("✅ Saving host data to localStorage...");
         localStorage.setItem('hostFormData', JSON.stringify(formData));
-        window.location.href = '/HTML/BookingInfo.html'; // ← تأكدي من اسم الصفحة
+        window.location.href = '/HTML/BookingInfo.html'; 
       } catch (error) {
         console.error("❌ Error saving form data to localStorage:", error);
         msg.innerHTML = "Error: Unable to save form data. Please try again.";

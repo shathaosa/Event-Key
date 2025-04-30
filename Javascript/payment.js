@@ -51,9 +51,9 @@ form.addEventListener("submit", async (e) => {
 
   if (messages.length > 0) {
     msg.style.color = "#C70039";
-    msg.style.marginLeft = "75px";
+    msg.style.marginLeft = "55px";
     msg.style.marginTop = "10px";
-    msg.innerHTML = "Issues found [" + messages.length + "]:<br>• " + messages.join("<br>• ");
+    msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
   } else {
     msg.innerHTML = "";
 
