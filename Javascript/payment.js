@@ -137,25 +137,21 @@ function isFutureDate(name, messages, errorMsg) {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   
+  // 1. get the data from localstorage
   const hostData = JSON.parse(localStorage.getItem('hostFormData'));
   const bookingData = JSON.parse(localStorage.getItem('bookingData'));
   const items = JSON.parse(localStorage.getItem('items')) || []; // المنتجات إذا وجدت
 
+  // 2. Store the data in an obj called confirmationData
   const confirmationData = {
       host: hostData,
       booking: bookingData,
       products: items
   };
 
+  // 3.  save it at localStorage
   localStorage.setItem('confirmationData', JSON.stringify(confirmationData));
 
+  // 4. move to the confirmation page
   window.location.href = '/HTML/Confirm.html';
 });
-
-// send to server and save it at DB
-await fetch("http://localhost:3000/saveBooking", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(confirmationData)
-});
-
