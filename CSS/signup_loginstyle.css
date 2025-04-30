@@ -66,16 +66,7 @@ nav a {
 }
 
 
-.container {
-    position: relative;
-    width: 80%;
-    height: 550px;
-    background: #fff;
-    margin: auto;
-    border-radius: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
-    overflow: hidden;
-}
+
 
 .container h1 {
     font-size: 36px;
@@ -89,22 +80,46 @@ nav a {
 
 form {
     width: 100%;
+    max-width: 350px; /* Prevents overly wide forms */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-box {
+    width: 100%; /* Ensure full width within the form */
+}
+
+
+.container {
+    position: relative;
+    width: 50%;
+    height: 550px;
+    background: #fff;
+    margin: auto;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-box {
-    position: absolute;
-    right: 0;
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: auto;
     background: #fff;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: #561050;
     text-align: center;
     padding: 40px;
-    z-index: 1;
-    transition: .3s ease-in-out 1s, visibility 0s 1s;
 }
+
+
 
 .container.active .form-box {
     right: 50%;

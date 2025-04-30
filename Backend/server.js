@@ -195,3 +195,52 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
     } 
 }
 
+app.post("/userBookings", async (req, res) => {
+    const { email, contact } = req.body;
+  
+    if (!email || !contact) {
+      return res.status(400).json({ success: false, message: "Missing email or contact" });
+    }
+  
+    try {
+      const request = new sql.Request();
+  
+      // Get the user ID
+      const userResult = await request.query`
+        SELECT id FROM users WHERE email = ${email} AND phone LIKE '%${contact}'`;
+  
+      if (userResult.recordset.length === 0) {
+        return res.status(404).json({ success: false, message: "User not found" });
+      }
+  
+      const userId = userResult.recordset[0].id;
+  
+      // Get events (bookings) associated with the user
+      const eventsResult = await request.query`
+        SELECT e.id AS eventId, e.title, e.type, e.description, e.date, e.tax, e.total, e.children
+        FROM event e
+        WHERE e.user_id = ${userId}`;
+  
+      const bookings = [];
+  
+      // For each event, get the associated products
+      for (const event of eventsResult.recordset) {
+        const productsResult = await request.query`
+          SELECT p.id, p.name, p.vendor
+          FROM product_event pe
+          JOIN products p ON p.id = pe.product_id
+          WHERE pe.event_id = ${event.eventId}`;
+  
+        bookings.push({
+          ...event,
+          products: productsResult.recordset,
+        });
+      }
+  
+      return res.json({ success: true, bookings });
+    } catch (err) {
+      console.error("Error in /userBookings:", err);
+      res.status(500).json({ success: false, message: "Server error" });
+    }
+  });
+  
