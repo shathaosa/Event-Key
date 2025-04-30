@@ -107,7 +107,8 @@ function addToCart(event) {
     const vendor = storeCard.querySelector('.store-name').textContent; // Get vendor name from the card
 
     if (!dateInput || !dateInput.value) {
-        errorMessage.textContent = "Please select a date before adding items to the cart.";
+        errorMessage.style.display = "block";
+        errorMessage.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please select a date before adding items to the cart.';
         return;
     }
 
@@ -219,7 +220,7 @@ function fetchUserData() {
         .catch(error => {
             console.error('Error fetching data:', error);
             // Show error message
-            storesSection.innerHTML = '<p class="error-text">Failed to load stores. Please try again later.</p>';
+            storesSection.innerHTML = '<p class="error-text"><i class="fa-solid fa-triangle-exclamation"></i>Failed to load stores. Please try again later.</p>';
         });
 }
 

@@ -540,9 +540,14 @@ a:hover {
 }
 
 #error-message {
+    display: none;
+    padding: 5px;
     margin: 1% 0 0 0;
     animation: fadeInUp 1.0s ease-out backwards;
     color: #C70039;
+    background-color: #c700381f;
+    font-weight: 500;
+    border-radius: 10px;
 }
 
 .loading-text,
