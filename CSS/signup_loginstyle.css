@@ -1,4 +1,4 @@
-:root{
+:root {
     --glass-bg: rgba(255, 255, 255, 0.5);
     --glass-blur: blur(14px);
 }
@@ -13,10 +13,14 @@
 }
 
 body {
+    background-color: #FFF5F1;
     font-family: 'poppins', sans-serif;
-    background-image: url(/Media/backgroundCover.png);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/Media/RadBack.png');
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden;
+    background-attachment: fixed;
 
 }
 
@@ -33,7 +37,7 @@ header {
     top: 0;
     z-index: 1000;
     border-radius: 0 0 12px 12px;
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.06);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 nav {
@@ -89,7 +93,7 @@ nav a:hover {
     transition: transform 0.3s ease;
 }
 
-.fa-solid.fa-cart-shopping{
+.fa-solid.fa-cart-shopping {
     margin-right: 10px;
 }
 
@@ -111,27 +115,28 @@ nav a:hover {
 
 form {
     width: 100%;
-    max-width: 350px; /* Prevents overly wide forms */
+    max-width: 350px;
+    /* Prevents overly wide forms */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .input-box {
-    width: 100%; /* Ensure full width within the form */
+    width: 100%;
+    /* Ensure full width within the form */
 }
 
 
 .container {
     position: relative;
-    width: 50%;
-    height: 550px;
+    width: 30%;
+    height: 500px;
     background: #fff;
-    margin: auto;
+    margin: 2% auto;
     border-radius: 30px;
     box-shadow: 0 0 30px rgba(0, 0, 0, .2);
     overflow: hidden;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +152,7 @@ form {
     align-items: center;
     color: #561050;
     text-align: center;
-    padding: 40px;
+    padding: 20px;
 }
 
 
@@ -171,7 +176,7 @@ form {
 
 .input-box input {
     width: 100%;
-    padding: 13px 50px 13px 20px;
+    padding: 10px 20px;
     background: #eee;
     border-radius: 8px;
     border: none;
@@ -180,12 +185,15 @@ form {
     color: #333;
     font-weight: 500;
 }
-label{
+
+label {
     font-size: 1.2em;
 }
-p{
+
+p {
     margin: 10px 0 0 0;
 }
+
 .input-box input::placeholder {
     color: #888;
     font-weight: 400;
@@ -202,7 +210,7 @@ p{
 
 .btn {
     width: 100%;
-    height: 48px;
+    height: 42px;
     background: #561050;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
@@ -210,7 +218,7 @@ p{
     cursor: pointer;
     font-size: 16px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .social-icons {
@@ -331,7 +339,24 @@ p{
     box-shadow: none;
 }
 
-@media screen and (max-width: 650px) {
+#border-image {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+    width: 500px;
+    opacity: 0.8;
+}
+@media screen and (max-width: 992px) {
+
+    .container{
+        height: 400px;
+        width: 60%;
+        margin: 10% auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
 
     nav {
         gap: 0px;
@@ -347,18 +372,21 @@ p{
 
     .container {
         height: calc(100vh - 80px);
-        width: 60%;
-        margin-top: 5%;
+        margin: 1% auto;
+        width: 50%;
     }
 
     .container h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
+    .input-box input {
+        padding: 8px 5px;
+    }
 
     .form-box {
         bottom: 0;
-        width: 100%;
+        width: 80%;
         height: 70%;
     }
 
@@ -435,8 +463,14 @@ p{
 
     }
 
+    .container {
+        margin: 5% auto;
+        height: 450px;
+        width: 60%;
+    }
+
     .form-box {
-        padding: 20px;
+        width: 100%;
     }
 
     .toggle-panel h1 {

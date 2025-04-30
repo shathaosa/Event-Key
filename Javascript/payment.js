@@ -9,7 +9,7 @@ bookingInfo = {};
 
 document.addEventListener('DOMContentLoaded', () => {
   const storedData = localStorage.getItem('hostFormData'); // Retrieve hostFormData
-  
+
   if (storedData) {
     const formData = JSON.parse(storedData);
 
@@ -35,13 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Booking Info:", bookingInfo); // Debugging output
   }
 
-  // Check if the button should be disabled
-  const isButtonDisabled = localStorage.getItem('isButtonDisabled');
-  if (isButtonDisabled === 'true') {
-    btn.disabled = true;
-    btn.classList.remove("confirm-button");
-    btn.classList.add("disabled");
-  }
 });
 
 // Attach the event listener to the form, not the button
@@ -51,8 +44,7 @@ form.addEventListener("submit", async (e) => {
   btn.classList.remove("confirm-button"); // Remove the original class
   btn.classList.add("disabled"); // Add the disabled class
 
-  // Save the button state in localStorage
-  localStorage.setItem('isButtonDisabled', 'true');
+
 
   let messages = [];
   console.log("Items", items); // Debugging output
@@ -71,9 +63,9 @@ form.addEventListener("submit", async (e) => {
     msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
     btn.disabled = false; // Re-enable the button if there are validation errors
     btn.classList.remove("disabled"); // Remove the disabled class
+    btn.classList.add("confirm-button");
 
-    // Reset the button state in localStorage
-    localStorage.setItem('isButtonDisabled', 'false');
+
   } else {
     msg.innerHTML = "";
 
@@ -84,8 +76,8 @@ form.addEventListener("submit", async (e) => {
       dob: document.getElementsByName("cvc")[0].value,
       country: document.getElementsByName("expiry")[0].value,
     };
-    bookingInfo.total= total;
-    bookingInfo.tax= taxAmount;
+    bookingInfo.total = total;
+    bookingInfo.tax = taxAmount;
     try {
       console.log("Sending data to server:", { hostInfo, bookingInfo, items });
 
@@ -108,6 +100,7 @@ form.addEventListener("submit", async (e) => {
         msg.innerHTML = "Server error: " + result.message;
         btn.disabled = false; // Re-enable the button if the server returns an error
         btn.classList.remove("disabled"); // Remove the disabled class
+        btn.classList.add("confirm-button");
         return;
       }
     } catch (error) {
@@ -115,6 +108,7 @@ form.addEventListener("submit", async (e) => {
       msg.innerHTML = "Server error: Please try again later.";
       btn.disabled = false; // Re-enable the button if there is a network error
       btn.classList.remove("disabled"); // Remove the disabled class
+      btn.classList.remove("confirm-button");
     }
   }
 });
@@ -160,7 +154,7 @@ function isFutureDate(name, messages, errorMsg) {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  
+
   // 1. get the data from localstorage
   const hostData = JSON.parse(localStorage.getItem('hostFormData'));
   const bookingData = JSON.parse(localStorage.getItem('bookingData'));
@@ -168,13 +162,13 @@ form.addEventListener("submit", async (e) => {
 
   // 2. Store the data in an obj called confirmationData
   const confirmationData = {
-      host: hostData,
-      booking: bookingData,
-      products: items
+    host: hostData,
+    booking: bookingData,
+    products: items
   };
 
   // 3.  save it at localStorage
   localStorage.setItem('confirmationData', JSON.stringify(confirmationData));
 
-  
+
 });
