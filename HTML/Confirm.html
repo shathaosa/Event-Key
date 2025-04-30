@@ -25,41 +25,6 @@
             </i>
         </div>
 
-        <div id="cart-info">
-            <div id="cart-header">
-                <h4>Your Cart</h4>
-                <button id="close-cart"><i class="fa-solid fa-xmark"></i></button>
-                <hr>
-            </div>
-
-            <table id="cart-items">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Vendor</th>
-                        <th id="price-header">Price<span>..</span></th>
-                        <th id="remove-col"></th>
-                    </tr>
-                </thead>
-
-                <tbody id="cart-items-body">
-                    <!-- Cart items will be inserted here dynamically -->
-                </tbody>
-            </table>
-
-            <div id="cart-total">
-                <h5>Tax(15%): </h5>
-                <p id="tax"></p>
-                <h5>Total:</h5>
-                <p id="total-price"></p>
-            </div>
-
-            <div id="cart-footer">
-                <button id="checkout">Checkout</button>
-                <button id="clear-cart">Clear Cart</button>
-            </div>
-        </div>
-
         <div>
             <a href="/HTML/Signup_Login.html" class="buttons"><i class="fa-solid fa-user"></i></a>
         </div>
@@ -88,7 +53,7 @@
                     <span class="info-value" id="host-dob">-</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label">Country:</span>
+                    <span class="info-label">Country Code:</span>
                     <span class="info-value" id="host-country">-</span>
                 </div>
                 <div class="info-row">
@@ -104,34 +69,29 @@
             <h2>Event Details</h2>
             <div class="info-section">
                 <div class="info-row">
-                    <span class="info-label">Title:</span>
+                    <span class="info-label">Event Title:</span>
                     <span class="info-value" id="event-title">-</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label">Type:</span>
+                    <span class="info-label">Event Type:</span>
                     <span class="info-value" id="booking-type">-</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label">Date:</span>
-                    <span class="info-value" id="booking-date">-</span>
+                    <span class="info-label">Description:</span>
+                    <span class="info-value" id="booking-description">-</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label">Start Time:</span>
-                    <span class="info-value" id="booking-start-time">-</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">End Time:</span>
-                    <span class="info-value" id="booking-end-time">-</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Location:</span>
-                    <span class="info-value" id="booking-location">-</span>
+                    <span class="info-label">Includes Children:</span>
+                    <span class="info-value" id="booking-children">-</span>
                 </div>
             </div>
         </div>
     </main>
 
-    <script src="/js/Confirm.js"></script>
+    <script src="/Javascript/Host.js"></script>
+    <script src="/Javascript/Booking.js"></script>
+    <script src="/Javascript/Confirm.js"></script>
+    
     <img src="/Media/border.png" alt="Border Decoration" id="border-image">
 </body>
 </html>

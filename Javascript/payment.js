@@ -134,6 +134,28 @@ function isFutureDate(name, messages, errorMsg) {
   return messages;
 }
 
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  const hostData = JSON.parse(localStorage.getItem('hostFormData'));
+  const bookingData = JSON.parse(localStorage.getItem('bookingData'));
+  const items = JSON.parse(localStorage.getItem('items')) || []; // المنتجات إذا وجدت
 
+  const confirmationData = {
+      host: hostData,
+      booking: bookingData,
+      products: items
+  };
 
+  localStorage.setItem('confirmationData', JSON.stringify(confirmationData));
+
+  window.location.href = '/HTML/Confirm.html';
+});
+
+// send to server and save it at DB
+await fetch("http://localhost:3000/saveBooking", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(confirmationData)
+});
 

@@ -243,4 +243,87 @@ app.post("/userBookings", async (req, res) => {
       res.status(500).json({ success: false, message: "Server error" });
     }
   });
-  
+
+  app.post("/userBookings", async (req, res) => {
+    const { email, contact } = req.body;
+
+    if (!email || !contact) {
+        return res.status(400).json({ 
+            success: false, 
+            message: "Email and contact are required" 
+        });
+    }
+
+    try {
+        const request = new sql.Request();
+        
+        // Search for the user by email and phone suffix
+        const userQuery = await request.query`
+            SELECT id FROM users 
+            WHERE email = ${email} 
+            AND phone LIKE '%${contact}'`;
+
+        if (userQuery.recordset.length === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                message: "User not found" 
+            });
+        }
+
+        const userId = userQuery.recordset[0].id;
+
+        // Fetch the user's most recent booking
+        const bookingsQuery = await request.query`
+            SELECT TOP 1 
+                e.id, e.title, e.type, e.description, 
+                e.date, e.tax, e.total, e.children
+            FROM event e
+            WHERE e.user_id = ${userId}
+            ORDER BY e.date DESC`;
+
+        if (bookingsQuery.recordset.length === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                message: "No bookings found" 
+            });
+        }
+
+        const booking = bookingsQuery.recordset[0];
+
+        // Fetch products associated with this booking
+        const productsQuery = await request.query`
+            SELECT p.id, p.name, p.vendor, p.price
+            FROM product_event pe
+            JOIN products p ON pe.product_id = p.id
+            WHERE pe.event_id = ${booking.id}`;
+
+        res.json({ 
+            success: true,
+            bookings: [{
+                ...booking,
+                products: productsQuery.recordset
+            }]
+        });
+
+    } catch (err) {
+        console.error("Database error:", err);
+        res.status(500).json({ 
+            success: false, 
+            message: "Server error" 
+        });
+    }
+});
+async function sendConfirmation(data) {
+    try {
+      const response = await fetch("/api/confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      if (!response.ok) throw new Error(`Response status: ${response.status}`);
+      const result = await response.json();
+      console.log("Response from server:", result);
+    } catch (err) {
+      console.error("Fetch error:", err);
+    }
+  }
