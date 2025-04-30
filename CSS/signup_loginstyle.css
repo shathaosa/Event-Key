@@ -25,23 +25,45 @@ header {
 }
 
 nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
     align-items: center;
+    justify-content: center;
     margin: auto;
-
 }
 
 nav a {
     color: #561050;
     text-decoration: none;
     text-align: center;
-    padding: 0 5px 0 5px;
+    padding: 6px 10px;
     font-size: 1em;
-    transition: transform 0.3s ease;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #C198BE;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: #926289;
+    transform: translateY(-2px);
+}
 
 .logo {
     width: 150px;
