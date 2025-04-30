@@ -1,57 +1,79 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const host = JSON.parse(localStorage.getItem("hostFormData"));
-    const booking = JSON.parse(localStorage.getItem("bookingData"));
+  // جلب البيانات من localStorage
+  const host = JSON.parse(localStorage.getItem("hostFormData"));
+  const booking = JSON.parse(localStorage.getItem("bookingData"));
+  const products = JSON.parse(localStorage.getItem("products")) || [];
 
-    if (!host || !booking) {
-        alert("Missing host or booking data.");
-        return;
-    }
-    console.log("Host Data:", host);
-    // Display host data
-    document.getElementById("host-title").textContent = host.title || "-";
-    document.getElementById("host-name").textContent = `${host.fname || ""} ${host.lname || ""}`.trim() || "-";
-    document.getElementById("host-dob").textContent = host.dob || "-";
-    document.getElementById("host-country").textContent = host.code || "-";
-    document.getElementById("host-contact").textContent = host.contact || "-";
-    document.getElementById("host-email").textContent = host.email || "-";
-    console.log("Booking Data:", booking);
-    // Display booking data
-    document.getElementById("event-title").textContent = booking.eventTitle || "-";
-    document.getElementById("booking-type").textContent = booking.eventType || "-";
-    document.getElementById("booking-description").textContent = booking.eventDescription || "-";
-    document.getElementById("booking-children").textContent = booking.noChildren === false ? "Yes" : "No";
+  if (!host || !booking) {
+      alert("Missing host or booking data.");
+      return;
+  }
+
+  // show host data
+  document.getElementById("host-title").textContent = host.title || "-";
+  document.getElementById("host-name").textContent = `${host.fname || ""} ${host.lname || ""}`.trim() || "-";
+  document.getElementById("host-dob").textContent = host.dob || "-";
+  document.getElementById("host-country").textContent = host.code || "-";
+  document.getElementById("host-contact").textContent = host.contact || "-";
+  document.getElementById("host-email").textContent = host.email || "-";
+
+  // show booking data
+  document.getElementById("event-title").textContent = booking.eventTitle || "-";
+  document.getElementById("booking-type").textContent = booking.eventType || "-";
+  document.getElementById("booking-description").textContent = booking.eventDescription || "-";
+  document.getElementById("booking-children").textContent = booking.noChildren === "true" ? "Yes" : "No";
+
+  // show products data
+  const productsContainer = document.getElementById("booked-products");
+  if (products.length === 0) {
+      productsContainer.innerHTML = "<p class='no-products'>No products booked</p>";
+  } else {
+      let subtotal = 0;
+      let html = "";
+      
+      products.forEach(product => {
+          subtotal += product.price;
+          
+          // date format
+          const eventDate = new Date(product.date);
+          const formattedDate = eventDate.toLocaleDateString('en-US', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+          });
+          
+          html += `
+          <div class="product-card">
+              <img src="${product.image.replace(/\\/g, '/')}" alt="${product.vendor}" class="product-image">
+              <div class="product-details">
+                  <h3>${product.vendor}</h3>
+                  <p class="product-category">${product.category}</p>
+                  <div class="date-location">
+                      <p><i class="fas fa-calendar-alt"></i> ${formattedDate}</p>
+                      <p><i class="fas fa-map-marker-alt"></i> ${product.location}</p>
+                  </div>
+                  <p class="product-price">${product.price.toLocaleString()} SAR</p>
+              </div>
+          </div>
+          `;
+      });
+
+      productsContainer.innerHTML = html;
+      
+      // calucate subtotal, tax, total
+      const tax = subtotal * 0.15;
+      const total = subtotal + tax;
+      
+      document.getElementById("subtotal").textContent = `${subtotal.toLocaleString()} SAR`;
+      document.getElementById("tax").textContent = `${tax.toLocaleString()} SAR`;
+      document.getElementById("total").textContent = `${total.toLocaleString()} SAR`;
+  }
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    const butterfly = document.querySelector('.butterfly');
-    const colors = [
-      { wing: ['#ff9a9e', '#fad0c4'], body: ['#5433FF', '#20BDFF'] },
-      { wing: ['#a1c4fd', '#c2e9fb'], body: ['#FF5F6D', '#FFC371'] },
-      { wing: ['#84fab0', '#8fd3f4'], body: ['#4776E6', '#8E54E9'] },
-      { wing: ['#ffc3a0', '#ffafbd'], body: ['#614385', '#516395'] }
-    ];
-    
-    let currentColor = 0;
-    
-    function changeColors() {
-      const colorSet = colors[currentColor % colors.length];
-      
-      document.querySelectorAll('.left-wing, .right-wing').forEach(wing => {
-        wing.style.background = `linear-gradient(135deg, ${colorSet.wing[0]}, ${colorSet.wing[1]})`;
-      });
-      
-      document.querySelector('.body').style.background = 
-        `linear-gradient(to bottom, ${colorSet.body[0]}, ${colorSet.body[1]})`;
-      
-      document.querySelectorAll('.antenna').forEach(antenna => {
-        antenna.style.background = 
-          `linear-gradient(to bottom, ${colorSet.body[0]}, ${colorSet.body[1]})`;
-      });
-      
-      currentColor++;
-    }
+  const butterfly = document.querySelector('.butterfly');
+});
     
     function moveButterfly() {
       const randomX = Math.random() * (window.innerWidth - 100);
@@ -82,4 +104,4 @@ document.addEventListener('DOMContentLoaded', function() {
         rotate(${x * 10}deg)
       `;
     });
-  });
+  
