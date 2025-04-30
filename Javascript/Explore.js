@@ -23,7 +23,7 @@ const venuesCategory = document.getElementById("venues");
 const musicCategory = document.getElementById("music");
 const cateringCategory = document.getElementById("catering");
 const flowersCategory = document.getElementById("flowers");
-const photographersCategory = document.getElementById("photographers");
+const photographersCategory = document.getElementById("photography");
 const decorCategory = document.getElementById("decor");
 
 let cartRowCount = cartItemsBody.querySelectorAll("tr").length;
