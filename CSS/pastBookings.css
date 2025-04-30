@@ -18,7 +18,7 @@ h2 {
     color: #561050;
     font-size: 32px;
     display: flex;
-    justify-content: center;
+    margin: 5% 0 0 2%;
 }
 
 h3 {
@@ -91,17 +91,6 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-#booking {
-    background-color: #561050;
-    color: #ffffff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    cursor: pointer;
-}
 
 .buttons {
     margin-left: 5%;
@@ -138,8 +127,9 @@ a:hover {
 }
 .content-table {
     border-collapse: collapse;
-    background: #fff;
-    margin: 25px;
+    border: 3px solid #ffffff;
+    background: #FFF5F1;
+    margin: 0 25px;
     min-width: 400px; 
     font-size: 0.9em; 
     border-radius: 5px 5px 0 0;
@@ -147,7 +137,7 @@ a:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
   .content-table thead tr {
-    background-color: #561050;
+    background-color: #926289;
     color: #ffffff;
     text-align: left;
     font-weight: normal;
@@ -155,12 +145,13 @@ a:hover {
   .content-table th, .content-table td {
     padding: 12px 15px;
     text-align: left;
+    border: 3px solid #ffffff;
   }
   .content-table tbody tr:nth-child(even) {
-    background-color: #fbe9f7;
+    background-color: #e8d5e6bb;
   }
   .content-table tbody tr:hover {
-    background-color: #f4dbef;
+    background-color: #d5bed3;
   }
   .content-table tbody tr{
     border-bottom: 1px solid #dddddd;

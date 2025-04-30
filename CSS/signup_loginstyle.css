@@ -69,7 +69,7 @@ nav a:hover {
     width: 150px;
 }
 
-.buttons i {
+.account i {
     color: #561050;
     margin-right: 5px;
     padding-right: 10px;
@@ -81,14 +81,11 @@ nav a:hover {
     margin-right: 10px;
 }
 
-.buttons i:hover {
+.account i:hover {
     color: #926289;
     transform: scale(1.1);
     cursor: pointer;
 }
-
-
-
 
 .container h1 {
     font-size: 36px;
@@ -171,18 +168,15 @@ form {
     color: #333;
     font-weight: 500;
 }
-
+label{
+    font-size: 1.2em;
+}
+p{
+    margin: 10px 0 0 0;
+}
 .input-box input::placeholder {
     color: #888;
     font-weight: 400;
-}
-
-.input-box i {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
 }
 
 .forgot-link {

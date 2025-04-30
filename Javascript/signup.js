@@ -12,9 +12,8 @@ const form = document.querySelector("#form");
     
       if (messages.length > 0) {
         msg.style.color = "#C70039";
-        msg.style.marginLeft = "75px";
         msg.style.marginTop = "10px";
-        msg.innerHTML = "Issues found [" + messages.length + "]:<br>• " + messages.join("<br>• ");
+        msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
       } else {
         msg.innerHTML = "";
     
@@ -36,6 +35,11 @@ const form = document.querySelector("#form");
             const result = await response.json();
             if (result.success) {
                 const bookings = result.bookings;
+                if (!bookings || bookings.length === 0) {
+                    msg.style.color = "#C70039";
+                    msg.innerHTML = "No bookings found for the entered email.";
+                    return;
+                }
                 console.log("Bookings retrieved:", bookings);
                 // Store bookings in localStorage or handle as needed
                 localStorage.setItem("bookings", JSON.stringify(bookings));
@@ -48,7 +52,11 @@ const form = document.querySelector("#form");
         } catch (err) {
             console.error("Error fetching bookings:", err);
             msg.style.color = "#C70039";
-            msg.innerHTML = "An error occurred while fetching bookings.";
+            if (err.message === "Failed to fetch bookings") {
+                msg.innerHTML = "No bookings found for the entered email.";
+            } else {
+                msg.innerHTML = "An error occurred while fetching bookings.";
+            }
         }
       }
     });
@@ -70,10 +78,3 @@ const form = document.querySelector("#form");
       return messages;
     }
     
-    // function isMobile(name,messages,msg){
-    //   const element = document.getElementsByName(name)[0].value.trim();
-    //   if(!element.match("[0-9]{9}")){
-    //     messages.push(msg);
-    //   }
-    //   return messages;
-    // }
