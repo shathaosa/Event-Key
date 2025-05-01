@@ -347,6 +347,10 @@ p {
     width: 500px;
     opacity: 0.8;
 }
+
+#msg{
+    margin-top: 20px;
+}
 @media screen and (max-width: 992px) {
 
     .container{

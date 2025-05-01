@@ -12,7 +12,6 @@ const form = document.querySelector("#form");
     
       if (messages.length > 0) {
         msg.style.color = "#C70039";
-        msg.style.marginTop = "10px";
         msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
       } else {
         msg.innerHTML = "";
