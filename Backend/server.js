@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 const port = 3000; // or any other desired port
 const corsOptions = {
-    origin: 'http://localhost:5500', // Replace with your frontend URL
+    origin: 'http://localhost:5500', 
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 };
