@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
 
   if (!host || !booking) {
-      alert("Missing host or booking data.");
-      return;
+    alert("Missing host or booking data.");
+    return;
   }
 
   // show host data
@@ -26,24 +26,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // show products data
   const productsContainer = document.getElementById("booked-products");
   if (products.length === 0) {
-      productsContainer.innerHTML = "<p class='no-products'>No products booked</p>";
+    productsContainer.innerHTML = "<p class='no-products'>No products booked</p>";
   } else {
-      let subtotal = 0;
-      let html = "";
-      
-      products.forEach(product => {
-          subtotal += product.price;
-          
-          // date format
-          const eventDate = new Date(product.date);
-          const formattedDate = eventDate.toLocaleDateString('en-US', {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-          });
-          
-          html += `
+    let subtotal = 0;
+    let html = "";
+
+    products.forEach(product => {
+      subtotal += product.price;
+
+      // date format
+      const eventDate = new Date(product.date);
+      const formattedDate = eventDate.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      html += `
           <div class="product-card">
               <img src="${product.image.replace(/\\/g, '/')}" alt="${product.vendor}" class="product-image">
               <div class="product-details">
@@ -57,51 +57,66 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
           </div>
           `;
-      });
+    });
 
-      productsContainer.innerHTML = html;
-      
-      // calucate subtotal, tax, total
-      const tax = subtotal * 0.15;
-      const total = subtotal + tax;
-      
-      document.getElementById("subtotal").textContent = `${subtotal.toLocaleString()} SAR`;
-      document.getElementById("tax").textContent = `${tax.toLocaleString()} SAR`;
-      document.getElementById("total").textContent = `${total.toLocaleString()} SAR`;
+    productsContainer.innerHTML = html;
+
+    // calucate subtotal, tax, total
+    const tax = subtotal * 0.15;
+    const total = subtotal + tax;
+
+    document.getElementById("subtotal").textContent = `${subtotal.toLocaleString()} SAR`;
+    document.getElementById("tax").textContent = `${tax.toLocaleString()} SAR`;
+    document.getElementById("total").textContent = `${total.toLocaleString()} SAR`;
   }
+
+  if (localStorage.getItem('products')) {
+    localStorage.removeItem('products');
+  }
+  if (localStorage.getItem('hostFormData')) {
+    localStorage.removeItem('hostFormData');
+  }
+  if (localStorage.getItem('bookingData')) {
+    localStorage.removeItem('bookingData');
+  }
+
+ 
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const butterfly = document.querySelector('.butterfly');
 });
-    
-    function moveButterfly() {
-      const randomX = Math.random() * (window.innerWidth - 100);
-      const randomY = Math.random() * (window.innerHeight - 100);
-      
-      butterfly.style.transition = 'all 4s cubic-bezier(0.4, 0, 0.2, 1)';
-      butterfly.style.left = `${randomX}px`;
-      butterfly.style.top = `${randomY}px`;
-      
-      setTimeout(() => {
-        butterfly.style.transition = 'none';
-      }, 4000);
-    }
-    
-    // color change every 3 sec
-    setInterval(changeColors, 3000);
-    
-    // the butterfly moves every 8sec
-    setInterval(moveButterfly, 8000);
-    
-    
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
-      
-      butterfly.style.transform = `
+
+function moveButterfly() {
+  const randomX = Math.random() * (window.innerWidth - 100);
+  const randomY = Math.random() * (window.innerHeight - 100);
+
+  butterfly.style.transition = 'all 4s cubic-bezier(0.4, 0, 0.2, 1)';
+  butterfly.style.left = `${randomX}px`;
+  butterfly.style.top = `${randomY}px`;
+
+  setTimeout(() => {
+    butterfly.style.transition = 'none';
+  }, 4000);
+
+}
+
+// color change every 3 sec
+setInterval(changeColors, 3000);
+
+// the butterfly moves every 8sec
+setInterval(moveButterfly, 8000);
+
+
+document.addEventListener('mousemove', (e) => {
+  const x = e.clientX / window.innerWidth - 0.5;
+  const y = e.clientY / window.innerHeight - 0.5;
+
+  butterfly.style.transform = `
         translate(${x * 30}px, ${y * 30}px)
         rotate(${x * 10}deg)
       `;
-    });
-  
+});
+
+
+

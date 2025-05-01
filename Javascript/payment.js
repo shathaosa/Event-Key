@@ -61,11 +61,6 @@ form.addEventListener("submit", async (e) => {
     msg.style.marginLeft = "55px";
     msg.style.marginTop = "10px";
     msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
-    btn.disabled = false; // Re-enable the button if there are validation errors
-    btn.classList.remove("disabled"); // Remove the disabled class
-    btn.classList.add("confirm-button");
-
-
   } else {
     msg.innerHTML = "";
 
@@ -103,6 +98,7 @@ form.addEventListener("submit", async (e) => {
         btn.classList.add("confirm-button");
         return;
       }
+
     } catch (error) {
       console.error("Error submitting form:", error);
       msg.innerHTML = "Server error: Please try again later.";
