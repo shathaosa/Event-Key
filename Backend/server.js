@@ -6,15 +6,13 @@ const cors = require('cors');
 const app = express();
 const port = 3000; // or any other desired port
 const corsOptions = {
-    origin: 'http://localhost:5500', 
+    origin: ['http://localhost:3000', 'http://127.0.0.1:5500'],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 };
 
 app.use(cors(corsOptions));
 
-
-app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Add this line to handle JSON requests
 
@@ -319,13 +317,13 @@ function validateUserAndBooking(host, booking) {
   validateField(host.title, "Title is not selected", isNotDefault("Title"), messages);
   validateField(host.fname, "First name is missing", isNotEmpty, messages);
   validateField(host.lname, "Last name is missing", isNotEmpty, messages);
-  //validateField(host.DOB, "Date of birth is missing", isNotEmpty, messages);
+  validateField(host.dob, "Date of birth is missing", isNotEmpty, messages);
   validateField(host.code, "Country code is not selected", isNotDefault("Country Code"), messages);
   validateField(host.contact, "Contact number is missing", isNotEmpty, messages);
   validateField(host.contact, "Contact number must be a 9-digit number", isMobile, messages);
   validateField(host.email, "Email is missing", isNotEmpty, messages);
   validateField(host.email, "Email format is wrong", isEmail, messages);
-  //validateField(host.DOB, "Please note: Event planning is restricted to individuals 18 years or older", isEligible18, messages);
+  validateField(host.dob, "Please note: Event planning is restricted to individuals 18 years or older", isEligible18, messages);
   validateField(booking.eventTitle, "Event Title is missing", isNotEmpty, messages);
   validateField(booking.eventType, "Please select an Event Type", isNotDefault("Select Event Type"), messages);
   validateField(booking.eventDescription, "Event Description is missing", isNotEmpty, messages);
@@ -357,13 +355,13 @@ function validateField(value, message, validator, messages) {
     return (value) => value && value.trim() !== "" && value !== defaultText;
   }
   
-//   function isEligible18(dateStr) {
-//     const birthDay = new Date(dateStr);
-//     const today = new Date();
-//     let age = today.getFullYear() - birthDay.getFullYear();
-//     const m = today.getMonth() - birthDay.getMonth();
-//     if (m < 0 || (m === 0 && today.getDate() < birthDay.getDate())) {
-//       age--;
-//     }
-//     return age >= 18;
-//   }
+  function isEligible18(dateStr) {
+    const birthDay = new Date(dateStr);
+    const today = new Date();
+    let age = today.getFullYear() - birthDay.getFullYear();
+    const m = today.getMonth() - birthDay.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDay.getDate())) {
+      age--;
+    }
+    return age >= 18;
+  }
