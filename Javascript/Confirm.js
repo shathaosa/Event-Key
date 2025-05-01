@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // جلب البيانات من localStorage
+  //   localStorage
   const host = JSON.parse(localStorage.getItem("hostFormData"));
   const booking = JSON.parse(localStorage.getItem("bookingData"));
   const products = JSON.parse(localStorage.getItem("products")) || [];
