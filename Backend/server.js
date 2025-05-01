@@ -5,11 +5,6 @@ const cors = require('cors');
 
 const app = express();
 const port = 3000; // or any other desired port
-
-app.use(cors()); // Enable CORS for all routes
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); // Add this line to handle JSON requests
-
 const corsOptions = {
     origin: 'http://localhost:5500', // Replace with your frontend URL
     methods: ['GET', 'POST'],
@@ -17,6 +12,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+
+app.use(cors()); // Enable CORS for all routes
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // Add this line to handle JSON requests
 
 // Setting up DB connection
 const config = {
@@ -144,8 +144,9 @@ app.post("/getUserBookings", async (req, res) => {
         });
     }
 });
+
 app.post('/submit-review', async (req, res) => {
-    const { event_id, rating, reviewText, features, recommendation } = req.body;
+    const { rating, reviewText, features, recommendation, event_id } = req.body;
 
     // check if the data is valid
     if (!rating || !recommendation) {
@@ -159,17 +160,17 @@ app.post('/submit-review', async (req, res) => {
         const request = new sql.Request();
         const query = `
             INSERT INTO reviews 
-            (event_id, Rating, ReviewText, LikedFeatures, WouldRecommend)
+            (Rating, ReviewText, LikedFeatures, WouldRecommend, event_id)
             VALUES 
-                (@event_id, @rating, @reviewText, @features, @recommendation)
+                (@rating, @reviewText, @features, @recommendation, @event_id)
         `;
 
         // insert the dadta
-        request.input('event_id', sql.Int, event_id);
         request.input('rating', sql.Int, rating);
         request.input('reviewText', sql.NVarChar, reviewText || null);
         request.input('features', sql.NVarChar, features ? features.join(',') : null);
         request.input('recommendation', sql.VarChar(10), recommendation);
+         request.input('event_id', sql.Int, event_id);
 
         await request.query(query);
         

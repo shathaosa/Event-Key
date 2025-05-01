@@ -537,14 +537,7 @@ body {
     padding: 0 20px;
 }
 
-.header {
-    background-color: white;
-    box-shadow: var(--shadow);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+
 
 .logo {
     height: 40px;
@@ -709,6 +702,30 @@ body {
         opacity: 0;
     }
 }
+.thank-you-message {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.thank-you-message h2 {
+    color: #4a90e2;
+    margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.submit-btn:disabled {
+    background: #cccccc !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -743,9 +760,6 @@ body {
         width: 8rem;
     }
 
-    header {
-        padding: 8px 4%;
-    }
     .review-section {
         max-width: 700px;
         padding: 2rem;
