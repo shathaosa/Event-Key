@@ -63,6 +63,17 @@ app.get("/explore", async (req, res) => {
 app.post("/insertUserEventProduct", async (req, res) => {
   const { hostInfo, bookingInfo, items } = req.body;
 
+  const validationMessages = validateUserAndBooking(hostInfo, bookingInfo);
+
+if (validationMessages.length > 0) {
+  console.error("Validation failed:", validationMessages);
+  return res.status(400).json({
+    success: false,
+    message: "Validation failed"
+  });
+}
+
+  
   try {
     const result = await insertUserEventProduct(hostInfo, bookingInfo, items);
     if (result === 1) {
@@ -234,78 +245,6 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
     } 
 }
 
-  app.post("/userBookings", async (req, res) => {
-    const { email, contact } = req.body;
-
-    if (!email || !contact) {
-        console.error("Missing email or contact in request body");
-        return res.status(400).json({ 
-            success: false, 
-            message: "Email and contact are required" 
-        });
-    }
-
-    console.log("Formatted contact received:", contact); // Log the contact value
-
-    try {
-        const request = new sql.Request();
-        
-        // Search for the user by email and phone suffix
-        const userQuery = await request.query 
-        `SELECT id FROM users 
-            WHERE email = '${email}' 
-            AND phone = '+966%${contact}'`; // Adjusted to include +966 prefix
-
-        if (userQuery.recordset.length === 0) {
-            console.error("User not found for email:", email, "and contact:", contact);
-            return res.status(404).json({ 
-                success: false, 
-                message: "User not found" 
-            });
-        }
-
-        const userId = userQuery.recordset[0].id;
-
-        // Fetch the user's most recent booking
-        const bookingsQuery = await request.query`
-            SELECT e.id, e.title, e.type, e.description, 
-                   e.date, e.tax, e.total, e.children
-            FROM event e
-            WHERE e.user_id = ${userId}
-            ORDER BY e.date DESC`;
-
-        if (bookingsQuery.recordset.length === 0) {
-            console.error("No bookings found for user ID:", userId);
-            return res.status(404).json({ 
-                success: false, 
-                message: "No bookings found" 
-            });
-        }
-
-        const bookings = bookingsQuery.recordset;
-
-        // Fetch products associated with each booking
-        for (const booking of bookings) {
-            const productsQuery = await request.query`
-                SELECT p.id, p.name, p.vendor
-                FROM product_event pe
-                JOIN products p ON pe.product_id = p.id
-                WHERE pe.event_id = ${booking.id}`;
-            
-            booking.products = productsQuery.recordset;
-        }
-
-        console.log("Bookings retrieved successfully:", bookings);
-        res.json({ success: true, bookings });
-    } catch (err) {
-        console.error("Database error:", err);
-        res.status(500).json({ 
-            success: false, 
-            message: "Server error" 
-        });
-    }
-});
-
 async function sendConfirmation(data) {
     try {
       const response = await fetch("/api/confirm", {
@@ -320,3 +259,59 @@ async function sendConfirmation(data) {
       console.error("Fetch error:", err);
     }
   }
+  
+function validateUserAndBooking(host, booking) {
+  const messages = [];
+
+  validateField(host.title, "Title is not selected", isNotDefault("Title"), messages);
+  validateField(host.fname, "First name is missing", isNotEmpty, messages);
+  validateField(host.lname, "Last name is missing", isNotEmpty, messages);
+  //validateField(host.DOB, "Date of birth is missing", isNotEmpty, messages);
+  validateField(host.code, "Country code is not selected", isNotDefault("Country Code"), messages);
+  validateField(host.contact, "Contact number is missing", isNotEmpty, messages);
+  validateField(host.contact, "Contact number must be a 9-digit number", isMobile, messages);
+  validateField(host.email, "Email is missing", isNotEmpty, messages);
+  validateField(host.email, "Email format is wrong", isEmail, messages);
+  //validateField(host.DOB, "Please note: Event planning is restricted to individuals 18 years or older", isEligible18, messages);
+  validateField(booking.eventTitle, "Event Title is missing", isNotEmpty, messages);
+  validateField(booking.eventType, "Please select an Event Type", isNotDefault("Select Event Type"), messages);
+  validateField(booking.eventDescription, "Event Description is missing", isNotEmpty, messages);
+
+  return messages;
+}
+
+function validateField(value, message, validator, messages) {
+    if (!validator(value)) {
+      messages.push(message);
+    }
+  }
+  
+  function isNotEmpty(value) {
+    return value && value.trim() !== "";
+  }
+  
+  function isEmail(value) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(value.trim());
+  }
+  
+  function isMobile(value) {
+    const regex = /^[0-9]{9}$/;
+    return regex.test(value.trim());
+  }
+  
+  function isNotDefault(defaultText) {
+    return (value) => value && value.trim() !== "" && value !== defaultText;
+  }
+  
+//   function isEligible18(dateStr) {
+//     const birthDay = new Date(dateStr);
+//     const today = new Date();
+//     let age = today.getFullYear() - birthDay.getFullYear();
+//     const m = today.getMonth() - birthDay.getMonth();
+//     if (m < 0 || (m === 0 && today.getDate() < birthDay.getDate())) {
+//       age--;
+//     }
+//     return age >= 18;
+//   }
+      
