@@ -10,6 +10,14 @@ app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Add this line to handle JSON requests
 
+const corsOptions = {
+    origin: 'http://localhost:5500', // Replace with your frontend URL
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+};
+
+app.use(cors(corsOptions));
+
 // Setting up DB connection
 const config = {
     user: 'event',
@@ -133,6 +141,48 @@ app.post("/getUserBookings", async (req, res) => {
         res.status(500).json({ 
             success: false, 
             message: "Server error" 
+        });
+    }
+});
+app.post('/submit-review', async (req, res) => {
+    const { event_id, rating, reviewText, features, recommendation } = req.body;
+
+    // check if the data is valid
+    if (!rating || !recommendation) {
+        return res.status(400).json({
+            success: false,
+            message: "Rating and recommendation are required"
+        });
+    }
+
+    try {
+        const request = new sql.Request();
+        const query = `
+            INSERT INTO reviews 
+            (event_id, Rating, ReviewText, LikedFeatures, WouldRecommend)
+            VALUES 
+                (@event_id, @rating, @reviewText, @features, @recommendation)
+        `;
+
+        // insert the dadta
+        request.input('event_id', sql.Int, event_id);
+        request.input('rating', sql.Int, rating);
+        request.input('reviewText', sql.NVarChar, reviewText || null);
+        request.input('features', sql.NVarChar, features ? features.join(',') : null);
+        request.input('recommendation', sql.VarChar(10), recommendation);
+
+        await request.query(query);
+        
+        res.status(201).json({
+            success: true,
+            message: 'Review submitted successfully'
+        });
+
+    } catch (error) {
+        console.error('Database Error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Database error occurred'
         });
     }
 });
@@ -316,4 +366,3 @@ function validateField(value, message, validator, messages) {
 //     }
 //     return age >= 18;
 //   }
-      

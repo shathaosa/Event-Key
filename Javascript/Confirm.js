@@ -70,90 +70,50 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // reviews
-  document.addEventListener('DOMContentLoaded', () => {
-    const reviewForm = document.getElementById('reviewForm');
-    const errorMessage = document.getElementById('errorMessage');
-    const thankYouMessage = document.getElementById('thankYouMessage');
-    const reviewsContainer = document.getElementById('reviewsContainer');
-    const submitBtn = document.querySelector('.submit-btn');
-    const loadingIcon = document.querySelector('.loading-icon');
+  document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const booking = JSON.parse(localStorage.getItem("bookingData"));
+    const event_id = booking.eventId; 
+    
 
-    // Load existing reviews
-    showExistingReviews();
+    const formData = {
+      event_id: event_id,
+        rating: document.querySelector('input[name="rating"]:checked')?.value,
+        reviewText: document.getElementById('review').value,
+        features: Array.from(document.querySelectorAll('input[name="features"]:checked'))
+                    .map(cb => cb.value),
+        recommendation: document.querySelector('input[name="recommend"]:checked')?.value
+    };
 
-    reviewForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        submitBtn.classList.add('loading');
-        loadingIcon.style.display = 'inline-block';
+    // before sendinng the data, validate it
+    if (!formData.rating || !formData.recommendation) {
+        alert('Please select a rating and recommendation');
+        return;
+    }
 
-        const formData = {
-            rating: document.querySelector('input[name="rating"]:checked')?.value,
-            reviewText: document.getElementById('reviewText').value,
-            likedFeatures: [...document.querySelectorAll('input[name="liked_features"]:checked')]
-                          .map(input => input.value),
-            recommendation: document.querySelector('input[name="would_recommend"]:checked').value,
-            timestamp: new Date().toISOString()
-        };
-
-        if (!formData.rating) {
-            showError('Please select a rating');
-            return;
-        }
-
-        try {
-            // Save to localStorage
-            const existingReviews = JSON.parse(localStorage.getItem('reviews')) || [];
-            existingReviews.push(formData);
-            localStorage.setItem('reviews', JSON.stringify(existingReviews));
-
-            // Show confirmation
-            reviewForm.reset();
-            reviewForm.style.display = 'none';
-            thankYouMessage.style.display = 'block';
-            showExistingReviews();
-        } catch (error) {
-            showError('Error submitting review. Please try again.');
-        } finally {
-            submitBtn.classList.remove('loading');
-            loadingIcon.style.display = 'none';
-        }
-    });
-
-    function showExistingReviews() {
-        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-        reviewsContainer.innerHTML = '';
-
-        reviews.forEach(review => {
-            const reviewCard = document.createElement('div');
-            reviewCard.className = 'review-card';
-            
-            const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-            const date = new Date(review.timestamp).toLocaleDateString();
-            
-            reviewCard.innerHTML = `
-                <div class="review-meta">
-                    <span>${date}</span>
-                    <div class="review-rating">${stars}</div>
-                </div>
-                ${review.reviewText ? `<p class="review-text">${review.reviewText}</p>` : ''}
-                ${review.likedFeatures.length ? `
-                    <p class="review-features">
-                        Liked: ${review.likedFeatures.join(', ')}
-                    </p>` : ''}
-                <p class="review-recommendation">Recommendation: ${review.recommendation}</p>
-            `;
-
-            reviewsContainer.appendChild(reviewCard);
+    try {
+        const response = await fetch('http://localhost:3000/submit-review', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
         });
-    }
 
-    function showError(message) {
-        errorMessage.textContent = message;
-        errorMessage.style.display = 'block';
-        setTimeout(() => {
-            errorMessage.style.display = 'none';
-        }, 5000);
+        const data = await response.json();
+        
+        if (data.success) {
+            alert('Review submitted successfully!');
+            document.getElementById('reviewForm').reset();
+        } else {
+            alert(data.message || 'Submission failed');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Network error. Please check your connection.');
     }
+});
+
+
 
     // Animation trigger
     const checkmark = document.querySelector('.checkmark');
@@ -190,4 +150,3 @@ document.addEventListener("DOMContentLoaded", () => {
       rotate(${x * 10}deg)
     `;
   });
-});
