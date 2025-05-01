@@ -185,11 +185,13 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
                 request.input('name', sql.VarChar, userData.fname+' '+ userData.lname);
                 request.input('email', sql.VarChar, userData.email);
                 request.input('phone', sql.VarChar, userData.code+''+userData.contact);
+                request.input('DOB', sql.Date, userData.dob);
+
 
                 const insertUserResult = await request.query`
-                    INSERT INTO users (name, email, phone) 
+                    INSERT INTO users (name, email, phone, DOB) 
                     OUTPUT INSERTED.id 
-                    VALUES (@name, @email, @phone)`;
+                    VALUES (@name, @email, @phone, @DOB)`;
                 userId = insertUserResult.recordset[0].id;
                 console.log(`New user inserted with ID: ${userId}`);
             }
