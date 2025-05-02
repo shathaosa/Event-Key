@@ -43,11 +43,10 @@ form.addEventListener("submit", async (e) => {
   btn.disabled = true; // Disable the button to prevent multiple submissions
   btn.classList.remove("confirm-button"); // Remove the original class
   btn.classList.add("disabled"); // Add the disabled class
-
+  msg.innerHTML = "";
 
 
   let messages = [];
-  console.log("Items", items); // Debugging output
   messages = isFilled("holderName", messages, "Card holder's name is missing");
   messages = isFilled("cardNumber", messages, "Card number is missing");
   messages = isCard("cardNumber", messages, "Invalid Card number");
@@ -55,12 +54,18 @@ form.addEventListener("submit", async (e) => {
   messages = isFilled("cvc", messages, "CVC is missing");
   messages = isCVC("cvc", messages, "Invalid CVC");
   messages = isFutureDate("expiry", messages, "This card is expired");
+  
 
   if (messages.length > 0) {
+    
     msg.style.color = "#C70039";
-    msg.style.marginLeft = "55px";
+    msg.style.marginLeft = "50px";
     msg.style.marginTop = "10px";
     msg.innerHTML = "Issues found [" + messages.length + "]: " + messages.join("<br>");
+    btn.disabled = false;
+    btn.classList.remove("disabled"); // Remove the disabled class
+    btn.classList.add("confirm-button");
+
   } else {
     msg.innerHTML = "";
 
@@ -96,7 +101,7 @@ form.addEventListener("submit", async (e) => {
         btn.disabled = false; // Re-enable the button if the server returns an error
         btn.classList.remove("disabled"); // Remove the disabled class
         btn.classList.add("confirm-button");
-        return;
+
       }
 
     } catch (error) {

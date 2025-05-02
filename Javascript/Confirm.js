@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.success) {
 
         
-        window.location.href = '/HTML/Home.html';
+        window.location.href = '/HTML/index.html';
         // Clear local storage
         localStorage.removeItem('hostFormData');
         localStorage.removeItem('bookingData');
