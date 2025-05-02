@@ -71,19 +71,18 @@ app.post("/insertUserEventProduct", async (req, res) => {
 
   const validationMessages = validateUserAndBooking(hostInfo, bookingInfo);
 
-if (validationMessages.length > 0) {
-  console.error("Validation failed:", validationMessages);
-  return res.status(400).json({
-    success: false,
-    message: "Validation failed"
-  });
-}
+  if (validationMessages.length > 0) {
+    console.error("Validation failed:", validationMessages);
+    return res.status(400).json({
+      success: false,
+      message: "Validation failed"
+    });
+  }
 
-  
   try {
     const result = await insertUserEventProduct(hostInfo, bookingInfo, items);
-    if (result === 1) {
-      res.json({ success: true });
+    if (result !== 0) {
+      res.json({ success: true, eventId: result }); // Return eventId on success
     } else {
       res.json({ success: false, message: "Failed to insert data" });
     }
@@ -143,67 +142,7 @@ app.post("/getUserBookings", async (req, res) => {
     }
 });
 
-app.post('/submit-review', async (req, res) => {
-    const { rating, reviewText, features, recommendation, event_id } = req.body;
 
-    // check if the data is valid
-    if (!rating || !recommendation) {
-        return res.status(400).json({
-            success: false,
-            message: "Rating and recommendation are required"
-        });
-    }
-
-    try {
-        const request = new sql.Request();
-        const query = `
-            INSERT INTO reviews 
-            (Rating, ReviewText, LikedFeatures, WouldRecommend, event_id)
-            VALUES 
-                (@rating, @reviewText, @features, @recommendation, @event_id)
-        `;
-
-        // insert the dadta
-        request.input('rating', sql.Int, rating);
-        request.input('reviewText', sql.NVarChar, reviewText || null);
-        request.input('features', sql.NVarChar, features ? features.join(',') : null);
-        request.input('recommendation', sql.VarChar(10), recommendation);
-         request.input('event_id', sql.Int, event_id);
-
-        await request.query(query);
-        
-        res.status(201).json({
-            success: true,
-            message: 'Review submitted successfully'
-        });
-
-    } catch (error) {
-        console.error('Database Error:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Database error occurred'
-        });
-    }
-});
-
-// Activating server 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
-
-async function getEventDates() {
-    try {
-        const result = await sql.query`
-            SELECT p.vendor, e.date 
-            FROM products p 
-            JOIN product_event pe ON p.id = pe.product_id 
-            JOIN event e ON e.id = pe.event_id`;
-        return result.recordset; // Return an array of objects with vendor and date
-    } catch (err) {
-        console.error('Error fetching event dates:', err);
-        throw err; // Re-throw the error to handle it in the calling function
-    }
-}
 
 async function insertUserEventProduct(userData, eventData, productVendors) {
     if (userData === null) {
@@ -261,6 +200,7 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
                 OUTPUT INSERTED.id 
                 VALUES (@userId, @title, @type, @description, @date, @tax, @total, @children)`;
             const eventId = eventInsertResult.recordset[0].id;
+
             console.log(`Event inserted with ID: ${eventId}`);
 
             console.log("Inserting products into product_event...");
@@ -284,7 +224,7 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
 
             await transaction.commit();
             console.log('Transaction committed successfully.');
-            return 1; // Success
+            return eventId; // Success
         } catch (err) {
             await transaction.rollback();
             console.error('Transaction rolled back:', err);
@@ -295,6 +235,22 @@ async function insertUserEventProduct(userData, eventData, productVendors) {
         return 0; // Failure
     } 
 }
+
+
+async function getEventDates() {
+    try {
+        const result = await sql.query`
+            SELECT p.vendor, e.date 
+            FROM products p 
+            JOIN product_event pe ON p.id = pe.product_id 
+            JOIN event e ON e.id = pe.event_id`;
+        return result.recordset; // Return an array of objects with vendor and date
+    } catch (err) {
+        console.error('Error fetching event dates:', err);
+        throw err; // Re-throw the error to handle it in the calling function
+    }
+}
+
 
 async function sendConfirmation(data) {
     try {
@@ -310,7 +266,73 @@ async function sendConfirmation(data) {
       console.error("Fetch error:", err);
     }
   }
+
   
+app.post('/submit-review', async (req, res) => {
+    const { formData } = req.body; // Destructure formData from the request body
+
+    if (!formData || !formData.event_id || !formData.rating || !formData.recommendation) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid data. Event ID, rating, and recommendation are required."
+        });
+    }
+
+    try {
+        const request = new sql.Request();
+        const query = `
+            INSERT INTO reviews 
+            (Rating, ReviewText, LikedFeatures, WouldRecommend, event_id,SubmissionDate)
+            VALUES 
+            (@rating, @reviewText, @features, @recommendation, @event_id, @sum)
+        `;
+
+        request.input('rating', sql.Int, formData.rating);
+        request.input('reviewText', sql.NVarChar, formData.reviewText || null);
+        request.input('features', sql.NVarChar, formData.features ? formData.features.join(',') : null);
+        request.input('recommendation', sql.VarChar(10), formData.recommendation);
+        request.input('event_id', sql.Int, formData.event_id);
+        request.input('sum', sql.DateTime, new Date());
+
+        await request.query(query);
+
+        res.status(201).json({
+            success: true,
+            message: 'Review submitted successfully'
+        });
+    } catch (error) {
+        console.error('Database Error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Database error occurred'
+        });
+    }
+});
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Activating server 
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
 function validateUserAndBooking(host, booking) {
   const messages = [];
 

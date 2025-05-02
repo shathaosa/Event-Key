@@ -86,10 +86,10 @@ form.addEventListener("submit", async (e) => {
       });
 
       const result = await response.json();
-      console.log("Result from server:", result);
+
 
       if (result.success) {
-        console.log("Form Data:", items);
+        localStorage.setItem('eventId', result.eventId);
         window.location.href = '/HTML/Confirm.html';
       } else {
         msg.innerHTML = "Server error: " + result.message;

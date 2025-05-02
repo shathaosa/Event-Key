@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation Confirmation</title>
     <link rel="stylesheet" href="/CSS/Confirm.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/8c26f80e18.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
         <img class="logo" src="/Media/EKlogo.png" alt="logo">
@@ -18,7 +22,7 @@
             <a href="Explore.html">Explore</a>
             <a href="/HTML/Home.html#contact-section">Contact Us</a>
         </nav>
-         
+
         <div>
             <a href="/HTML/Signup_Login.html" class="account"><i class="fa-solid fa-user"></i></a>
         </div>
@@ -26,7 +30,7 @@
 
     <main>
         <h1>Your Reservation Details</h1>
-        
+
         <div class="reservation-card">
             <div class="reservation-header">
                 <span class="status-badge confirmed">Confirmed</span>
@@ -97,33 +101,37 @@
                     <span class="info-label">Total:</span>
                     <span class="info-value" id="total">0 SAR</span>
                 </div>
-         
+
                 <div class="review-section">
                     <h2>Share Your Experience</h2>
-                    
+
                     <form id="reviewForm" class="review-form">
                         <div class="rating-section">
                             <label>Your Rating</label>
                             <div class="star-rating">
-                                <input type="radio" id="star5" name="rating" value="5" required>
-                                <label for="star5">★</label>
-                                <input type="radio" id="star4" name="rating" value="4">
-                                <label for="star4">★</label>
-                                <input type="radio" id="star3" name="rating" value="3">
-                                <label for="star3">★</label>
-                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star1" class="stars-checked">★</label>
+                                <input type="radio" id="star1" name="rating" value="1" required checked >
+                                
                                 <label for="star2">★</label>
-                                <input type="radio" id="star1" name="rating" value="1">
-                                <label for="star1">★</label>
+                                <input type="radio" id="star2" name="rating" value="2">
+
+                                <label for="star3">★</label>
+                                <input type="radio" id="star3" name="rating" value="3">
+
+                                <label for="star4">★</label>
+                                <input type="radio" id="star4" name="rating" value="4">
+
+                                <label for="star5">★</label>
+                                <input type="radio" id="star5" name="rating" value="5">
                             </div>
                         </div>
-        
+
                         <div class="review-text">
                             <label for="review">Your Review (Optional)</label>
-                            <textarea id="review" name="review" rows="4" 
+                            <textarea id="review" name="review" rows="4"
                                 placeholder="Tell us about your experience..."></textarea>
                         </div>
-        
+
                         <div class="enjoyed-features">
                             <label>What did you enjoy most?</label>
                             <div class="checkboxes">
@@ -141,7 +149,7 @@
                                 </label>
                             </div>
                         </div>
-        
+
                         <div class="recommendation">
                             <label>Would you recommend this event?</label>
                             <div class="radio-group">
@@ -161,29 +169,26 @@
                         </div>
                         <button type="submit" class="submit-btn">
                             Submit Review
-                        </button>                        <div id="thankYouMessage" class="thank-you-message" style="display: none;">
-                            <h2>Thanks for your review!</h2>
-                            <p>Your feedback helps us improve</p>
-                        </div>
+                        </button>
                     </form>
-                </div>
 
-        <div class="butterfly-container">
-  <div class="butterfly">
-    <div class="left-wing"></div>
-    <div class="body">
-      <div class="antenna left-antenna"></div>
-      <div class="antenna right-antenna"></div>
-    </div>
-    <div class="right-wing"></div>
-    <div class="wing-dots"></div>
-  </div>
-</div>
+                <div class="butterfly-container">
+                    <div class="butterfly">
+                        <div class="left-wing"></div>
+                        <div class="body">
+                            <div class="antenna left-antenna"></div>
+                            <div class="antenna right-antenna"></div>
+                        </div>
+                        <div class="right-wing"></div>
+                        <div class="wing-dots"></div>
+                    </div>
+                </div>
 
     </main>
 
     <script src="/Javascript/Confirm.js"></script>
-    
+
     <img src="/Media/border.png" alt="Border Decoration" id="border-image">
 </body>
+
 </html>
