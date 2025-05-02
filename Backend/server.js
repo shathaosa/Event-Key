@@ -269,7 +269,7 @@ async function sendConfirmation(data) {
 
   
 app.post('/submit-review', async (req, res) => {
-    const { formData } = req.body; // Destructure formData from the request body
+    const { formData } = req.body; 
 
     if (!formData || !formData.event_id || !formData.rating || !formData.recommendation) {
         return res.status(400).json({
@@ -309,25 +309,6 @@ app.post('/submit-review', async (req, res) => {
     }
 });
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Activating server 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
